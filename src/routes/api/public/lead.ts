@@ -48,15 +48,53 @@ export const Route = createFileRoute("/api/public/lead")({
           return Response.json({ ok: false, error: "Please review the form and try again." }, { status: 400 });
         }
 
-        const { company, ...lead } = parsed.data;
+        const { company, pagePath, ...lead } = parsed.data;
         if (company) {
-          // Honeypot tripped — accept silently without forwarding.
+          // Honeypot tripped — accept silently without storing.
           return Response.json({ ok: true });
         }
 
-        // Webhook-ready: set LEAD_WEBHOOK_URL to route submissions to a CRM,
-        // email service or automation platform. Without it, the endpoint
-        // validates and accepts the submission without storing anything.
+        // 1. Persist every submission to the private leads table. Only server
+        //    code can read it: the table has RLS on with no public policies.
+        try {
+          const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
+          const { error } = await supabaseAdmin.from("leads").insert({
+            lead_type: lead.leadType,
+            source: lead.source || null,
+            first_name: lead.first,
+            last_name: lead.last || null,
+            email: lead.email,
+            phone: lead.phone || null,
+            goal: lead.goal || null,
+            property_type: lead.propertyType || null,
+            location: lead.location || null,
+            price_range: lead.priceRange || null,
+            timeline: lead.timeline || null,
+            employment: lead.employment || null,
+            credit_band: lead.creditBand || null,
+            first_time: lead.firstTime || null,
+            contact_preference: lead.contactPreference || null,
+            resource: lead.resource || null,
+            message: lead.message || null,
+            page_path: pagePath || null,
+          });
+          if (error) {
+            console.error("Lead insert failed", error);
+            return Response.json(
+              { ok: false, error: "We could not submit your request. Please try again." },
+              { status: 500 },
+            );
+          }
+        } catch (error) {
+          console.error("Lead storage error", error);
+          return Response.json(
+            { ok: false, error: "We could not submit your request. Please try again." },
+            { status: 500 },
+          );
+        }
+
+        // 2. Optional CRM/automation forward. The lead is already saved, so a
+        //    webhook failure is logged rather than shown to the visitor.
         const webhook = process.env["LEAD_WEBHOOK_URL"];
         if (webhook) {
           try {
@@ -67,15 +105,14 @@ export const Route = createFileRoute("/api/public/lead")({
             });
             if (!res.ok) {
               console.error(`Lead webhook failed [${res.status}]: ${await res.text()}`);
-              return Response.json({ ok: false, error: "We could not submit your request." }, { status: 502 });
             }
           } catch (error) {
             console.error("Lead webhook error", error);
-            return Response.json({ ok: false, error: "We could not submit your request." }, { status: 502 });
           }
         }
 
         return Response.json({ ok: true });
+
       },
     },
   },
