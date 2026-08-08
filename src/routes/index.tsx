@@ -66,10 +66,12 @@ function Index() {
     <SiteLayout transparentNav>
       <Hero />
       <TrustBar />
+      <FindYourPath />
       <Difference />
       <Solutions />
       <SignatureCTA />
       <Journey />
+      <NorthCarolina />
       <Investors />
       <Founder />
       <Calculator />
@@ -81,3 +83,4 @@ function Index() {
     </SiteLayout>
   );
 }
+
