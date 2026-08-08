@@ -8,7 +8,7 @@ const title = "Home Financing Resources NC | Premier Lending NC";
 const description =
   "Educational resources for North Carolina home buyers and real-estate investors: buyer guides, payment estimates and financing basics.";
 
-export const Route = createFileRoute("/resources")({
+export const Route = createFileRoute("/resources/")({
   head: () => ({
     meta: [
       { title },
