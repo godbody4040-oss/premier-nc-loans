@@ -2,7 +2,6 @@ import { createFileRoute } from "@tanstack/react-router";
 import { PageHero, SiteLayout } from "@/components/site/SiteLayout";
 import { LeadFunnel } from "@/components/site/LeadFunnel";
 import { Reveal } from "@/components/site/Reveal";
-import { Placeholder } from "@/components/site/ui";
 
 const title = "Contact a North Carolina Mortgage Broker | Premier Lending NC";
 const description =
