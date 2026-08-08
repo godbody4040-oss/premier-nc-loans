@@ -24,6 +24,7 @@ import { Route as InvestorsRouteImport } from './routes/investors'
 import { Route as LoanProgramsRouteImport } from './routes/loan-programs'
 import { Route as MortgagePreApprovalRouteImport } from './routes/mortgage-pre-approval'
 import { Route as MortgageSolutionsRouteImport } from './routes/mortgage-solutions'
+import { Route as NcHomeBuyerChecklistRouteImport } from './routes/nc-home-buyer-checklist'
 import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as RefinancingRouteImport } from './routes/refinancing'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
@@ -109,6 +110,11 @@ const MortgageSolutionsRoute = MortgageSolutionsRouteImport.update({
   path: '/mortgage-solutions',
   getParentRoute: () => rootRouteImport,
 } as any)
+const NcHomeBuyerChecklistRoute = NcHomeBuyerChecklistRouteImport.update({
+  id: '/nc-home-buyer-checklist',
+  path: '/nc-home-buyer-checklist',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const PrivacyRoute = PrivacyRouteImport.update({
   id: '/privacy',
   path: '/privacy',
@@ -171,6 +177,7 @@ export interface FileRoutesByFullPath {
   '/loan-programs': typeof LoanProgramsRoute
   '/mortgage-pre-approval': typeof MortgagePreApprovalRoute
   '/mortgage-solutions': typeof MortgageSolutionsRoute
+  '/nc-home-buyer-checklist': typeof NcHomeBuyerChecklistRoute
   '/privacy': typeof PrivacyRoute
   '/refinancing': typeof RefinancingRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
@@ -197,6 +204,7 @@ export interface FileRoutesByTo {
   '/loan-programs': typeof LoanProgramsRoute
   '/mortgage-pre-approval': typeof MortgagePreApprovalRoute
   '/mortgage-solutions': typeof MortgageSolutionsRoute
+  '/nc-home-buyer-checklist': typeof NcHomeBuyerChecklistRoute
   '/privacy': typeof PrivacyRoute
   '/refinancing': typeof RefinancingRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
@@ -224,6 +232,7 @@ export interface FileRoutesById {
   '/loan-programs': typeof LoanProgramsRoute
   '/mortgage-pre-approval': typeof MortgagePreApprovalRoute
   '/mortgage-solutions': typeof MortgageSolutionsRoute
+  '/nc-home-buyer-checklist': typeof NcHomeBuyerChecklistRoute
   '/privacy': typeof PrivacyRoute
   '/refinancing': typeof RefinancingRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
@@ -252,6 +261,7 @@ export interface FileRouteTypes {
     | '/loan-programs'
     | '/mortgage-pre-approval'
     | '/mortgage-solutions'
+    | '/nc-home-buyer-checklist'
     | '/privacy'
     | '/refinancing'
     | '/sitemap.xml'
@@ -278,6 +288,7 @@ export interface FileRouteTypes {
     | '/loan-programs'
     | '/mortgage-pre-approval'
     | '/mortgage-solutions'
+    | '/nc-home-buyer-checklist'
     | '/privacy'
     | '/refinancing'
     | '/sitemap.xml'
@@ -304,6 +315,7 @@ export interface FileRouteTypes {
     | '/loan-programs'
     | '/mortgage-pre-approval'
     | '/mortgage-solutions'
+    | '/nc-home-buyer-checklist'
     | '/privacy'
     | '/refinancing'
     | '/sitemap.xml'
@@ -331,6 +343,7 @@ export interface RootRouteChildren {
   LoanProgramsRoute: typeof LoanProgramsRoute
   MortgagePreApprovalRoute: typeof MortgagePreApprovalRoute
   MortgageSolutionsRoute: typeof MortgageSolutionsRoute
+  NcHomeBuyerChecklistRoute: typeof NcHomeBuyerChecklistRoute
   PrivacyRoute: typeof PrivacyRoute
   RefinancingRoute: typeof RefinancingRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
@@ -449,6 +462,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof MortgageSolutionsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/nc-home-buyer-checklist': {
+      id: '/nc-home-buyer-checklist'
+      path: '/nc-home-buyer-checklist'
+      fullPath: '/nc-home-buyer-checklist'
+      preLoaderRoute: typeof NcHomeBuyerChecklistRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/privacy': {
       id: '/privacy'
       path: '/privacy'
@@ -531,6 +551,7 @@ const rootRouteChildren: RootRouteChildren = {
   LoanProgramsRoute: LoanProgramsRoute,
   MortgagePreApprovalRoute: MortgagePreApprovalRoute,
   MortgageSolutionsRoute: MortgageSolutionsRoute,
+  NcHomeBuyerChecklistRoute: NcHomeBuyerChecklistRoute,
   PrivacyRoute: PrivacyRoute,
   RefinancingRoute: RefinancingRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
