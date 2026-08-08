@@ -120,11 +120,3 @@ export function SectionHead({
     </div>
   );
 }
-
-export function Placeholder({ children }: { children: ReactNode }) {
-  return (
-    <span className="rounded-[2px] border border-dashed border-gold/60 bg-gold/10 px-2 py-0.5 font-mono text-[0.7rem] tracking-tight text-gold">
-      {children}
-    </span>
-  );
-}
