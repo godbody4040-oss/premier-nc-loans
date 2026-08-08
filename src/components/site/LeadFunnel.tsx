@@ -29,12 +29,13 @@ export function LeadFunnel() {
 
   const validate = () => {
     const e: Errors = {};
-    if (!form.first.trim() || form.first.length > 60) e.first = "Enter your first name.";
-    if (!form.last.trim() || form.last.length > 60) e.last = "Enter your last name.";
-    if (!/^[\d\s().+-]{10,20}$/.test(form.phone.trim())) e.phone = "Enter a valid phone number.";
+    if (!form.first.trim() || form.first.length > 60) e["first"] = "Enter your first name.";
+    if (!form.last.trim() || form.last.length > 60) e["last"] = "Enter your last name.";
+    if (!/^[\d\s().+-]{10,20}$/.test(form.phone.trim())) e["phone"] = "Enter a valid phone number.";
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(form.email.trim()) || form.email.length > 255)
-      e.email = "Enter a valid email address.";
-    if (form.message.length > 1000) e.message = "Message is too long.";
+      e["email"] = "Enter a valid email address.";
+    if (form.message.length > 1000) e["message"] = "Message is too long.";
+
     setErrors(e);
     return Object.keys(e).length === 0;
   };
