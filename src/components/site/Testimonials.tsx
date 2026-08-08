@@ -1,5 +1,20 @@
 import { Reveal } from "./Reveal";
-import { SectionHead } from "./ui";
+import { CTA, SectionHead } from "./ui";
+
+const pillars = [
+  {
+    t: "Verified reviews only",
+    b: "Client feedback is published here only after it has been provided and confirmed by Premier Lending NC.",
+  },
+  {
+    t: "No stock stories",
+    b: "No sample names, placeholder quotes or purchased testimonials appear on this site.",
+  },
+  {
+    t: "Straightforward claims",
+    b: "No promises of approval, rates, savings or outcomes — only what can be supported.",
+  },
+];
 
 export function Testimonials() {
   return (
@@ -8,28 +23,37 @@ export function Testimonials() {
         <Reveal>
           <SectionHead
             eyebrow="Client Stories"
-            title="Verified client experiences will appear here."
-            body="This section is ready for verified reviews. No testimonials are displayed until they are provided and confirmed by Premier Lending NC."
+            title="Credibility, earned in writing."
+            body="Reviews from real clients will be published here as they are collected and verified."
             center
           />
         </Reveal>
 
         <div className="mt-16 grid gap-6 lg:grid-cols-3">
-          {[0, 1, 2].map((i) => (
-            <Reveal key={i} delay={i * 120}>
-              <article className="flex h-full flex-col border border-dashed border-border bg-white/60 p-9">
-                <span className="font-display text-4xl text-gold/40">“</span>
-                <p className="mt-4 flex-1 text-sm leading-relaxed text-muted-foreground">
-                  Verified review content will appear here.
-                </p>
-                <div className="mt-8 border-t border-border pt-5 text-[0.68rem] uppercase tracking-[0.16em] text-muted-foreground">
-                  <p>Client Name</p>
-                  <p className="mt-1 text-gold">Property Type · Date</p>
-                </div>
+          {pillars.map((p, i) => (
+            <Reveal key={p.t} delay={i * 120}>
+              <article className="luxe-card flex h-full flex-col p-9 lg:p-10">
+                <span className="grid h-10 w-10 place-items-center border border-gold/50 font-display text-sm text-gold">
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+                <h3 className="display mt-7 text-xl text-navy">{p.t}</h3>
+                <span className="mt-4 block h-px w-10 bg-gold" />
+                <p className="mt-5 text-sm leading-relaxed text-muted-foreground">{p.b}</p>
               </article>
             </Reveal>
           ))}
         </div>
+
+        <Reveal delay={120}>
+          <div className="mt-12 flex flex-wrap items-center justify-center gap-4 text-center">
+            <p className="text-sm text-muted-foreground">
+              Worked with Premier Lending NC? Your experience can be shared here.
+            </p>
+            <CTA to="/contact" variant="outlineDark" arrow={false}>
+              Share Your Experience
+            </CTA>
+          </div>
+        </Reveal>
       </div>
     </section>
   );
