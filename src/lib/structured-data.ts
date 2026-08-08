@@ -76,11 +76,9 @@ export function localBusinessSchema(description: string) {
     telephone: business.phone,
     email: business.email,
     address,
-    ...(business.address ? { name_address_note: undefined } : {}),
     openingHours,
     areaServed: { "@type": "State", name: business.serviceArea },
     serviceType: "Mortgage brokerage",
-    priceRange: undefined,
     identifier: business.nmls
       ? { "@type": "PropertyValue", name: "NMLS", value: business.nmls }
       : null,
