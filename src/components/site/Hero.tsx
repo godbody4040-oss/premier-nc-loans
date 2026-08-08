@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import heroImg from "@/assets/hero-home.jpg";
+import { track } from "@/lib/analytics";
 import { CTA } from "./ui";
 
 const steps = [
