@@ -38,12 +38,12 @@ export function Nav({ transparent = false }: { transparent?: boolean }) {
             P
           </span>
           <span className="min-w-0 leading-none">
-            <span className="block font-display text-[0.95rem] tracking-[0.14em] text-white">PREMIER</span>
-            <span className="block text-[0.6rem] tracking-[0.34em] text-gold">LENDING NC</span>
+            <span className="block whitespace-nowrap font-display text-[0.95rem] tracking-[0.14em] text-white">PREMIER</span>
+            <span className="block whitespace-nowrap text-[0.6rem] tracking-[0.34em] text-gold">LENDING NC</span>
           </span>
         </Link>
 
-        <nav className="hidden items-center gap-7 xl:flex">
+        <nav className="hidden items-center gap-6 xl:flex 2xl:gap-8">
           {links.map((l) => (
             <Link
               key={l.to}
