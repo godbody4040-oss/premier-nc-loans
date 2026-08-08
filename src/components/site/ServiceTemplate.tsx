@@ -1,9 +1,8 @@
-import { Link } from "@tanstack/react-router";
 import type { Service } from "@/content/services";
 import { serviceBySlug } from "@/content/services";
 import { locations } from "@/content/locations";
 import { PageHero, SiteLayout } from "./SiteLayout";
-import { Breadcrumbs } from "./Breadcrumbs";
+import { SiteLink } from "./SiteLink";
 import { Reveal } from "./Reveal";
 import { CTA, Eyebrow } from "./ui";
 import { LeadFunnel } from "./LeadFunnel";
@@ -83,12 +82,12 @@ export function ServiceTemplate({ service }: { service: Service }) {
                   <ul className="mt-5 space-y-3 text-sm">
                     {related.map((r) => (
                       <li key={r.slug}>
-                        <Link
+                        <SiteLink
                           to={`/${r.slug}`}
                           className="arrow-cta text-navy transition-colors hover:text-gold"
                         >
                           {r.h1}
-                        </Link>
+                        </SiteLink>
                       </li>
                     ))}
                   </ul>
@@ -96,12 +95,12 @@ export function ServiceTemplate({ service }: { service: Service }) {
                   <ul className="mt-5 flex flex-wrap gap-x-4 gap-y-2 text-sm text-muted-foreground">
                     {locations.slice(0, 6).map((l) => (
                       <li key={l.slug}>
-                        <Link
+                        <SiteLink
                           to={`/locations/${l.slug}`}
                           className="transition-colors hover:text-gold"
                         >
                           {l.city}
-                        </Link>
+                        </SiteLink>
                       </li>
                     ))}
                   </ul>
@@ -155,5 +154,3 @@ export function ServiceTemplate({ service }: { service: Service }) {
     </SiteLayout>
   );
 }
-
-export { Breadcrumbs };

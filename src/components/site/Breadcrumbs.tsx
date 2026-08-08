@@ -1,4 +1,4 @@
-import { Link } from "@tanstack/react-router";
+import { SiteLink } from "./SiteLink";
 
 export type Crumb = { name: string; path: string };
 
@@ -16,9 +16,9 @@ export function Breadcrumbs({ crumbs, light = true }: { crumbs: Crumb[]; light?:
                   {c.name}
                 </span>
               ) : (
-                <Link to={c.path} className="transition-colors hover:text-gold">
+                <SiteLink to={c.path} className="transition-colors hover:text-gold">
                   {c.name}
-                </Link>
+                </SiteLink>
               )}
               {last ? null : <span aria-hidden="true">/</span>}
             </li>
