@@ -23,7 +23,7 @@ const entries: SitemapEntry[] = [
   { path: "/contact", changefreq: "monthly", priority: "0.8" },
   { path: "/privacy", changefreq: "yearly", priority: "0.3" },
   { path: "/disclosures", changefreq: "yearly", priority: "0.3" },
-  { path: "/loan-programs", changefreq: "monthly", priority: "0.9" },
+  { path: "/nc-home-buyer-checklist", changefreq: "monthly", priority: "0.8" },
   { path: "/locations", changefreq: "monthly", priority: "0.8" },
   ...services.map((s) => ({
     path: `/${s.slug}`,
