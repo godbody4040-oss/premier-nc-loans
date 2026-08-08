@@ -13,13 +13,25 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as CalculatorRouteImport } from './routes/calculator'
 import { Route as ContactRouteImport } from './routes/contact'
+import { Route as ConventionalLoansRouteImport } from './routes/conventional-loans'
 import { Route as DisclosuresRouteImport } from './routes/disclosures'
+import { Route as FhaLoansRouteImport } from './routes/fha-loans'
+import { Route as FirstTimeHomeBuyersRouteImport } from './routes/first-time-home-buyers'
 import { Route as HomeBuyersRouteImport } from './routes/home-buyers'
+import { Route as HomeLoansRouteImport } from './routes/home-loans'
+import { Route as InvestmentPropertyLoansRouteImport } from './routes/investment-property-loans'
 import { Route as InvestorsRouteImport } from './routes/investors'
+import { Route as LoanProgramsRouteImport } from './routes/loan-programs'
+import { Route as MortgagePreApprovalRouteImport } from './routes/mortgage-pre-approval'
 import { Route as MortgageSolutionsRouteImport } from './routes/mortgage-solutions'
 import { Route as PrivacyRouteImport } from './routes/privacy'
-import { Route as ResourcesRouteImport } from './routes/resources'
+import { Route as RefinancingRouteImport } from './routes/refinancing'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
+import { Route as VaLoansRouteImport } from './routes/va-loans'
+import { Route as LocationsIndexRouteImport } from './routes/locations.index'
+import { Route as LocationsCityRouteImport } from './routes/locations.$city'
+import { Route as ResourcesIndexRouteImport } from './routes/resources.index'
+import { Route as ResourcesSlugRouteImport } from './routes/resources.$slug'
 import { Route as ApiPublicLeadRouteImport } from './routes/api/public/lead'
 
 const IndexRoute = IndexRouteImport.update({
@@ -42,9 +54,24 @@ const ContactRoute = ContactRouteImport.update({
   path: '/contact',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ConventionalLoansRoute = ConventionalLoansRouteImport.update({
+  id: '/conventional-loans',
+  path: '/conventional-loans',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const DisclosuresRoute = DisclosuresRouteImport.update({
   id: '/disclosures',
   path: '/disclosures',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FhaLoansRoute = FhaLoansRouteImport.update({
+  id: '/fha-loans',
+  path: '/fha-loans',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FirstTimeHomeBuyersRoute = FirstTimeHomeBuyersRouteImport.update({
+  id: '/first-time-home-buyers',
+  path: '/first-time-home-buyers',
   getParentRoute: () => rootRouteImport,
 } as any)
 const HomeBuyersRoute = HomeBuyersRouteImport.update({
@@ -52,9 +79,29 @@ const HomeBuyersRoute = HomeBuyersRouteImport.update({
   path: '/home-buyers',
   getParentRoute: () => rootRouteImport,
 } as any)
+const HomeLoansRoute = HomeLoansRouteImport.update({
+  id: '/home-loans',
+  path: '/home-loans',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const InvestmentPropertyLoansRoute = InvestmentPropertyLoansRouteImport.update({
+  id: '/investment-property-loans',
+  path: '/investment-property-loans',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const InvestorsRoute = InvestorsRouteImport.update({
   id: '/investors',
   path: '/investors',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LoanProgramsRoute = LoanProgramsRouteImport.update({
+  id: '/loan-programs',
+  path: '/loan-programs',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MortgagePreApprovalRoute = MortgagePreApprovalRouteImport.update({
+  id: '/mortgage-pre-approval',
+  path: '/mortgage-pre-approval',
   getParentRoute: () => rootRouteImport,
 } as any)
 const MortgageSolutionsRoute = MortgageSolutionsRouteImport.update({
@@ -67,14 +114,39 @@ const PrivacyRoute = PrivacyRouteImport.update({
   path: '/privacy',
   getParentRoute: () => rootRouteImport,
 } as any)
-const ResourcesRoute = ResourcesRouteImport.update({
-  id: '/resources',
-  path: '/resources',
+const RefinancingRoute = RefinancingRouteImport.update({
+  id: '/refinancing',
+  path: '/refinancing',
   getParentRoute: () => rootRouteImport,
 } as any)
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
   id: '/sitemap.xml',
   path: '/sitemap.xml',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const VaLoansRoute = VaLoansRouteImport.update({
+  id: '/va-loans',
+  path: '/va-loans',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LocationsIndexRoute = LocationsIndexRouteImport.update({
+  id: '/locations/',
+  path: '/locations/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LocationsCityRoute = LocationsCityRouteImport.update({
+  id: '/locations/$city',
+  path: '/locations/$city',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ResourcesIndexRoute = ResourcesIndexRouteImport.update({
+  id: '/resources/',
+  path: '/resources/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ResourcesSlugRoute = ResourcesSlugRouteImport.update({
+  id: '/resources/$slug',
+  path: '/resources/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ApiPublicLeadRoute = ApiPublicLeadRouteImport.update({
@@ -88,13 +160,25 @@ export interface FileRoutesByFullPath {
   '/about': typeof AboutRoute
   '/calculator': typeof CalculatorRoute
   '/contact': typeof ContactRoute
+  '/conventional-loans': typeof ConventionalLoansRoute
   '/disclosures': typeof DisclosuresRoute
+  '/fha-loans': typeof FhaLoansRoute
+  '/first-time-home-buyers': typeof FirstTimeHomeBuyersRoute
   '/home-buyers': typeof HomeBuyersRoute
+  '/home-loans': typeof HomeLoansRoute
+  '/investment-property-loans': typeof InvestmentPropertyLoansRoute
   '/investors': typeof InvestorsRoute
+  '/loan-programs': typeof LoanProgramsRoute
+  '/mortgage-pre-approval': typeof MortgagePreApprovalRoute
   '/mortgage-solutions': typeof MortgageSolutionsRoute
   '/privacy': typeof PrivacyRoute
-  '/resources': typeof ResourcesRoute
+  '/refinancing': typeof RefinancingRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/va-loans': typeof VaLoansRoute
+  '/locations/$city': typeof LocationsCityRoute
+  '/resources/$slug': typeof ResourcesSlugRoute
+  '/locations/': typeof LocationsIndexRoute
+  '/resources/': typeof ResourcesIndexRoute
   '/api/public/lead': typeof ApiPublicLeadRoute
 }
 export interface FileRoutesByTo {
@@ -102,13 +186,25 @@ export interface FileRoutesByTo {
   '/about': typeof AboutRoute
   '/calculator': typeof CalculatorRoute
   '/contact': typeof ContactRoute
+  '/conventional-loans': typeof ConventionalLoansRoute
   '/disclosures': typeof DisclosuresRoute
+  '/fha-loans': typeof FhaLoansRoute
+  '/first-time-home-buyers': typeof FirstTimeHomeBuyersRoute
   '/home-buyers': typeof HomeBuyersRoute
+  '/home-loans': typeof HomeLoansRoute
+  '/investment-property-loans': typeof InvestmentPropertyLoansRoute
   '/investors': typeof InvestorsRoute
+  '/loan-programs': typeof LoanProgramsRoute
+  '/mortgage-pre-approval': typeof MortgagePreApprovalRoute
   '/mortgage-solutions': typeof MortgageSolutionsRoute
   '/privacy': typeof PrivacyRoute
-  '/resources': typeof ResourcesRoute
+  '/refinancing': typeof RefinancingRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/va-loans': typeof VaLoansRoute
+  '/locations/$city': typeof LocationsCityRoute
+  '/resources/$slug': typeof ResourcesSlugRoute
+  '/locations': typeof LocationsIndexRoute
+  '/resources': typeof ResourcesIndexRoute
   '/api/public/lead': typeof ApiPublicLeadRoute
 }
 export interface FileRoutesById {
@@ -117,13 +213,25 @@ export interface FileRoutesById {
   '/about': typeof AboutRoute
   '/calculator': typeof CalculatorRoute
   '/contact': typeof ContactRoute
+  '/conventional-loans': typeof ConventionalLoansRoute
   '/disclosures': typeof DisclosuresRoute
+  '/fha-loans': typeof FhaLoansRoute
+  '/first-time-home-buyers': typeof FirstTimeHomeBuyersRoute
   '/home-buyers': typeof HomeBuyersRoute
+  '/home-loans': typeof HomeLoansRoute
+  '/investment-property-loans': typeof InvestmentPropertyLoansRoute
   '/investors': typeof InvestorsRoute
+  '/loan-programs': typeof LoanProgramsRoute
+  '/mortgage-pre-approval': typeof MortgagePreApprovalRoute
   '/mortgage-solutions': typeof MortgageSolutionsRoute
   '/privacy': typeof PrivacyRoute
-  '/resources': typeof ResourcesRoute
+  '/refinancing': typeof RefinancingRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/va-loans': typeof VaLoansRoute
+  '/locations/$city': typeof LocationsCityRoute
+  '/resources/$slug': typeof ResourcesSlugRoute
+  '/locations/': typeof LocationsIndexRoute
+  '/resources/': typeof ResourcesIndexRoute
   '/api/public/lead': typeof ApiPublicLeadRoute
 }
 export interface FileRouteTypes {
@@ -133,13 +241,25 @@ export interface FileRouteTypes {
     | '/about'
     | '/calculator'
     | '/contact'
+    | '/conventional-loans'
     | '/disclosures'
+    | '/fha-loans'
+    | '/first-time-home-buyers'
     | '/home-buyers'
+    | '/home-loans'
+    | '/investment-property-loans'
     | '/investors'
+    | '/loan-programs'
+    | '/mortgage-pre-approval'
     | '/mortgage-solutions'
     | '/privacy'
-    | '/resources'
+    | '/refinancing'
     | '/sitemap.xml'
+    | '/va-loans'
+    | '/locations/$city'
+    | '/resources/$slug'
+    | '/locations/'
+    | '/resources/'
     | '/api/public/lead'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -147,13 +267,25 @@ export interface FileRouteTypes {
     | '/about'
     | '/calculator'
     | '/contact'
+    | '/conventional-loans'
     | '/disclosures'
+    | '/fha-loans'
+    | '/first-time-home-buyers'
     | '/home-buyers'
+    | '/home-loans'
+    | '/investment-property-loans'
     | '/investors'
+    | '/loan-programs'
+    | '/mortgage-pre-approval'
     | '/mortgage-solutions'
     | '/privacy'
-    | '/resources'
+    | '/refinancing'
     | '/sitemap.xml'
+    | '/va-loans'
+    | '/locations/$city'
+    | '/resources/$slug'
+    | '/locations'
+    | '/resources'
     | '/api/public/lead'
   id:
     | '__root__'
@@ -161,13 +293,25 @@ export interface FileRouteTypes {
     | '/about'
     | '/calculator'
     | '/contact'
+    | '/conventional-loans'
     | '/disclosures'
+    | '/fha-loans'
+    | '/first-time-home-buyers'
     | '/home-buyers'
+    | '/home-loans'
+    | '/investment-property-loans'
     | '/investors'
+    | '/loan-programs'
+    | '/mortgage-pre-approval'
     | '/mortgage-solutions'
     | '/privacy'
-    | '/resources'
+    | '/refinancing'
     | '/sitemap.xml'
+    | '/va-loans'
+    | '/locations/$city'
+    | '/resources/$slug'
+    | '/locations/'
+    | '/resources/'
     | '/api/public/lead'
   fileRoutesById: FileRoutesById
 }
@@ -176,13 +320,25 @@ export interface RootRouteChildren {
   AboutRoute: typeof AboutRoute
   CalculatorRoute: typeof CalculatorRoute
   ContactRoute: typeof ContactRoute
+  ConventionalLoansRoute: typeof ConventionalLoansRoute
   DisclosuresRoute: typeof DisclosuresRoute
+  FhaLoansRoute: typeof FhaLoansRoute
+  FirstTimeHomeBuyersRoute: typeof FirstTimeHomeBuyersRoute
   HomeBuyersRoute: typeof HomeBuyersRoute
+  HomeLoansRoute: typeof HomeLoansRoute
+  InvestmentPropertyLoansRoute: typeof InvestmentPropertyLoansRoute
   InvestorsRoute: typeof InvestorsRoute
+  LoanProgramsRoute: typeof LoanProgramsRoute
+  MortgagePreApprovalRoute: typeof MortgagePreApprovalRoute
   MortgageSolutionsRoute: typeof MortgageSolutionsRoute
   PrivacyRoute: typeof PrivacyRoute
-  ResourcesRoute: typeof ResourcesRoute
+  RefinancingRoute: typeof RefinancingRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
+  VaLoansRoute: typeof VaLoansRoute
+  LocationsCityRoute: typeof LocationsCityRoute
+  ResourcesSlugRoute: typeof ResourcesSlugRoute
+  LocationsIndexRoute: typeof LocationsIndexRoute
+  ResourcesIndexRoute: typeof ResourcesIndexRoute
   ApiPublicLeadRoute: typeof ApiPublicLeadRoute
 }
 
@@ -216,11 +372,32 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ContactRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/conventional-loans': {
+      id: '/conventional-loans'
+      path: '/conventional-loans'
+      fullPath: '/conventional-loans'
+      preLoaderRoute: typeof ConventionalLoansRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/disclosures': {
       id: '/disclosures'
       path: '/disclosures'
       fullPath: '/disclosures'
       preLoaderRoute: typeof DisclosuresRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/fha-loans': {
+      id: '/fha-loans'
+      path: '/fha-loans'
+      fullPath: '/fha-loans'
+      preLoaderRoute: typeof FhaLoansRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/first-time-home-buyers': {
+      id: '/first-time-home-buyers'
+      path: '/first-time-home-buyers'
+      fullPath: '/first-time-home-buyers'
+      preLoaderRoute: typeof FirstTimeHomeBuyersRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/home-buyers': {
@@ -230,11 +407,39 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof HomeBuyersRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/home-loans': {
+      id: '/home-loans'
+      path: '/home-loans'
+      fullPath: '/home-loans'
+      preLoaderRoute: typeof HomeLoansRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/investment-property-loans': {
+      id: '/investment-property-loans'
+      path: '/investment-property-loans'
+      fullPath: '/investment-property-loans'
+      preLoaderRoute: typeof InvestmentPropertyLoansRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/investors': {
       id: '/investors'
       path: '/investors'
       fullPath: '/investors'
       preLoaderRoute: typeof InvestorsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/loan-programs': {
+      id: '/loan-programs'
+      path: '/loan-programs'
+      fullPath: '/loan-programs'
+      preLoaderRoute: typeof LoanProgramsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/mortgage-pre-approval': {
+      id: '/mortgage-pre-approval'
+      path: '/mortgage-pre-approval'
+      fullPath: '/mortgage-pre-approval'
+      preLoaderRoute: typeof MortgagePreApprovalRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/mortgage-solutions': {
@@ -251,11 +456,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PrivacyRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/resources': {
-      id: '/resources'
-      path: '/resources'
-      fullPath: '/resources'
-      preLoaderRoute: typeof ResourcesRouteImport
+    '/refinancing': {
+      id: '/refinancing'
+      path: '/refinancing'
+      fullPath: '/refinancing'
+      preLoaderRoute: typeof RefinancingRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/sitemap.xml': {
@@ -263,6 +468,41 @@ declare module '@tanstack/react-router' {
       path: '/sitemap.xml'
       fullPath: '/sitemap.xml'
       preLoaderRoute: typeof SitemapDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/va-loans': {
+      id: '/va-loans'
+      path: '/va-loans'
+      fullPath: '/va-loans'
+      preLoaderRoute: typeof VaLoansRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/locations/': {
+      id: '/locations/'
+      path: '/locations'
+      fullPath: '/locations/'
+      preLoaderRoute: typeof LocationsIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/locations/$city': {
+      id: '/locations/$city'
+      path: '/locations/$city'
+      fullPath: '/locations/$city'
+      preLoaderRoute: typeof LocationsCityRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/resources/': {
+      id: '/resources/'
+      path: '/resources'
+      fullPath: '/resources/'
+      preLoaderRoute: typeof ResourcesIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/resources/$slug': {
+      id: '/resources/$slug'
+      path: '/resources/$slug'
+      fullPath: '/resources/$slug'
+      preLoaderRoute: typeof ResourcesSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/api/public/lead': {
@@ -280,13 +520,25 @@ const rootRouteChildren: RootRouteChildren = {
   AboutRoute: AboutRoute,
   CalculatorRoute: CalculatorRoute,
   ContactRoute: ContactRoute,
+  ConventionalLoansRoute: ConventionalLoansRoute,
   DisclosuresRoute: DisclosuresRoute,
+  FhaLoansRoute: FhaLoansRoute,
+  FirstTimeHomeBuyersRoute: FirstTimeHomeBuyersRoute,
   HomeBuyersRoute: HomeBuyersRoute,
+  HomeLoansRoute: HomeLoansRoute,
+  InvestmentPropertyLoansRoute: InvestmentPropertyLoansRoute,
   InvestorsRoute: InvestorsRoute,
+  LoanProgramsRoute: LoanProgramsRoute,
+  MortgagePreApprovalRoute: MortgagePreApprovalRoute,
   MortgageSolutionsRoute: MortgageSolutionsRoute,
   PrivacyRoute: PrivacyRoute,
-  ResourcesRoute: ResourcesRoute,
+  RefinancingRoute: RefinancingRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
+  VaLoansRoute: VaLoansRoute,
+  LocationsCityRoute: LocationsCityRoute,
+  ResourcesSlugRoute: ResourcesSlugRoute,
+  LocationsIndexRoute: LocationsIndexRoute,
+  ResourcesIndexRoute: ResourcesIndexRoute,
   ApiPublicLeadRoute: ApiPublicLeadRoute,
 }
 export const routeTree = rootRouteImport

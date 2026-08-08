@@ -3,12 +3,13 @@ import { PageHero, SiteLayout } from "@/components/site/SiteLayout";
 import { LeadMagnet } from "@/components/site/LeadMagnet";
 import { FAQ } from "@/components/site/FAQ";
 import { ResourceCenter } from "@/components/site/ResourceCenter";
+import { ArticleIndex } from "@/components/site/ArticleIndex";
 
 const title = "Home Financing Resources NC | Premier Lending NC";
 const description =
   "Educational resources for North Carolina home buyers and real-estate investors: buyer guides, payment estimates and financing basics.";
 
-export const Route = createFileRoute("/resources")({
+export const Route = createFileRoute("/resources/")({
   head: () => ({
     meta: [
       { title },
@@ -30,8 +31,13 @@ function Page() {
         eyebrow="Resources"
         title="Clarity before commitment."
         body="Educational material to help you understand the financing side of your next move."
+        crumbs={[
+          { name: "Home", path: "/" },
+          { name: "Resources", path: "/resources" },
+        ]}
       />
       <ResourceCenter />
+      <ArticleIndex />
       <LeadMagnet />
       <FAQ />
     </SiteLayout>
