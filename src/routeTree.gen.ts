@@ -21,6 +21,7 @@ import { Route as HomeBuyersRouteImport } from './routes/home-buyers'
 import { Route as HomeLoansRouteImport } from './routes/home-loans'
 import { Route as InvestmentPropertyLoansRouteImport } from './routes/investment-property-loans'
 import { Route as InvestorsRouteImport } from './routes/investors'
+import { Route as LoanProgramsRouteImport } from './routes/loan-programs'
 import { Route as MortgagePreApprovalRouteImport } from './routes/mortgage-pre-approval'
 import { Route as MortgageSolutionsRouteImport } from './routes/mortgage-solutions'
 import { Route as PrivacyRouteImport } from './routes/privacy'
@@ -93,6 +94,11 @@ const InvestorsRoute = InvestorsRouteImport.update({
   path: '/investors',
   getParentRoute: () => rootRouteImport,
 } as any)
+const LoanProgramsRoute = LoanProgramsRouteImport.update({
+  id: '/loan-programs',
+  path: '/loan-programs',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const MortgagePreApprovalRoute = MortgagePreApprovalRouteImport.update({
   id: '/mortgage-pre-approval',
   path: '/mortgage-pre-approval',
@@ -162,6 +168,7 @@ export interface FileRoutesByFullPath {
   '/home-loans': typeof HomeLoansRoute
   '/investment-property-loans': typeof InvestmentPropertyLoansRoute
   '/investors': typeof InvestorsRoute
+  '/loan-programs': typeof LoanProgramsRoute
   '/mortgage-pre-approval': typeof MortgagePreApprovalRoute
   '/mortgage-solutions': typeof MortgageSolutionsRoute
   '/privacy': typeof PrivacyRoute
@@ -187,6 +194,7 @@ export interface FileRoutesByTo {
   '/home-loans': typeof HomeLoansRoute
   '/investment-property-loans': typeof InvestmentPropertyLoansRoute
   '/investors': typeof InvestorsRoute
+  '/loan-programs': typeof LoanProgramsRoute
   '/mortgage-pre-approval': typeof MortgagePreApprovalRoute
   '/mortgage-solutions': typeof MortgageSolutionsRoute
   '/privacy': typeof PrivacyRoute
@@ -213,6 +221,7 @@ export interface FileRoutesById {
   '/home-loans': typeof HomeLoansRoute
   '/investment-property-loans': typeof InvestmentPropertyLoansRoute
   '/investors': typeof InvestorsRoute
+  '/loan-programs': typeof LoanProgramsRoute
   '/mortgage-pre-approval': typeof MortgagePreApprovalRoute
   '/mortgage-solutions': typeof MortgageSolutionsRoute
   '/privacy': typeof PrivacyRoute
@@ -240,6 +249,7 @@ export interface FileRouteTypes {
     | '/home-loans'
     | '/investment-property-loans'
     | '/investors'
+    | '/loan-programs'
     | '/mortgage-pre-approval'
     | '/mortgage-solutions'
     | '/privacy'
@@ -265,6 +275,7 @@ export interface FileRouteTypes {
     | '/home-loans'
     | '/investment-property-loans'
     | '/investors'
+    | '/loan-programs'
     | '/mortgage-pre-approval'
     | '/mortgage-solutions'
     | '/privacy'
@@ -290,6 +301,7 @@ export interface FileRouteTypes {
     | '/home-loans'
     | '/investment-property-loans'
     | '/investors'
+    | '/loan-programs'
     | '/mortgage-pre-approval'
     | '/mortgage-solutions'
     | '/privacy'
@@ -316,6 +328,7 @@ export interface RootRouteChildren {
   HomeLoansRoute: typeof HomeLoansRoute
   InvestmentPropertyLoansRoute: typeof InvestmentPropertyLoansRoute
   InvestorsRoute: typeof InvestorsRoute
+  LoanProgramsRoute: typeof LoanProgramsRoute
   MortgagePreApprovalRoute: typeof MortgagePreApprovalRoute
   MortgageSolutionsRoute: typeof MortgageSolutionsRoute
   PrivacyRoute: typeof PrivacyRoute
@@ -415,6 +428,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof InvestorsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/loan-programs': {
+      id: '/loan-programs'
+      path: '/loan-programs'
+      fullPath: '/loan-programs'
+      preLoaderRoute: typeof LoanProgramsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/mortgage-pre-approval': {
       id: '/mortgage-pre-approval'
       path: '/mortgage-pre-approval'
@@ -508,6 +528,7 @@ const rootRouteChildren: RootRouteChildren = {
   HomeLoansRoute: HomeLoansRoute,
   InvestmentPropertyLoansRoute: InvestmentPropertyLoansRoute,
   InvestorsRoute: InvestorsRoute,
+  LoanProgramsRoute: LoanProgramsRoute,
   MortgagePreApprovalRoute: MortgagePreApprovalRoute,
   MortgageSolutionsRoute: MortgageSolutionsRoute,
   PrivacyRoute: PrivacyRoute,
