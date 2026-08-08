@@ -1,4 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { localBusinessSchema } from "@/lib/structured-data";
 import { SiteLayout } from "@/components/site/SiteLayout";
 import { Hero } from "@/components/site/Hero";
 import { TrustBar } from "@/components/site/TrustBar";

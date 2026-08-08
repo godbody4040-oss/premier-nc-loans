@@ -11,6 +11,7 @@ import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
+import { organizationSchema } from "../lib/structured-data";
 
 function NotFoundComponent() {
   return (
@@ -101,6 +102,12 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         href: "https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=Inter:wght@300;400;500;600;700&display=swap",
       },
       { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
+    ],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify(organizationSchema()),
+      },
     ],
   }),
 
