@@ -63,14 +63,14 @@ export function CTA({
   );
   if (to) {
     return (
-      <Link to={to} className={cls}>
+      <Link to={to} onClick={onClick} className={cls}>
         {inner}
       </Link>
     );
   }
   if (href) {
     return (
-      <a href={href} className={cls}>
+      <a href={href} onClick={onClick} className={cls}>
         {inner}
       </a>
     );

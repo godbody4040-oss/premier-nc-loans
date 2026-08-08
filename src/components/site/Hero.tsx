@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import heroImg from "@/assets/hero-home.jpg";
+import { track } from "@/lib/analytics";
 import { CTA } from "./ui";
 
 const steps = [
@@ -52,11 +53,22 @@ export function Hero() {
             Premier Lending NC helps you navigate your financing options with clarity and confidence.
           </p>
           <div className="mt-10 flex flex-col gap-3 sm:flex-row">
-            <CTA to="/contact" variant="gold">
+            <CTA
+              to="/contact"
+              variant="gold"
+              className="hover-scale shadow-[var(--shadow-luxe)]"
+              onClick={() => track("hero_cta_prequal_click", { location: "hero" })}
+            >
               Get Pre-Qualified
             </CTA>
-            <CTA to="/mortgage-solutions" variant="outlineLight" arrow={false}>
-              Explore Loan Options
+            <CTA
+              to="/calculator"
+              variant="outlineLight"
+              arrow={false}
+              className="hover-scale"
+              onClick={() => track("hero_cta_calculator_click", { location: "hero" })}
+            >
+              Calculate My Payment
             </CTA>
           </div>
           <p className="mt-8 text-[0.7rem] uppercase tracking-[0.22em] text-white/55">

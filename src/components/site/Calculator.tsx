@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { track, trackOnce } from "@/lib/analytics";
 import { Reveal } from "./Reveal";
 import { CTA, Eyebrow } from "./ui";
 
@@ -66,7 +67,10 @@ function Field({
             min={min}
             max={max}
             step={step}
-            onChange={(e) => onChange(Number(e.target.value))}
+            onChange={(e) => {
+              trackOnce("calculator_interact");
+              onChange(Number(e.target.value));
+            }}
             className="w-20 bg-transparent text-right text-sm font-medium text-navy outline-none sm:w-24"
           />
           {suffix ? <span className="text-sm text-muted-foreground">{suffix}</span> : null}
@@ -79,7 +83,10 @@ function Field({
         min={min}
         max={max}
         step={step}
-        onChange={(e) => onChange(Number(e.target.value))}
+        onChange={(e) => {
+          trackOnce("calculator_interact");
+          onChange(Number(e.target.value));
+        }}
         className="mt-3 h-1 w-full cursor-pointer appearance-none rounded-full bg-border accent-[oklch(0.75_0.077_84)]"
       />
     </div>
@@ -200,7 +207,12 @@ export function Calculator({ bare = false }: { bare?: boolean } = {}) {
                 Actual payments may include mortgage insurance and other costs.
               </p>
               <div className="mt-8">
-                <CTA to="/contact" variant="gold" className="w-full">
+                <CTA
+                  to="/contact"
+                  variant="gold"
+                  className="w-full"
+                  onClick={() => track("calculator_cta_click", { estimated_payment: Math.round(total) })}
+                >
                   See My Financing Options
                 </CTA>
               </div>

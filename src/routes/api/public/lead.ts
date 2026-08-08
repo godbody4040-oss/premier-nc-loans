@@ -1,23 +1,36 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { z } from "zod";
 
+const optional = (max: number) => z.string().trim().max(max).optional().default("");
+
+/**
+ * Centralized lead payload — shared by every lead source on the site
+ * (pre-qualification funnel, resource downloads, contact and CTA forms).
+ * Deliberately collects no sensitive financial information.
+ */
 const leadSchema = z.object({
-  goal: z.string().trim().min(1).max(80),
-  propertyType: z.string().trim().max(80).optional().default(""),
-  location: z.string().trim().max(120).optional().default(""),
-  priceRange: z.string().trim().max(80).optional().default(""),
-  timeline: z.string().trim().min(1).max(80),
-  employment: z.string().trim().max(80).optional().default(""),
-  creditBand: z.string().trim().max(80).optional().default(""),
-  firstTime: z.string().trim().max(40).optional().default(""),
+  leadType: z
+    .enum(["pre-qualification", "contact", "resource-download", "calculator", "investor"])
+    .default("pre-qualification"),
+  source: optional(60),
+  goal: optional(80),
+  propertyType: optional(80),
+  location: optional(120),
+  priceRange: optional(80),
+  timeline: optional(80),
+  employment: optional(80),
+  creditBand: optional(80),
+  firstTime: optional(40),
   first: z.string().trim().min(1).max(60),
-  last: z.string().trim().min(1).max(60),
+  last: optional(60),
   email: z.string().trim().email().max(255),
-  phone: z.string().trim().min(10).max(20),
-  contactPreference: z.string().trim().max(40).optional().default(""),
-  message: z.string().trim().max(1000).optional().default(""),
+  phone: optional(20),
+  contactPreference: optional(40),
+  resource: optional(120),
+  message: optional(1000),
   company: z.string().max(0).optional().default(""), // honeypot: must stay empty
 });
+
 
 export const Route = createFileRoute("/api/public/lead")({
   server: {
@@ -50,7 +63,7 @@ export const Route = createFileRoute("/api/public/lead")({
             const res = await fetch(webhook, {
               method: "POST",
               headers: { "Content-Type": "application/json" },
-              body: JSON.stringify({ source: "premier-lending-nc", submittedAt: new Date().toISOString(), ...lead }),
+              body: JSON.stringify({ site: "premier-lending-nc", submittedAt: new Date().toISOString(), ...lead }),
             });
             if (!res.ok) {
               console.error(`Lead webhook failed [${res.status}]: ${await res.text()}`);

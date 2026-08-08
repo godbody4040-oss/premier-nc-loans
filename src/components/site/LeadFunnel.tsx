@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { track, trackOnce } from "@/lib/analytics";
+import { submitLead } from "@/lib/leads";
 import { Reveal } from "./Reveal";
 import { CTA, Eyebrow } from "./ui";
 
@@ -151,6 +153,8 @@ export function LeadFunnel() {
 
   const next = () => {
     if (!validateStep(step)) return;
+    trackOnce("prequal_start");
+    track("prequal_step_complete", { step: step + 1, step_name: STEPS[step] ?? "" });
     setStep((s) => Math.min(STEPS.length - 1, s + 1));
   };
   const back = () => setStep((s) => Math.max(0, s - 1));
@@ -165,23 +169,18 @@ export function LeadFunnel() {
     }
     setStatus("sending");
     setServerError("");
-    try {
-      const res = await fetch("/api/public/lead", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(form),
-      });
-      const data = (await res.json().catch(() => ({}))) as { ok?: boolean; error?: string };
-      if (!res.ok || !data.ok) {
-        setStatus("error");
-        setServerError(data.error ?? "We couldn't submit your request. Please try again.");
-        return;
-      }
-      setStatus("done");
-    } catch {
+    const result = await submitLead({
+      ...form,
+      leadType: "pre-qualification",
+      source: "prequal-funnel",
+    });
+    if (!result.ok) {
       setStatus("error");
-      setServerError("We couldn't submit your request. Please try again.");
+      setServerError(result.error ?? "We couldn't submit your request. Please try again.");
+      return;
     }
+    track("prequal_complete", { goal: form.goal, timeline: form.timeline });
+    setStatus("done");
   };
 
   const progress = status === "done" ? 100 : ((step + 1) / STEPS.length) * 100;

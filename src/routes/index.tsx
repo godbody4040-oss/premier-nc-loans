@@ -13,6 +13,7 @@ import { LeadFunnel } from "@/components/site/LeadFunnel";
 import { LeadMagnet } from "@/components/site/LeadMagnet";
 import { FAQ, faqs } from "@/components/site/FAQ";
 import { Testimonials } from "@/components/site/Testimonials";
+import { Credentials } from "@/components/site/Credentials";
 import { FinalCTA } from "@/components/site/FinalCTA";
 import { FindYourPath } from "@/components/site/FindYourPath";
 import { NorthCarolina } from "@/components/site/NorthCarolina";
@@ -81,6 +82,7 @@ function Index() {
       <LeadFunnel />
       <LeadMagnet />
       <FAQ />
+      <Credentials />
       <Testimonials />
       <FinalCTA />
     </SiteLayout>
