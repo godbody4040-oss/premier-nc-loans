@@ -1,4 +1,5 @@
 import { Link } from "@tanstack/react-router";
+import { business, telHref } from "@/config/business";
 
 const nav = [
   { to: "/", label: "Home" },
@@ -46,6 +47,20 @@ export function Footer() {
           <div>
             <p className="eyebrow text-gold">Get in Touch</p>
             <ul className="mt-5 space-y-3 text-sm">
+              {business.phone ? (
+                <li>
+                  <a href={telHref(business.phone)} className="transition-colors hover:text-gold">
+                    {business.phone}
+                  </a>
+                </li>
+              ) : null}
+              {business.email ? (
+                <li>
+                  <a href={`mailto:${business.email}`} className="transition-colors hover:text-gold">
+                    {business.email}
+                  </a>
+                </li>
+              ) : null}
               <li>
                 <Link to="/contact" className="transition-colors hover:text-gold">
                   Start a conversation
@@ -86,7 +101,7 @@ export function Footer() {
             credit, or financial advice. All loan programs, terms and availability are subject to lender
             approval, verification of information, credit review, property review and applicable law. Rates
             and figures shown by any calculator on this site are illustrative estimates only. Licensing and
-            NMLS identifiers are provided on request and on the{" "}
+            NMLS identifiers{business.nmls ? ` (NMLS #${business.nmls})` : ""} are provided on request and on the{" "}
             <Link to="/disclosures" className="underline decoration-gold/40 underline-offset-4 hover:text-gold">
               licensing &amp; disclosures
             </Link>{" "}

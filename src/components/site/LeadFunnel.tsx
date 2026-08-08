@@ -14,8 +14,8 @@ const contactPrefs = ["Phone", "Email", "Either"];
 
 const STEPS = [
   "Your Goal",
-  "Property",
   "Timeline",
+  "Property",
   "About You",
   "Contact",
   "Review",
@@ -134,11 +134,11 @@ export function LeadFunnel() {
   const validateStep = (s: number) => {
     const e: Errors = {};
     if (s === 0 && !form.goal) e.goal = "Select what you're looking to accomplish.";
-    if (s === 1) {
+    if (s === 1 && !form.timeline) e.timeline = "Select a timeline.";
+    if (s === 2) {
       if (!form.propertyType) e.propertyType = "Select a property type.";
       if (form.location.length > 120) e.location = "That location is too long.";
     }
-    if (s === 2 && !form.timeline) e.timeline = "Select a timeline.";
     if (s === 4) {
       if (!form.first.trim() || form.first.length > 60) e.first = "Enter your first name.";
       if (!form.last.trim() || form.last.length > 60) e.last = "Enter your last name.";
@@ -234,8 +234,8 @@ export function LeadFunnel() {
                 </h2>
                 <span className="gold-rule mt-7" />
                 <p className="mt-8 max-w-xl text-base leading-relaxed text-muted-foreground">
-                  Thanks, {form.first || "there"}. Your request has been received. A member of the Premier
-                  Lending NC team can review it and follow up about next steps.
+                  Thanks, {form.first || "there"} — your request has been received. Premier Lending NC will
+                  review your information and follow up regarding next steps.
                 </p>
                 <p className="mt-5 max-w-xl text-xs leading-relaxed text-muted-foreground">
                   Submitting this form does not mean you have been approved or pre-qualified for financing.
@@ -245,7 +245,7 @@ export function LeadFunnel() {
                     Estimate a Payment
                   </CTA>
                   <CTA to="/" variant="outlineDark" arrow={false}>
-                    Return to Website
+                    Return Home
                   </CTA>
                 </div>
               </div>
@@ -267,7 +267,7 @@ export function LeadFunnel() {
                   </div>
                 ) : null}
 
-                {step === 1 ? (
+                {step === 2 ? (
                   <div>
                     <StepHeading title="Tell us about the property." hint="Estimates are completely fine." />
                     <p className="mt-8 text-sm font-medium text-navy">Property type</p>
@@ -308,7 +308,7 @@ export function LeadFunnel() {
                   </div>
                 ) : null}
 
-                {step === 2 ? (
+                {step === 1 ? (
                   <div>
                     <StepHeading
                       title="When are you looking to move?"
