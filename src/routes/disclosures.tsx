@@ -30,20 +30,8 @@ function Page() {
       />
       <section className="bg-white py-20 lg:py-28">
         <div className="mx-auto max-w-[820px] space-y-12 px-5 lg:px-10">
-          {[
-                "[NMLS #] — company and individual identifiers",
-                "[LICENSE INFORMATION] — NC Commissioner of Banks licensing details",
-                "[OFFICE ADDRESS] — licensed branch address",
-                "[VERIFIED LOAN PROGRAMS] — only advertise programs actually offered",
-                "State-specific advertising disclosures required by NC and federal regulation",
-              ].map((i) => (
-                <li key={i} className="flex gap-3">
-                  <span className="text-gold">—</span>
-                  <span>{i}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
+
+
 
           {[
             [
