@@ -12,9 +12,13 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as CalculatorRouteImport } from './routes/calculator'
+import { Route as ContactRouteImport } from './routes/contact'
+import { Route as DisclosuresRouteImport } from './routes/disclosures'
 import { Route as HomeBuyersRouteImport } from './routes/home-buyers'
 import { Route as InvestorsRouteImport } from './routes/investors'
 import { Route as MortgageSolutionsRouteImport } from './routes/mortgage-solutions'
+import { Route as PrivacyRouteImport } from './routes/privacy'
+import { Route as ResourcesRouteImport } from './routes/resources'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -29,6 +33,16 @@ const AboutRoute = AboutRouteImport.update({
 const CalculatorRoute = CalculatorRouteImport.update({
   id: '/calculator',
   path: '/calculator',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DisclosuresRoute = DisclosuresRouteImport.update({
+  id: '/disclosures',
+  path: '/disclosures',
   getParentRoute: () => rootRouteImport,
 } as any)
 const HomeBuyersRoute = HomeBuyersRouteImport.update({
@@ -46,31 +60,53 @@ const MortgageSolutionsRoute = MortgageSolutionsRouteImport.update({
   path: '/mortgage-solutions',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PrivacyRoute = PrivacyRouteImport.update({
+  id: '/privacy',
+  path: '/privacy',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ResourcesRoute = ResourcesRouteImport.update({
+  id: '/resources',
+  path: '/resources',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/calculator': typeof CalculatorRoute
+  '/contact': typeof ContactRoute
+  '/disclosures': typeof DisclosuresRoute
   '/home-buyers': typeof HomeBuyersRoute
   '/investors': typeof InvestorsRoute
   '/mortgage-solutions': typeof MortgageSolutionsRoute
+  '/privacy': typeof PrivacyRoute
+  '/resources': typeof ResourcesRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/calculator': typeof CalculatorRoute
+  '/contact': typeof ContactRoute
+  '/disclosures': typeof DisclosuresRoute
   '/home-buyers': typeof HomeBuyersRoute
   '/investors': typeof InvestorsRoute
   '/mortgage-solutions': typeof MortgageSolutionsRoute
+  '/privacy': typeof PrivacyRoute
+  '/resources': typeof ResourcesRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/calculator': typeof CalculatorRoute
+  '/contact': typeof ContactRoute
+  '/disclosures': typeof DisclosuresRoute
   '/home-buyers': typeof HomeBuyersRoute
   '/investors': typeof InvestorsRoute
   '/mortgage-solutions': typeof MortgageSolutionsRoute
+  '/privacy': typeof PrivacyRoute
+  '/resources': typeof ResourcesRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -78,34 +114,50 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/calculator'
+    | '/contact'
+    | '/disclosures'
     | '/home-buyers'
     | '/investors'
     | '/mortgage-solutions'
+    | '/privacy'
+    | '/resources'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/about'
     | '/calculator'
+    | '/contact'
+    | '/disclosures'
     | '/home-buyers'
     | '/investors'
     | '/mortgage-solutions'
+    | '/privacy'
+    | '/resources'
   id:
     | '__root__'
     | '/'
     | '/about'
     | '/calculator'
+    | '/contact'
+    | '/disclosures'
     | '/home-buyers'
     | '/investors'
     | '/mortgage-solutions'
+    | '/privacy'
+    | '/resources'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
   CalculatorRoute: typeof CalculatorRoute
+  ContactRoute: typeof ContactRoute
+  DisclosuresRoute: typeof DisclosuresRoute
   HomeBuyersRoute: typeof HomeBuyersRoute
   InvestorsRoute: typeof InvestorsRoute
   MortgageSolutionsRoute: typeof MortgageSolutionsRoute
+  PrivacyRoute: typeof PrivacyRoute
+  ResourcesRoute: typeof ResourcesRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -131,6 +183,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CalculatorRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/disclosures': {
+      id: '/disclosures'
+      path: '/disclosures'
+      fullPath: '/disclosures'
+      preLoaderRoute: typeof DisclosuresRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/home-buyers': {
       id: '/home-buyers'
       path: '/home-buyers'
@@ -152,6 +218,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof MortgageSolutionsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/privacy': {
+      id: '/privacy'
+      path: '/privacy'
+      fullPath: '/privacy'
+      preLoaderRoute: typeof PrivacyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/resources': {
+      id: '/resources'
+      path: '/resources'
+      fullPath: '/resources'
+      preLoaderRoute: typeof ResourcesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -159,9 +239,13 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
   CalculatorRoute: CalculatorRoute,
+  ContactRoute: ContactRoute,
+  DisclosuresRoute: DisclosuresRoute,
   HomeBuyersRoute: HomeBuyersRoute,
   InvestorsRoute: InvestorsRoute,
   MortgageSolutionsRoute: MortgageSolutionsRoute,
+  PrivacyRoute: PrivacyRoute,
+  ResourcesRoute: ResourcesRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
