@@ -93,16 +93,37 @@ function Field({
   );
 }
 
-export function Calculator({ bare = false }: { bare?: boolean } = {}) {
-  const [price, setPrice] = useState(450000);
-  const [down, setDown] = useState(90000);
-  const [rate, setRate] = useState(6.5);
-  const [term, setTerm] = useState(30);
-  const [taxes, setTaxes] = useState(3600);
-  const [insurance, setInsurance] = useState(1500);
-  const [hoa, setHoa] = useState(0);
+const DEFAULTS = {
+  price: 450000,
+  down: 90000,
+  rate: 6.5,
+  term: 30,
+  taxes: 3600,
+  insurance: 1500,
+  hoa: 0,
+};
 
-  const principal = Math.max(0, price - down);
+export function Calculator({ bare = false }: { bare?: boolean } = {}) {
+  const [price, setPrice] = useState(DEFAULTS.price);
+  const [down, setDown] = useState(DEFAULTS.down);
+  const [rate, setRate] = useState(DEFAULTS.rate);
+  const [term, setTerm] = useState(DEFAULTS.term);
+  const [taxes, setTaxes] = useState(DEFAULTS.taxes);
+  const [insurance, setInsurance] = useState(DEFAULTS.insurance);
+  const [hoa, setHoa] = useState(DEFAULTS.hoa);
+
+  const reset = () => {
+    setPrice(DEFAULTS.price);
+    setDown(DEFAULTS.down);
+    setRate(DEFAULTS.rate);
+    setTerm(DEFAULTS.term);
+    setTaxes(DEFAULTS.taxes);
+    setInsurance(DEFAULTS.insurance);
+    setHoa(DEFAULTS.hoa);
+  };
+
+  const safeDown = Math.min(Math.max(0, down), Math.max(0, price));
+  const principal = Math.max(0, price - safeDown);
   const r = rate / 100 / 12;
   const n = term * 12;
   const pi = r === 0 ? principal / n : (principal * r) / (1 - Math.pow(1 + r, -n));
@@ -110,7 +131,7 @@ export function Calculator({ bare = false }: { bare?: boolean } = {}) {
   const monthlyTax = taxes / 12;
   const monthlyIns = insurance / 12;
   const total = safePI + monthlyTax + monthlyIns + hoa;
-  const downPct = price > 0 ? (down / price) * 100 : 0;
+  const downPct = price > 0 ? (safeDown / price) * 100 : 0;
 
   const animPI = useCountUp(safePI);
   const animTotal = useCountUp(total);
@@ -140,6 +161,18 @@ export function Calculator({ bare = false }: { bare?: boolean } = {}) {
         <div className={`${bare ? "" : "mt-14"}  grid gap-6 lg:grid-cols-[1.15fr_0.85fr]`}>
           <Reveal>
             <div className="space-y-7 border border-border bg-white p-7 shadow-[var(--shadow-card)] lg:p-10">
+              <div className="flex items-center justify-between gap-4 border-b border-border pb-5">
+                <p className="text-[0.66rem] uppercase tracking-[0.2em] text-muted-foreground">
+                  Your Numbers
+                </p>
+                <button
+                  type="button"
+                  onClick={reset}
+                  className="text-[0.64rem] font-semibold uppercase tracking-[0.16em] text-muted-foreground transition-colors hover:text-gold"
+                >
+                  Reset
+                </button>
+              </div>
               <Field label="Home Price" value={price} onChange={setPrice} min={50000} max={3000000} step={5000} prefix="$" />
               <div>
                 <Field label="Down Payment" value={down} onChange={setDown} min={0} max={price} step={2500} prefix="$" />
@@ -206,14 +239,23 @@ export function Calculator({ bare = false }: { bare?: boolean } = {}) {
                 These figures are estimates for educational purposes only and are not a commitment to lend.
                 Actual payments may include mortgage insurance and other costs.
               </p>
-              <div className="mt-8">
+              <div className="mt-8 space-y-3">
                 <CTA
                   to="/contact"
                   variant="gold"
                   className="w-full"
                   onClick={() => track("calculator_cta_click", { estimated_payment: Math.round(total) })}
                 >
-                  See My Financing Options
+                  Discuss My Financing Options
+                </CTA>
+                <CTA
+                  to="/contact"
+                  variant="outlineLight"
+                  arrow={false}
+                  className="w-full"
+                  onClick={() => track("hero_cta_prequal_click", { location: "calculator" })}
+                >
+                  Get Pre-Qualified
                 </CTA>
               </div>
             </div>
