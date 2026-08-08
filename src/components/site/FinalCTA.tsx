@@ -30,9 +30,10 @@ export function FinalCTA() {
             <CTA to="/contact" variant="gold">
               Get Pre-Qualified
             </CTA>
-            <CTA href="tel:" variant="outlineLight" arrow={false}>
-              Call Premier Lending NC
+            <CTA to="/calculator" variant="outlineLight" arrow={false}>
+              Estimate a Payment
             </CTA>
+
           </div>
         </Reveal>
       </div>

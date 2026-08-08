@@ -14,6 +14,9 @@ import { LeadMagnet } from "@/components/site/LeadMagnet";
 import { FAQ, faqs } from "@/components/site/FAQ";
 import { Testimonials } from "@/components/site/Testimonials";
 import { FinalCTA } from "@/components/site/FinalCTA";
+import { FindYourPath } from "@/components/site/FindYourPath";
+import { NorthCarolina } from "@/components/site/NorthCarolina";
+
 
 const title = "North Carolina Mortgage Broker | Premier Lending NC";
 const description =
@@ -66,10 +69,12 @@ function Index() {
     <SiteLayout transparentNav>
       <Hero />
       <TrustBar />
+      <FindYourPath />
       <Difference />
       <Solutions />
       <SignatureCTA />
       <Journey />
+      <NorthCarolina />
       <Investors />
       <Founder />
       <Calculator />
@@ -81,3 +86,4 @@ function Index() {
     </SiteLayout>
   );
 }
+

@@ -1,5 +1,4 @@
 import { Link } from "@tanstack/react-router";
-import { Placeholder } from "./ui";
 
 const nav = [
   { to: "/", label: "Home" },
@@ -21,19 +20,14 @@ export function Footer() {
             <p className="font-display text-xl tracking-[0.14em] text-white">PREMIER LENDING NC</p>
             <span className="gold-rule mt-5" />
             <p className="mt-5 max-w-sm text-sm leading-relaxed">
-              Mortgage financing with a strategy-first approach.
+              Mortgage financing with a strategy-first approach, serving clients across North Carolina.
             </p>
-            <div className="mt-6 flex gap-3">
-              {["Instagram", "Facebook", "LinkedIn"].map((s) => (
-                <span
-                  key={s}
-                  title="Link a verified account before launch"
-                  className="border border-white/15 px-3 py-2 text-[0.65rem] uppercase tracking-[0.16em] text-white/50"
-                >
-                  {s}
-                </span>
-              ))}
-            </div>
+            <Link
+              to="/contact"
+              className="arrow-cta mt-7 inline-flex text-[0.68rem] font-semibold uppercase tracking-[0.16em] text-gold transition-colors hover:text-gold-light"
+            >
+              Get Pre-Qualified
+            </Link>
           </div>
 
           <div>
@@ -50,26 +44,37 @@ export function Footer() {
           </div>
 
           <div>
-            <p className="eyebrow text-gold">Contact</p>
+            <p className="eyebrow text-gold">Get in Touch</p>
             <ul className="mt-5 space-y-3 text-sm">
               <li>
-                <Placeholder>[PHONE]</Placeholder>
+                <Link to="/contact" className="transition-colors hover:text-gold">
+                  Start a conversation
+                </Link>
               </li>
               <li>
-                <Placeholder>[EMAIL]</Placeholder>
+                <Link to="/calculator" className="transition-colors hover:text-gold">
+                  Estimate a payment
+                </Link>
               </li>
               <li>
-                <Placeholder>[OFFICE ADDRESS]</Placeholder>
+                <Link to="/resources" className="transition-colors hover:text-gold">
+                  Browse resources
+                </Link>
               </li>
             </ul>
             <p className="eyebrow mt-8 text-gold">Compliance</p>
             <ul className="mt-5 space-y-3 text-sm">
               <li>
-                <Placeholder>[NMLS #]</Placeholder>
+                <Link to="/disclosures" className="transition-colors hover:text-gold">
+                  Licensing &amp; disclosures
+                </Link>
               </li>
               <li>
-                <Placeholder>[LICENSE INFORMATION]</Placeholder>
+                <Link to="/privacy" className="transition-colors hover:text-gold">
+                  Privacy policy
+                </Link>
               </li>
+              <li>Equal Housing Opportunity</li>
             </ul>
           </div>
         </div>
@@ -80,9 +85,12 @@ export function Footer() {
             website is for general educational purposes only and is not a commitment to lend, an offer of
             credit, or financial advice. All loan programs, terms and availability are subject to lender
             approval, verification of information, credit review, property review and applicable law. Rates
-            and figures shown by any calculator on this site are illustrative estimates only. Licensing
-            details: <Placeholder>[LICENSE INFORMATION]</Placeholder>{" "}
-            <Placeholder>[NMLS #]</Placeholder>. Equal Housing Opportunity.
+            and figures shown by any calculator on this site are illustrative estimates only. Licensing and
+            NMLS identifiers are provided on request and on the{" "}
+            <Link to="/disclosures" className="underline decoration-gold/40 underline-offset-4 hover:text-gold">
+              licensing &amp; disclosures
+            </Link>{" "}
+            page. Equal Housing Opportunity.
           </p>
           <div className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-3">
             <span>© {new Date().getFullYear()} Premier Lending NC</span>

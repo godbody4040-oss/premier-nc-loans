@@ -36,12 +36,19 @@ export function LeadMagnet() {
                 A simple guide to help you understand the major steps involved in preparing for a home
                 purchase.
               </p>
-              <p className="mt-4 text-xs text-muted-foreground">
-                <span className="rounded-[2px] border border-dashed border-gold/60 bg-gold/10 px-2 py-0.5 font-mono text-[0.7rem] text-navy">
-                  [PLACEHOLDER PDF]
-                </span>{" "}
-                Replace with the final guide before launch.
-              </p>
+              <ul className="mt-6 space-y-3 text-sm text-muted-foreground">
+                {[
+                  "What to organize before you start looking",
+                  "How monthly costs are typically estimated",
+                  "Questions worth asking early in the process",
+                ].map((li) => (
+                  <li key={li} className="flex items-start gap-3">
+                    <span className="mt-1.5 block h-1.5 w-1.5 shrink-0 rounded-full bg-gold" />
+                    <span className="leading-relaxed">{li}</span>
+                  </li>
+                ))}
+              </ul>
+
             </div>
 
             <div className="lg:border-l lg:border-border lg:pl-16">

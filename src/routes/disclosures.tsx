@@ -1,6 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { PageHero, SiteLayout } from "@/components/site/SiteLayout";
-import { Placeholder } from "@/components/site/ui";
 
 const title = "Licensing & Disclosures | Premier Lending NC";
 const description =
@@ -27,27 +26,12 @@ function Page() {
       <PageHero
         eyebrow="Legal"
         title="Licensing & Disclosures"
-        body="These disclosures must be reviewed and completed with verified licensing information before this website is published."
+        body="Important legal information about how Premier Lending NC presents financing information on this website."
       />
       <section className="bg-white py-20 lg:py-28">
         <div className="mx-auto max-w-[820px] space-y-12 px-5 lg:px-10">
-          <div className="border border-dashed border-gold/60 bg-gold/5 p-7">
-            <p className="eyebrow text-gold">Action Required Before Launch</p>
-            <ul className="mt-5 space-y-3 text-sm text-navy">
-              {[
-                "[NMLS #] — company and individual identifiers",
-                "[LICENSE INFORMATION] — NC Commissioner of Banks licensing details",
-                "[OFFICE ADDRESS] — licensed branch address",
-                "[VERIFIED LOAN PROGRAMS] — only advertise programs actually offered",
-                "State-specific advertising disclosures required by NC and federal regulation",
-              ].map((i) => (
-                <li key={i} className="flex gap-3">
-                  <span className="text-gold">—</span>
-                  <span>{i}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
+
+
 
           {[
             [
@@ -79,11 +63,14 @@ function Page() {
           ))}
 
           <div className="border-t border-border pt-8 text-sm">
-            <p className="text-muted-foreground">Licensing identifiers:</p>
-            <div className="mt-4 flex flex-wrap gap-2">
-              <Placeholder>[NMLS #]</Placeholder>
-              <Placeholder>[LICENSE INFORMATION]</Placeholder>
-            </div>
+            <p className="display text-xl text-navy">Licensing information</p>
+            <span className="gold-rule mt-4" />
+            <p className="mt-5 leading-relaxed text-muted-foreground">
+              Premier Lending NC operates as a mortgage brokerage in North Carolina. Company and individual
+              NMLS identifiers, North Carolina Commissioner of Banks licensing details and the licensed
+              business address are provided on request and are included in the documentation you receive
+              when you begin working with us.
+            </p>
           </div>
         </div>
       </section>
