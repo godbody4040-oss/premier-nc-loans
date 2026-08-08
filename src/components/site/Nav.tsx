@@ -5,8 +5,10 @@ import { CTA } from "./ui";
 const links = [
   { to: "/", label: "Home" },
   { to: "/mortgage-solutions", label: "Mortgage Solutions" },
+  { to: "/loan-programs", label: "Loan Programs" },
   { to: "/home-buyers", label: "Home Buyers" },
   { to: "/investors", label: "Investors" },
+  { to: "/locations", label: "Service Areas" },
   { to: "/about", label: "About Jorge" },
   { to: "/calculator", label: "Calculator" },
   { to: "/resources", label: "Resources" },

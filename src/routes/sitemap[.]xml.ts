@@ -1,5 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
 import type {} from "@tanstack/react-start";
+import { services } from "@/content/services";
+import { locations } from "@/content/locations";
+import { articles } from "@/content/articles";
 
 const BASE_URL = "https://premier-nc-loans.lovable.app";
 
@@ -20,6 +23,23 @@ const entries: SitemapEntry[] = [
   { path: "/contact", changefreq: "monthly", priority: "0.8" },
   { path: "/privacy", changefreq: "yearly", priority: "0.3" },
   { path: "/disclosures", changefreq: "yearly", priority: "0.3" },
+  { path: "/loan-programs", changefreq: "monthly", priority: "0.9" },
+  { path: "/locations", changefreq: "monthly", priority: "0.8" },
+  ...services.map((s) => ({
+    path: `/${s.slug}`,
+    changefreq: "monthly" as const,
+    priority: "0.9",
+  })),
+  ...locations.map((l) => ({
+    path: `/locations/${l.slug}`,
+    changefreq: "monthly" as const,
+    priority: "0.8",
+  })),
+  ...articles.map((a) => ({
+    path: `/resources/${a.slug}`,
+    changefreq: "monthly" as const,
+    priority: "0.6",
+  })),
 ];
 
 export const Route = createFileRoute("/sitemap.xml")({
