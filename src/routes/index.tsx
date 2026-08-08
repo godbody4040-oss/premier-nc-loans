@@ -1,24 +1,83 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { SiteLayout } from "@/components/site/SiteLayout";
+import { Hero } from "@/components/site/Hero";
+import { TrustBar } from "@/components/site/TrustBar";
+import { Difference } from "@/components/site/Difference";
+import { Solutions } from "@/components/site/Solutions";
+import { SignatureCTA } from "@/components/site/SignatureCTA";
+import { Journey } from "@/components/site/Journey";
+import { Investors } from "@/components/site/Investors";
+import { Founder } from "@/components/site/Founder";
+import { Calculator } from "@/components/site/Calculator";
+import { LeadFunnel } from "@/components/site/LeadFunnel";
+import { LeadMagnet } from "@/components/site/LeadMagnet";
+import { FAQ, faqs } from "@/components/site/FAQ";
+import { Testimonials } from "@/components/site/Testimonials";
+import { FinalCTA } from "@/components/site/FinalCTA";
 
-// No head() here: the home route inherits title/description/og/twitter from
-// __root.tsx, and ships no og:image so serve-time hosting can inject the
-// project's social preview (explicit og:image or latest screenshot).
+const title = "North Carolina Mortgage Broker | Premier Lending NC";
+const description =
+  "Premier Lending NC is a North Carolina mortgage broker helping buyers, homeowners and investors explore home purchase, refinance and investment property financing options.";
+
 export const Route = createFileRoute("/")({
+  head: () => ({
+    meta: [
+      { title },
+      { name: "description", content: description },
+      { property: "og:title", content: title },
+      { property: "og:description", content: description },
+      { property: "og:type", content: "website" },
+      { property: "og:url", content: "/" },
+      { name: "twitter:card", content: "summary_large_image" },
+    ],
+    links: [{ rel: "canonical", href: "/" }],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "FinancialService",
+          name: "Premier Lending NC",
+          description,
+          areaServed: { "@type": "State", name: "North Carolina" },
+          founder: { "@type": "Person", name: "Jorge Vasquez", jobTitle: "Mortgage Broker" },
+          serviceType: "Mortgage brokerage",
+        }),
+      },
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          mainEntity: faqs.map((f) => ({
+            "@type": "Question",
+            name: f.q,
+            acceptedAnswer: { "@type": "Answer", text: f.a },
+          })),
+        }),
+      },
+    ],
+  }),
   component: Index,
 });
 
-// IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
 function Index() {
   return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
-    </div>
+    <SiteLayout transparentNav>
+      <Hero />
+      <TrustBar />
+      <Difference />
+      <Solutions />
+      <SignatureCTA />
+      <Journey />
+      <Investors />
+      <Founder />
+      <Calculator />
+      <LeadFunnel />
+      <LeadMagnet />
+      <FAQ />
+      <Testimonials />
+      <FinalCTA />
+    </SiteLayout>
   );
 }
