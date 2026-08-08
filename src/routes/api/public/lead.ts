@@ -28,6 +28,8 @@ const leadSchema = z.object({
   contactPreference: optional(40),
   resource: optional(120),
   message: optional(1000),
+  pagePath: optional(200),
+
   company: z.string().max(0).optional().default(""), // honeypot: must stay empty
 });
 
