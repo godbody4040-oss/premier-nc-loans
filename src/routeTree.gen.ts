@@ -27,6 +27,7 @@ import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as RefinancingRouteImport } from './routes/refinancing'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as VaLoansRouteImport } from './routes/va-loans'
+import { Route as LocationsIndexRouteImport } from './routes/locations.index'
 import { Route as LocationsCityRouteImport } from './routes/locations.$city'
 import { Route as ResourcesIndexRouteImport } from './routes/resources.index'
 import { Route as ResourcesSlugRouteImport } from './routes/resources.$slug'
@@ -122,6 +123,11 @@ const VaLoansRoute = VaLoansRouteImport.update({
   path: '/va-loans',
   getParentRoute: () => rootRouteImport,
 } as any)
+const LocationsIndexRoute = LocationsIndexRouteImport.update({
+  id: '/locations/',
+  path: '/locations/',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const LocationsCityRoute = LocationsCityRouteImport.update({
   id: '/locations/$city',
   path: '/locations/$city',
@@ -164,6 +170,7 @@ export interface FileRoutesByFullPath {
   '/va-loans': typeof VaLoansRoute
   '/locations/$city': typeof LocationsCityRoute
   '/resources/$slug': typeof ResourcesSlugRoute
+  '/locations/': typeof LocationsIndexRoute
   '/resources/': typeof ResourcesIndexRoute
   '/api/public/lead': typeof ApiPublicLeadRoute
 }
@@ -188,6 +195,7 @@ export interface FileRoutesByTo {
   '/va-loans': typeof VaLoansRoute
   '/locations/$city': typeof LocationsCityRoute
   '/resources/$slug': typeof ResourcesSlugRoute
+  '/locations': typeof LocationsIndexRoute
   '/resources': typeof ResourcesIndexRoute
   '/api/public/lead': typeof ApiPublicLeadRoute
 }
@@ -213,6 +221,7 @@ export interface FileRoutesById {
   '/va-loans': typeof VaLoansRoute
   '/locations/$city': typeof LocationsCityRoute
   '/resources/$slug': typeof ResourcesSlugRoute
+  '/locations/': typeof LocationsIndexRoute
   '/resources/': typeof ResourcesIndexRoute
   '/api/public/lead': typeof ApiPublicLeadRoute
 }
@@ -239,6 +248,7 @@ export interface FileRouteTypes {
     | '/va-loans'
     | '/locations/$city'
     | '/resources/$slug'
+    | '/locations/'
     | '/resources/'
     | '/api/public/lead'
   fileRoutesByTo: FileRoutesByTo
@@ -263,6 +273,7 @@ export interface FileRouteTypes {
     | '/va-loans'
     | '/locations/$city'
     | '/resources/$slug'
+    | '/locations'
     | '/resources'
     | '/api/public/lead'
   id:
@@ -287,6 +298,7 @@ export interface FileRouteTypes {
     | '/va-loans'
     | '/locations/$city'
     | '/resources/$slug'
+    | '/locations/'
     | '/resources/'
     | '/api/public/lead'
   fileRoutesById: FileRoutesById
@@ -312,6 +324,7 @@ export interface RootRouteChildren {
   VaLoansRoute: typeof VaLoansRoute
   LocationsCityRoute: typeof LocationsCityRoute
   ResourcesSlugRoute: typeof ResourcesSlugRoute
+  LocationsIndexRoute: typeof LocationsIndexRoute
   ResourcesIndexRoute: typeof ResourcesIndexRoute
   ApiPublicLeadRoute: typeof ApiPublicLeadRoute
 }
@@ -444,6 +457,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof VaLoansRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/locations/': {
+      id: '/locations/'
+      path: '/locations'
+      fullPath: '/locations/'
+      preLoaderRoute: typeof LocationsIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/locations/$city': {
       id: '/locations/$city'
       path: '/locations/$city'
@@ -496,6 +516,7 @@ const rootRouteChildren: RootRouteChildren = {
   VaLoansRoute: VaLoansRoute,
   LocationsCityRoute: LocationsCityRoute,
   ResourcesSlugRoute: ResourcesSlugRoute,
+  LocationsIndexRoute: LocationsIndexRoute,
   ResourcesIndexRoute: ResourcesIndexRoute,
   ApiPublicLeadRoute: ApiPublicLeadRoute,
 }
