@@ -1,6 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { PageHero, SiteLayout } from "@/components/site/SiteLayout";
-import { Placeholder } from "@/components/site/ui";
 
 const title = "Privacy Policy | Premier Lending NC";
 const description =
@@ -58,17 +57,15 @@ function Page() {
               <p className="mt-5 text-sm leading-relaxed text-muted-foreground">{b}</p>
             </div>
           ))}
-          <div className="border border-dashed border-gold/50 bg-gold/5 p-7 text-sm">
-            <p className="text-navy">
-              Business contact and licensing details to be confirmed before publication:
+          <div className="border border-border bg-background p-7 text-sm">
+            <p className="display text-xl text-navy">Contacting us about your information</p>
+            <span className="gold-rule mt-4" />
+            <p className="mt-5 leading-relaxed text-muted-foreground">
+              To ask a question about this policy, request a copy of the information we hold about you, or
+              ask that it be corrected or deleted, submit a request through our contact page and reference
+              your privacy request. Licensing identifiers and direct business contact details are provided
+              on request and when we respond to your inquiry.
             </p>
-            <div className="mt-4 flex flex-wrap gap-2">
-              <Placeholder>[PHONE]</Placeholder>
-              <Placeholder>[EMAIL]</Placeholder>
-              <Placeholder>[OFFICE ADDRESS]</Placeholder>
-              <Placeholder>[NMLS #]</Placeholder>
-              <Placeholder>[LICENSE INFORMATION]</Placeholder>
-            </div>
           </div>
         </div>
       </section>
