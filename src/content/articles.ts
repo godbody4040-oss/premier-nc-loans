@@ -1,45 +1,11 @@
-import type { FAQ } from "./services";
+import type { Article, Category } from "./article-types";
+import { moreArticles } from "./articles.more";
 
-export type Article = {
-  slug: string;
-  category: Category;
-  title: string;
-  metaTitle: string;
-  description: string;
-  published: string;
-  updated: string;
-  readMinutes: number;
-  intro: string;
-  sections: { h: string; p: string[]; list?: string[] }[];
-  faqs: FAQ[];
-  relatedServices: string[];
-  relatedLocations?: string[];
-};
+export type { Article, Category } from "./article-types";
+export { categories, categorySlug, author } from "./article-types";
 
-export const categories = [
-  "First-Time Home Buyers",
-  "Mortgage Education",
-  "Credit & Home Buying",
-  "Down Payments",
-  "Refinancing",
-  "Loan Programs",
-  "North Carolina Home Buying",
-  "Mortgage FAQs",
-] as const;
+const baseArticles: Article[] = [
 
-export type Category = (typeof categories)[number];
-
-export const categorySlug = (c: Category) =>
-  c.toLowerCase().replace(/&/g, "and").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
-
-const AUTHOR = "Jorge Vasquez";
-
-export const author = {
-  name: AUTHOR,
-  role: "Mortgage Broker & Economic Consultant, Premier Lending NC",
-};
-
-export const articles: Article[] = [
   {
     slug: "how-much-house-can-i-afford-in-north-carolina",
     category: "First-Time Home Buyers",
@@ -896,5 +862,8 @@ export const articles: Article[] = [
   },
 ];
 
+export const articles: Article[] = [...baseArticles, ...moreArticles];
+
 export const articleBySlug = (slug: string) => articles.find((a) => a.slug === slug);
 export const articlesByCategory = (c: Category) => articles.filter((a) => a.category === c);
+
