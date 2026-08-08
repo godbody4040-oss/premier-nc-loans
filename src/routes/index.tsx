@@ -38,15 +38,7 @@ export const Route = createFileRoute("/")({
     scripts: [
       {
         type: "application/ld+json",
-        children: JSON.stringify({
-          "@context": "https://schema.org",
-          "@type": "FinancialService",
-          name: "Premier Lending NC",
-          description,
-          areaServed: { "@type": "State", name: "North Carolina" },
-          founder: { "@type": "Person", name: "Jorge Vasquez", jobTitle: "Mortgage Broker" },
-          serviceType: "Mortgage brokerage",
-        }),
+        children: JSON.stringify(localBusinessSchema(description)),
       },
       {
         type: "application/ld+json",
