@@ -86,7 +86,7 @@ function Field({
   );
 }
 
-export function Calculator() {
+export function Calculator({ bare = false }: { bare?: boolean } = {}) {
   const [price, setPrice] = useState(450000);
   const [down, setDown] = useState(90000);
   const [rate, setRate] = useState(6.5);
@@ -118,6 +118,7 @@ export function Calculator() {
   return (
     <section className="bg-background py-24 lg:py-32" id="calculator">
       <div className="mx-auto max-w-[1400px] px-5 lg:px-10">
+        {bare ? null : (
         <Reveal>
           <Eyebrow>Mortgage Calculator</Eyebrow>
           <h2 className="display mt-6 text-[2.1rem] text-navy sm:text-[3rem]">See the numbers.</h2>
@@ -127,8 +128,9 @@ export function Calculator() {
             monthly payment.
           </p>
         </Reveal>
+        )}
 
-        <div className="mt-14 grid gap-6 lg:grid-cols-[1.15fr_0.85fr]">
+        <div className={`${bare ? "" : "mt-14"}  grid gap-6 lg:grid-cols-[1.15fr_0.85fr]`}>
           <Reveal>
             <div className="space-y-7 border border-border bg-white p-7 shadow-[var(--shadow-card)] lg:p-10">
               <Field label="Home Price" value={price} onChange={setPrice} min={50000} max={3000000} step={5000} prefix="$" />

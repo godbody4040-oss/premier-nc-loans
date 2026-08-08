@@ -31,7 +31,7 @@ function Page() {
         title="See the numbers."
         body="Adjust the inputs to explore how price, down payment, rate and term can affect an estimated monthly payment."
       />
-      <Calculator />
+      <Calculator bare />
       <FAQ />
       <FinalCTA />
     </SiteLayout>
