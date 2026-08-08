@@ -1,14 +1,13 @@
 /**
- * Lightweight, provider-agnostic conversion tracking.
+ * Conversion tracking for Premier Lending NC.
  *
- * No analytics provider is connected by default. This module simply forwards
- * events to whichever provider is present on the page at runtime:
- *   - Google Tag Manager  (window.dataLayer)
- *   - Google Analytics 4  (window.gtag)
- *   - Meta Pixel          (window.fbq)
+ * Two layers run side by side:
+ *  1. Lovable's built-in analytics — automatic on the published site, no code.
+ *  2. Google Analytics 4 — initialised here when a measurement ID is present.
  *
- * Adding a provider later requires no code changes here — install the tag and
- * these events start flowing automatically.
+ * Events are also forwarded to Google Tag Manager (window.dataLayer) and Meta
+ * Pixel (window.fbq) when those tags exist, so adding either later needs no
+ * code change.
  */
 
 export type TrackEvent =
@@ -25,7 +24,8 @@ export type TrackEvent =
   | "resource_download"
   | "resource_view"
   | "investor_cta_click"
-  | "talk_with_jorge_click";
+  | "talk_with_jorge_click"
+  | "page_view";
 
 type Params = Record<string, string | number | boolean | undefined>;
 
@@ -33,6 +33,39 @@ interface TrackingWindow extends Window {
   dataLayer?: unknown[];
   gtag?: (...args: unknown[]) => void;
   fbq?: (...args: unknown[]) => void;
+}
+
+/** GA4 measurement ID, supplied by the Google Analytics connector when linked. */
+export const GA_MEASUREMENT_ID =
+  (import.meta.env["VITE_LOVABLE_CONNECTOR_GOOGLE_ANALYTICS_API_KEY"] as string | undefined) ??
+  (import.meta.env["VITE_GA_MEASUREMENT_ID"] as string | undefined) ??
+  "";
+
+let initialised = false;
+
+/** Loads gtag.js once, on the client. Safe to call repeatedly. */
+export function initAnalytics() {
+  if (typeof window === "undefined" || initialised) return;
+  initialised = true;
+
+  const w = window as TrackingWindow;
+  w.dataLayer = w.dataLayer || [];
+  if (typeof w.gtag !== "function") {
+    w.gtag = (...args: unknown[]) => {
+      w.dataLayer!.push(args);
+    };
+  }
+
+  if (!GA_MEASUREMENT_ID) return;
+
+  const script = document.createElement("script");
+  script.async = true;
+  script.src = `https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`;
+  document.head.appendChild(script);
+
+  w.gtag("js", new Date());
+  // Route changes are reported manually so SPA navigation is measured correctly.
+  w.gtag("config", GA_MEASUREMENT_ID, { send_page_view: false });
 }
 
 export function track(event: TrackEvent, params: Params = {}) {
@@ -46,6 +79,24 @@ export function track(event: TrackEvent, params: Params = {}) {
     if (typeof w.fbq === "function") w.fbq("trackCustom", event, payload);
   } catch {
     // Tracking must never break the experience.
+  }
+}
+
+/** Reports a virtual page view after client-side navigation. */
+export function trackPageView(path: string, title?: string) {
+  if (typeof window === "undefined") return;
+  const w = window as TrackingWindow;
+  try {
+    if (typeof w.gtag === "function") {
+      w.gtag("event", "page_view", {
+        page_path: path,
+        page_location: window.location.href,
+        page_title: title ?? document.title,
+      });
+    }
+    if (Array.isArray(w.dataLayer)) w.dataLayer.push({ event: "page_view", page_path: path });
+  } catch {
+    // no-op
   }
 }
 

@@ -36,16 +36,22 @@ export type Lead = {
   contactPreference?: string;
   resource?: string;
   message?: string;
+  /** Filled in automatically by submitLead. */
+  pagePath?: string;
   /** Honeypot — must remain empty. */
   company?: string;
 };
 
 export async function submitLead(lead: Lead): Promise<{ ok: boolean; error?: string }> {
   try {
+    const payload = {
+      ...lead,
+      pagePath: lead.pagePath ?? (typeof window !== "undefined" ? window.location.pathname : ""),
+    };
     const res = await fetch("/api/public/lead", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(lead),
+      body: JSON.stringify(payload),
     });
     const data = (await res.json().catch(() => ({}))) as { ok?: boolean; error?: string };
     if (!res.ok || !data.ok) {
@@ -56,3 +62,4 @@ export async function submitLead(lead: Lead): Promise<{ ok: boolean; error?: str
     return { ok: false, error: "We couldn't submit your request. Please try again." };
   }
 }
+
