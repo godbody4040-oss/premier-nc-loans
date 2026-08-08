@@ -63,7 +63,7 @@ export const Route = createFileRoute("/api/public/lead")({
             const res = await fetch(webhook, {
               method: "POST",
               headers: { "Content-Type": "application/json" },
-              body: JSON.stringify({ source: "premier-lending-nc", submittedAt: new Date().toISOString(), ...lead }),
+              body: JSON.stringify({ site: "premier-lending-nc", submittedAt: new Date().toISOString(), ...lead }),
             });
             if (!res.ok) {
               console.error(`Lead webhook failed [${res.status}]: ${await res.text()}`);
