@@ -37,6 +37,24 @@ function Page() {
         ]}
       />
       <ResourceCenter />
+      <section className="bg-navy py-16 text-white lg:py-20">
+        <div className="mx-auto flex max-w-[1400px] flex-wrap items-center justify-between gap-8 px-5 lg:px-10">
+          <div className="max-w-2xl">
+            <p className="eyebrow text-gold">Free tool</p>
+            <h2 className="display mt-5 text-[1.7rem] text-white sm:text-[2.2rem]">
+              The North Carolina home buyer checklist.
+            </h2>
+            <p className="mt-5 text-base leading-relaxed text-white/65">
+              Every document lenders ask for and every step from pre-approval to closing — tick it
+              off online or print it. Free to use and share.
+            </p>
+          </div>
+          <CTA to="/nc-home-buyer-checklist" variant="gold">
+            Open the Checklist
+          </CTA>
+        </div>
+      </section>
+
       <ArticleIndex />
       <LeadMagnet />
       <FAQ />
