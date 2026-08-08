@@ -4,6 +4,8 @@ import { LeadMagnet } from "@/components/site/LeadMagnet";
 import { FAQ } from "@/components/site/FAQ";
 import { ResourceCenter } from "@/components/site/ResourceCenter";
 import { ArticleIndex } from "@/components/site/ArticleIndex";
+import { CTA } from "@/components/site/ui";
+
 
 const title = "Home Financing Resources NC | Premier Lending NC";
 const description =
