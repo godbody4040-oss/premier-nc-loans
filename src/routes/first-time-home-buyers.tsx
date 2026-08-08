@@ -6,7 +6,7 @@ import { breadcrumbSchema, faqSchema, pageHead, serviceSchema } from "@/lib/seo"
 const service = serviceBySlug("first-time-home-buyers")!;
 const path = "/first-time-home-buyers";
 
-export const Route = createFileRoute(path)({
+export const Route = createFileRoute("/first-time-home-buyers")({
   head: () => ({
     ...pageHead({ title: service.title, description: service.description, path }),
     scripts: [
