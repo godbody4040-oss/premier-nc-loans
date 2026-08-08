@@ -243,7 +243,7 @@ function Page() {
               <CTA to="/contact" variant="gold">
                 Get Pre-Qualified
               </CTA>
-              <CTA to="/calculator" variant="outline" arrow={false}>
+              <CTA to="/calculator" variant="outlineDark" arrow={false}>
                 Estimate My Payment
               </CTA>
             </div>
