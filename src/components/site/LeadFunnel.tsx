@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { track, trackOnce } from "@/lib/analytics";
+import { submitLead } from "@/lib/leads";
 import { Reveal } from "./Reveal";
 import { CTA, Eyebrow } from "./ui";
 
