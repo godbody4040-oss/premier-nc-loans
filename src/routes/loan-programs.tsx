@@ -69,6 +69,13 @@ function Page() {
             <Eyebrow>Programs</Eyebrow>
             <h2 className="display mt-6 text-[1.9rem] text-navy sm:text-[2.5rem]">Explore your options.</h2>
             <span className="gold-rule mt-7" />
+            <p className="mt-7 max-w-2xl text-base leading-relaxed text-muted-foreground">
+              Want to see the major categories next to each other first?{" "}
+              <SiteLink to="/compare-loan-programs" className="text-navy underline underline-offset-4 transition-colors hover:text-gold">
+                Compare mortgage options
+              </SiteLink>
+              .
+            </p>
           </Reveal>
           <div className="mt-12 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
             {services.map((s, i) => (

@@ -13,6 +13,7 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as CalculatorRouteImport } from './routes/calculator'
 import { Route as CashOutRefinanceRouteImport } from './routes/cash-out-refinance'
+import { Route as CompareLoanProgramsRouteImport } from './routes/compare-loan-programs'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as ConventionalLoansRouteImport } from './routes/conventional-loans'
 import { Route as DisclosuresRouteImport } from './routes/disclosures'
@@ -26,6 +27,7 @@ import { Route as JumboLoansRouteImport } from './routes/jumbo-loans'
 import { Route as LoanProgramsRouteImport } from './routes/loan-programs'
 import { Route as MortgagePreApprovalRouteImport } from './routes/mortgage-pre-approval'
 import { Route as MortgageSolutionsRouteImport } from './routes/mortgage-solutions'
+import { Route as MortgageToolsRouteImport } from './routes/mortgage-tools'
 import { Route as NcHomeBuyerChecklistRouteImport } from './routes/nc-home-buyer-checklist'
 import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as RefinancingRouteImport } from './routes/refinancing'
@@ -56,6 +58,11 @@ const CalculatorRoute = CalculatorRouteImport.update({
 const CashOutRefinanceRoute = CashOutRefinanceRouteImport.update({
   id: '/cash-out-refinance',
   path: '/cash-out-refinance',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CompareLoanProgramsRoute = CompareLoanProgramsRouteImport.update({
+  id: '/compare-loan-programs',
+  path: '/compare-loan-programs',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ContactRoute = ContactRouteImport.update({
@@ -123,6 +130,11 @@ const MortgageSolutionsRoute = MortgageSolutionsRouteImport.update({
   path: '/mortgage-solutions',
   getParentRoute: () => rootRouteImport,
 } as any)
+const MortgageToolsRoute = MortgageToolsRouteImport.update({
+  id: '/mortgage-tools',
+  path: '/mortgage-tools',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const NcHomeBuyerChecklistRoute = NcHomeBuyerChecklistRouteImport.update({
   id: '/nc-home-buyer-checklist',
   path: '/nc-home-buyer-checklist',
@@ -184,6 +196,7 @@ export interface FileRoutesByFullPath {
   '/about': typeof AboutRoute
   '/calculator': typeof CalculatorRoute
   '/cash-out-refinance': typeof CashOutRefinanceRoute
+  '/compare-loan-programs': typeof CompareLoanProgramsRoute
   '/contact': typeof ContactRoute
   '/conventional-loans': typeof ConventionalLoansRoute
   '/disclosures': typeof DisclosuresRoute
@@ -197,6 +210,7 @@ export interface FileRoutesByFullPath {
   '/loan-programs': typeof LoanProgramsRoute
   '/mortgage-pre-approval': typeof MortgagePreApprovalRoute
   '/mortgage-solutions': typeof MortgageSolutionsRoute
+  '/mortgage-tools': typeof MortgageToolsRoute
   '/nc-home-buyer-checklist': typeof NcHomeBuyerChecklistRoute
   '/privacy': typeof PrivacyRoute
   '/refinancing': typeof RefinancingRoute
@@ -214,6 +228,7 @@ export interface FileRoutesByTo {
   '/about': typeof AboutRoute
   '/calculator': typeof CalculatorRoute
   '/cash-out-refinance': typeof CashOutRefinanceRoute
+  '/compare-loan-programs': typeof CompareLoanProgramsRoute
   '/contact': typeof ContactRoute
   '/conventional-loans': typeof ConventionalLoansRoute
   '/disclosures': typeof DisclosuresRoute
@@ -227,6 +242,7 @@ export interface FileRoutesByTo {
   '/loan-programs': typeof LoanProgramsRoute
   '/mortgage-pre-approval': typeof MortgagePreApprovalRoute
   '/mortgage-solutions': typeof MortgageSolutionsRoute
+  '/mortgage-tools': typeof MortgageToolsRoute
   '/nc-home-buyer-checklist': typeof NcHomeBuyerChecklistRoute
   '/privacy': typeof PrivacyRoute
   '/refinancing': typeof RefinancingRoute
@@ -245,6 +261,7 @@ export interface FileRoutesById {
   '/about': typeof AboutRoute
   '/calculator': typeof CalculatorRoute
   '/cash-out-refinance': typeof CashOutRefinanceRoute
+  '/compare-loan-programs': typeof CompareLoanProgramsRoute
   '/contact': typeof ContactRoute
   '/conventional-loans': typeof ConventionalLoansRoute
   '/disclosures': typeof DisclosuresRoute
@@ -258,6 +275,7 @@ export interface FileRoutesById {
   '/loan-programs': typeof LoanProgramsRoute
   '/mortgage-pre-approval': typeof MortgagePreApprovalRoute
   '/mortgage-solutions': typeof MortgageSolutionsRoute
+  '/mortgage-tools': typeof MortgageToolsRoute
   '/nc-home-buyer-checklist': typeof NcHomeBuyerChecklistRoute
   '/privacy': typeof PrivacyRoute
   '/refinancing': typeof RefinancingRoute
@@ -277,6 +295,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/calculator'
     | '/cash-out-refinance'
+    | '/compare-loan-programs'
     | '/contact'
     | '/conventional-loans'
     | '/disclosures'
@@ -290,6 +309,7 @@ export interface FileRouteTypes {
     | '/loan-programs'
     | '/mortgage-pre-approval'
     | '/mortgage-solutions'
+    | '/mortgage-tools'
     | '/nc-home-buyer-checklist'
     | '/privacy'
     | '/refinancing'
@@ -307,6 +327,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/calculator'
     | '/cash-out-refinance'
+    | '/compare-loan-programs'
     | '/contact'
     | '/conventional-loans'
     | '/disclosures'
@@ -320,6 +341,7 @@ export interface FileRouteTypes {
     | '/loan-programs'
     | '/mortgage-pre-approval'
     | '/mortgage-solutions'
+    | '/mortgage-tools'
     | '/nc-home-buyer-checklist'
     | '/privacy'
     | '/refinancing'
@@ -337,6 +359,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/calculator'
     | '/cash-out-refinance'
+    | '/compare-loan-programs'
     | '/contact'
     | '/conventional-loans'
     | '/disclosures'
@@ -350,6 +373,7 @@ export interface FileRouteTypes {
     | '/loan-programs'
     | '/mortgage-pre-approval'
     | '/mortgage-solutions'
+    | '/mortgage-tools'
     | '/nc-home-buyer-checklist'
     | '/privacy'
     | '/refinancing'
@@ -368,6 +392,7 @@ export interface RootRouteChildren {
   AboutRoute: typeof AboutRoute
   CalculatorRoute: typeof CalculatorRoute
   CashOutRefinanceRoute: typeof CashOutRefinanceRoute
+  CompareLoanProgramsRoute: typeof CompareLoanProgramsRoute
   ContactRoute: typeof ContactRoute
   ConventionalLoansRoute: typeof ConventionalLoansRoute
   DisclosuresRoute: typeof DisclosuresRoute
@@ -381,6 +406,7 @@ export interface RootRouteChildren {
   LoanProgramsRoute: typeof LoanProgramsRoute
   MortgagePreApprovalRoute: typeof MortgagePreApprovalRoute
   MortgageSolutionsRoute: typeof MortgageSolutionsRoute
+  MortgageToolsRoute: typeof MortgageToolsRoute
   NcHomeBuyerChecklistRoute: typeof NcHomeBuyerChecklistRoute
   PrivacyRoute: typeof PrivacyRoute
   RefinancingRoute: typeof RefinancingRoute
@@ -422,6 +448,13 @@ declare module '@tanstack/react-router' {
       path: '/cash-out-refinance'
       fullPath: '/cash-out-refinance'
       preLoaderRoute: typeof CashOutRefinanceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/compare-loan-programs': {
+      id: '/compare-loan-programs'
+      path: '/compare-loan-programs'
+      fullPath: '/compare-loan-programs'
+      preLoaderRoute: typeof CompareLoanProgramsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/contact': {
@@ -515,6 +548,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof MortgageSolutionsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/mortgage-tools': {
+      id: '/mortgage-tools'
+      path: '/mortgage-tools'
+      fullPath: '/mortgage-tools'
+      preLoaderRoute: typeof MortgageToolsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/nc-home-buyer-checklist': {
       id: '/nc-home-buyer-checklist'
       path: '/nc-home-buyer-checklist'
@@ -600,6 +640,7 @@ const rootRouteChildren: RootRouteChildren = {
   AboutRoute: AboutRoute,
   CalculatorRoute: CalculatorRoute,
   CashOutRefinanceRoute: CashOutRefinanceRoute,
+  CompareLoanProgramsRoute: CompareLoanProgramsRoute,
   ContactRoute: ContactRoute,
   ConventionalLoansRoute: ConventionalLoansRoute,
   DisclosuresRoute: DisclosuresRoute,
@@ -613,6 +654,7 @@ const rootRouteChildren: RootRouteChildren = {
   LoanProgramsRoute: LoanProgramsRoute,
   MortgagePreApprovalRoute: MortgagePreApprovalRoute,
   MortgageSolutionsRoute: MortgageSolutionsRoute,
+  MortgageToolsRoute: MortgageToolsRoute,
   NcHomeBuyerChecklistRoute: NcHomeBuyerChecklistRoute,
   PrivacyRoute: PrivacyRoute,
   RefinancingRoute: RefinancingRoute,
