@@ -13,6 +13,7 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as CalculatorRouteImport } from './routes/calculator'
 import { Route as CashOutRefinanceRouteImport } from './routes/cash-out-refinance'
+import { Route as CompareLoanProgramsRouteImport } from './routes/compare-loan-programs'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as ConventionalLoansRouteImport } from './routes/conventional-loans'
 import { Route as DisclosuresRouteImport } from './routes/disclosures'
@@ -57,6 +58,11 @@ const CalculatorRoute = CalculatorRouteImport.update({
 const CashOutRefinanceRoute = CashOutRefinanceRouteImport.update({
   id: '/cash-out-refinance',
   path: '/cash-out-refinance',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CompareLoanProgramsRoute = CompareLoanProgramsRouteImport.update({
+  id: '/compare-loan-programs',
+  path: '/compare-loan-programs',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ContactRoute = ContactRouteImport.update({
@@ -190,6 +196,7 @@ export interface FileRoutesByFullPath {
   '/about': typeof AboutRoute
   '/calculator': typeof CalculatorRoute
   '/cash-out-refinance': typeof CashOutRefinanceRoute
+  '/compare-loan-programs': typeof CompareLoanProgramsRoute
   '/contact': typeof ContactRoute
   '/conventional-loans': typeof ConventionalLoansRoute
   '/disclosures': typeof DisclosuresRoute
@@ -221,6 +228,7 @@ export interface FileRoutesByTo {
   '/about': typeof AboutRoute
   '/calculator': typeof CalculatorRoute
   '/cash-out-refinance': typeof CashOutRefinanceRoute
+  '/compare-loan-programs': typeof CompareLoanProgramsRoute
   '/contact': typeof ContactRoute
   '/conventional-loans': typeof ConventionalLoansRoute
   '/disclosures': typeof DisclosuresRoute
@@ -253,6 +261,7 @@ export interface FileRoutesById {
   '/about': typeof AboutRoute
   '/calculator': typeof CalculatorRoute
   '/cash-out-refinance': typeof CashOutRefinanceRoute
+  '/compare-loan-programs': typeof CompareLoanProgramsRoute
   '/contact': typeof ContactRoute
   '/conventional-loans': typeof ConventionalLoansRoute
   '/disclosures': typeof DisclosuresRoute
@@ -286,6 +295,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/calculator'
     | '/cash-out-refinance'
+    | '/compare-loan-programs'
     | '/contact'
     | '/conventional-loans'
     | '/disclosures'
@@ -317,6 +327,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/calculator'
     | '/cash-out-refinance'
+    | '/compare-loan-programs'
     | '/contact'
     | '/conventional-loans'
     | '/disclosures'
@@ -348,6 +359,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/calculator'
     | '/cash-out-refinance'
+    | '/compare-loan-programs'
     | '/contact'
     | '/conventional-loans'
     | '/disclosures'
@@ -380,6 +392,7 @@ export interface RootRouteChildren {
   AboutRoute: typeof AboutRoute
   CalculatorRoute: typeof CalculatorRoute
   CashOutRefinanceRoute: typeof CashOutRefinanceRoute
+  CompareLoanProgramsRoute: typeof CompareLoanProgramsRoute
   ContactRoute: typeof ContactRoute
   ConventionalLoansRoute: typeof ConventionalLoansRoute
   DisclosuresRoute: typeof DisclosuresRoute
@@ -435,6 +448,13 @@ declare module '@tanstack/react-router' {
       path: '/cash-out-refinance'
       fullPath: '/cash-out-refinance'
       preLoaderRoute: typeof CashOutRefinanceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/compare-loan-programs': {
+      id: '/compare-loan-programs'
+      path: '/compare-loan-programs'
+      fullPath: '/compare-loan-programs'
+      preLoaderRoute: typeof CompareLoanProgramsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/contact': {
@@ -620,6 +640,7 @@ const rootRouteChildren: RootRouteChildren = {
   AboutRoute: AboutRoute,
   CalculatorRoute: CalculatorRoute,
   CashOutRefinanceRoute: CashOutRefinanceRoute,
+  CompareLoanProgramsRoute: CompareLoanProgramsRoute,
   ContactRoute: ContactRoute,
   ConventionalLoansRoute: ConventionalLoansRoute,
   DisclosuresRoute: DisclosuresRoute,

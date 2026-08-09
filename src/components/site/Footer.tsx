@@ -94,6 +94,16 @@ export function Footer() {
                 </Link>
               </li>
               <li>
+                <Link to="/mortgage-tools" className="transition-colors hover:text-gold">
+                  Mortgage tools
+                </Link>
+              </li>
+              <li>
+                <Link to="/compare-loan-programs" className="transition-colors hover:text-gold">
+                  Compare programs
+                </Link>
+              </li>
+              <li>
                 <Link to="/resources" className="transition-colors hover:text-gold">
                   Browse resources
                 </Link>

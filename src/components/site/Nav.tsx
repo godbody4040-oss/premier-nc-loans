@@ -11,6 +11,7 @@ const links = [
   { to: "/locations", label: "Service Areas" },
   { to: "/about", label: "About Jorge" },
   { to: "/calculator", label: "Calculator" },
+  { to: "/mortgage-tools", label: "Tools" },
   { to: "/resources", label: "Resources" },
 ];
 
