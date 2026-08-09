@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as CalculatorRouteImport } from './routes/calculator'
+import { Route as CashOutRefinanceRouteImport } from './routes/cash-out-refinance'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as ConventionalLoansRouteImport } from './routes/conventional-loans'
 import { Route as DisclosuresRouteImport } from './routes/disclosures'
@@ -21,6 +22,7 @@ import { Route as HomeBuyersRouteImport } from './routes/home-buyers'
 import { Route as HomeLoansRouteImport } from './routes/home-loans'
 import { Route as InvestmentPropertyLoansRouteImport } from './routes/investment-property-loans'
 import { Route as InvestorsRouteImport } from './routes/investors'
+import { Route as JumboLoansRouteImport } from './routes/jumbo-loans'
 import { Route as LoanProgramsRouteImport } from './routes/loan-programs'
 import { Route as MortgagePreApprovalRouteImport } from './routes/mortgage-pre-approval'
 import { Route as MortgageSolutionsRouteImport } from './routes/mortgage-solutions'
@@ -28,6 +30,7 @@ import { Route as NcHomeBuyerChecklistRouteImport } from './routes/nc-home-buyer
 import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as RefinancingRouteImport } from './routes/refinancing'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
+import { Route as UsdaLoansRouteImport } from './routes/usda-loans'
 import { Route as VaLoansRouteImport } from './routes/va-loans'
 import { Route as LocationsIndexRouteImport } from './routes/locations.index'
 import { Route as LocationsCityRouteImport } from './routes/locations.$city'
@@ -48,6 +51,11 @@ const AboutRoute = AboutRouteImport.update({
 const CalculatorRoute = CalculatorRouteImport.update({
   id: '/calculator',
   path: '/calculator',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CashOutRefinanceRoute = CashOutRefinanceRouteImport.update({
+  id: '/cash-out-refinance',
+  path: '/cash-out-refinance',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ContactRoute = ContactRouteImport.update({
@@ -95,6 +103,11 @@ const InvestorsRoute = InvestorsRouteImport.update({
   path: '/investors',
   getParentRoute: () => rootRouteImport,
 } as any)
+const JumboLoansRoute = JumboLoansRouteImport.update({
+  id: '/jumbo-loans',
+  path: '/jumbo-loans',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const LoanProgramsRoute = LoanProgramsRouteImport.update({
   id: '/loan-programs',
   path: '/loan-programs',
@@ -128,6 +141,11 @@ const RefinancingRoute = RefinancingRouteImport.update({
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
   id: '/sitemap.xml',
   path: '/sitemap.xml',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const UsdaLoansRoute = UsdaLoansRouteImport.update({
+  id: '/usda-loans',
+  path: '/usda-loans',
   getParentRoute: () => rootRouteImport,
 } as any)
 const VaLoansRoute = VaLoansRouteImport.update({
@@ -165,6 +183,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/calculator': typeof CalculatorRoute
+  '/cash-out-refinance': typeof CashOutRefinanceRoute
   '/contact': typeof ContactRoute
   '/conventional-loans': typeof ConventionalLoansRoute
   '/disclosures': typeof DisclosuresRoute
@@ -174,6 +193,7 @@ export interface FileRoutesByFullPath {
   '/home-loans': typeof HomeLoansRoute
   '/investment-property-loans': typeof InvestmentPropertyLoansRoute
   '/investors': typeof InvestorsRoute
+  '/jumbo-loans': typeof JumboLoansRoute
   '/loan-programs': typeof LoanProgramsRoute
   '/mortgage-pre-approval': typeof MortgagePreApprovalRoute
   '/mortgage-solutions': typeof MortgageSolutionsRoute
@@ -181,6 +201,7 @@ export interface FileRoutesByFullPath {
   '/privacy': typeof PrivacyRoute
   '/refinancing': typeof RefinancingRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/usda-loans': typeof UsdaLoansRoute
   '/va-loans': typeof VaLoansRoute
   '/locations/$city': typeof LocationsCityRoute
   '/resources/$slug': typeof ResourcesSlugRoute
@@ -192,6 +213,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/calculator': typeof CalculatorRoute
+  '/cash-out-refinance': typeof CashOutRefinanceRoute
   '/contact': typeof ContactRoute
   '/conventional-loans': typeof ConventionalLoansRoute
   '/disclosures': typeof DisclosuresRoute
@@ -201,6 +223,7 @@ export interface FileRoutesByTo {
   '/home-loans': typeof HomeLoansRoute
   '/investment-property-loans': typeof InvestmentPropertyLoansRoute
   '/investors': typeof InvestorsRoute
+  '/jumbo-loans': typeof JumboLoansRoute
   '/loan-programs': typeof LoanProgramsRoute
   '/mortgage-pre-approval': typeof MortgagePreApprovalRoute
   '/mortgage-solutions': typeof MortgageSolutionsRoute
@@ -208,6 +231,7 @@ export interface FileRoutesByTo {
   '/privacy': typeof PrivacyRoute
   '/refinancing': typeof RefinancingRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/usda-loans': typeof UsdaLoansRoute
   '/va-loans': typeof VaLoansRoute
   '/locations/$city': typeof LocationsCityRoute
   '/resources/$slug': typeof ResourcesSlugRoute
@@ -220,6 +244,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/calculator': typeof CalculatorRoute
+  '/cash-out-refinance': typeof CashOutRefinanceRoute
   '/contact': typeof ContactRoute
   '/conventional-loans': typeof ConventionalLoansRoute
   '/disclosures': typeof DisclosuresRoute
@@ -229,6 +254,7 @@ export interface FileRoutesById {
   '/home-loans': typeof HomeLoansRoute
   '/investment-property-loans': typeof InvestmentPropertyLoansRoute
   '/investors': typeof InvestorsRoute
+  '/jumbo-loans': typeof JumboLoansRoute
   '/loan-programs': typeof LoanProgramsRoute
   '/mortgage-pre-approval': typeof MortgagePreApprovalRoute
   '/mortgage-solutions': typeof MortgageSolutionsRoute
@@ -236,6 +262,7 @@ export interface FileRoutesById {
   '/privacy': typeof PrivacyRoute
   '/refinancing': typeof RefinancingRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/usda-loans': typeof UsdaLoansRoute
   '/va-loans': typeof VaLoansRoute
   '/locations/$city': typeof LocationsCityRoute
   '/resources/$slug': typeof ResourcesSlugRoute
@@ -249,6 +276,7 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/calculator'
+    | '/cash-out-refinance'
     | '/contact'
     | '/conventional-loans'
     | '/disclosures'
@@ -258,6 +286,7 @@ export interface FileRouteTypes {
     | '/home-loans'
     | '/investment-property-loans'
     | '/investors'
+    | '/jumbo-loans'
     | '/loan-programs'
     | '/mortgage-pre-approval'
     | '/mortgage-solutions'
@@ -265,6 +294,7 @@ export interface FileRouteTypes {
     | '/privacy'
     | '/refinancing'
     | '/sitemap.xml'
+    | '/usda-loans'
     | '/va-loans'
     | '/locations/$city'
     | '/resources/$slug'
@@ -276,6 +306,7 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/calculator'
+    | '/cash-out-refinance'
     | '/contact'
     | '/conventional-loans'
     | '/disclosures'
@@ -285,6 +316,7 @@ export interface FileRouteTypes {
     | '/home-loans'
     | '/investment-property-loans'
     | '/investors'
+    | '/jumbo-loans'
     | '/loan-programs'
     | '/mortgage-pre-approval'
     | '/mortgage-solutions'
@@ -292,6 +324,7 @@ export interface FileRouteTypes {
     | '/privacy'
     | '/refinancing'
     | '/sitemap.xml'
+    | '/usda-loans'
     | '/va-loans'
     | '/locations/$city'
     | '/resources/$slug'
@@ -303,6 +336,7 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/calculator'
+    | '/cash-out-refinance'
     | '/contact'
     | '/conventional-loans'
     | '/disclosures'
@@ -312,6 +346,7 @@ export interface FileRouteTypes {
     | '/home-loans'
     | '/investment-property-loans'
     | '/investors'
+    | '/jumbo-loans'
     | '/loan-programs'
     | '/mortgage-pre-approval'
     | '/mortgage-solutions'
@@ -319,6 +354,7 @@ export interface FileRouteTypes {
     | '/privacy'
     | '/refinancing'
     | '/sitemap.xml'
+    | '/usda-loans'
     | '/va-loans'
     | '/locations/$city'
     | '/resources/$slug'
@@ -331,6 +367,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
   CalculatorRoute: typeof CalculatorRoute
+  CashOutRefinanceRoute: typeof CashOutRefinanceRoute
   ContactRoute: typeof ContactRoute
   ConventionalLoansRoute: typeof ConventionalLoansRoute
   DisclosuresRoute: typeof DisclosuresRoute
@@ -340,6 +377,7 @@ export interface RootRouteChildren {
   HomeLoansRoute: typeof HomeLoansRoute
   InvestmentPropertyLoansRoute: typeof InvestmentPropertyLoansRoute
   InvestorsRoute: typeof InvestorsRoute
+  JumboLoansRoute: typeof JumboLoansRoute
   LoanProgramsRoute: typeof LoanProgramsRoute
   MortgagePreApprovalRoute: typeof MortgagePreApprovalRoute
   MortgageSolutionsRoute: typeof MortgageSolutionsRoute
@@ -347,6 +385,7 @@ export interface RootRouteChildren {
   PrivacyRoute: typeof PrivacyRoute
   RefinancingRoute: typeof RefinancingRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
+  UsdaLoansRoute: typeof UsdaLoansRoute
   VaLoansRoute: typeof VaLoansRoute
   LocationsCityRoute: typeof LocationsCityRoute
   ResourcesSlugRoute: typeof ResourcesSlugRoute
@@ -376,6 +415,13 @@ declare module '@tanstack/react-router' {
       path: '/calculator'
       fullPath: '/calculator'
       preLoaderRoute: typeof CalculatorRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/cash-out-refinance': {
+      id: '/cash-out-refinance'
+      path: '/cash-out-refinance'
+      fullPath: '/cash-out-refinance'
+      preLoaderRoute: typeof CashOutRefinanceRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/contact': {
@@ -441,6 +487,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof InvestorsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/jumbo-loans': {
+      id: '/jumbo-loans'
+      path: '/jumbo-loans'
+      fullPath: '/jumbo-loans'
+      preLoaderRoute: typeof JumboLoansRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/loan-programs': {
       id: '/loan-programs'
       path: '/loan-programs'
@@ -488,6 +541,13 @@ declare module '@tanstack/react-router' {
       path: '/sitemap.xml'
       fullPath: '/sitemap.xml'
       preLoaderRoute: typeof SitemapDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/usda-loans': {
+      id: '/usda-loans'
+      path: '/usda-loans'
+      fullPath: '/usda-loans'
+      preLoaderRoute: typeof UsdaLoansRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/va-loans': {
@@ -539,6 +599,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
   CalculatorRoute: CalculatorRoute,
+  CashOutRefinanceRoute: CashOutRefinanceRoute,
   ContactRoute: ContactRoute,
   ConventionalLoansRoute: ConventionalLoansRoute,
   DisclosuresRoute: DisclosuresRoute,
@@ -548,6 +609,7 @@ const rootRouteChildren: RootRouteChildren = {
   HomeLoansRoute: HomeLoansRoute,
   InvestmentPropertyLoansRoute: InvestmentPropertyLoansRoute,
   InvestorsRoute: InvestorsRoute,
+  JumboLoansRoute: JumboLoansRoute,
   LoanProgramsRoute: LoanProgramsRoute,
   MortgagePreApprovalRoute: MortgagePreApprovalRoute,
   MortgageSolutionsRoute: MortgageSolutionsRoute,
@@ -555,6 +617,7 @@ const rootRouteChildren: RootRouteChildren = {
   PrivacyRoute: PrivacyRoute,
   RefinancingRoute: RefinancingRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
+  UsdaLoansRoute: UsdaLoansRoute,
   VaLoansRoute: VaLoansRoute,
   LocationsCityRoute: LocationsCityRoute,
   ResourcesSlugRoute: ResourcesSlugRoute,
@@ -565,3 +628,13 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}
