@@ -190,7 +190,7 @@ export function LeadFunnel() {
   ).filter(([, v]) => v);
 
   return (
-    <section className="bg-white py-24 lg:py-32" id="start">
+    <section className="bg-white py-16 sm:py-24 lg:py-32" id="start">
       <div className="mx-auto max-w-[1100px] px-5 lg:px-10">
         <Reveal>
           <div className="text-center">
