@@ -1,5 +1,8 @@
 import { Link } from "@tanstack/react-router";
 import { business, telHref } from "@/config/business";
+import { services } from "@/content/services";
+import { SiteLink } from "./SiteLink";
+
 
 const nav = [
   { to: "/", label: "Home" },
@@ -16,7 +19,7 @@ export function Footer() {
   return (
     <footer className="bg-navy pb-28 pt-20 text-white/70 lg:pb-16">
       <div className="mx-auto max-w-[1400px] px-5 lg:px-10">
-        <div className="grid gap-12 lg:grid-cols-[1.4fr_1fr_1fr]">
+        <div className="grid gap-12 lg:grid-cols-[1.3fr_1fr_1fr_1fr]">
           <div>
             <p className="font-display text-xl tracking-[0.14em] text-white">PREMIER LENDING NC</p>
             <span className="gold-rule mt-5" />
@@ -27,7 +30,7 @@ export function Footer() {
               to="/contact"
               className="arrow-cta mt-7 inline-flex text-[0.68rem] font-semibold uppercase tracking-[0.16em] text-gold transition-colors hover:text-gold-light"
             >
-              Get Pre-Qualified
+              Get My Free Mortgage Quote
             </Link>
           </div>
 
@@ -43,6 +46,25 @@ export function Footer() {
               ))}
             </ul>
           </div>
+
+          <div>
+            <p className="eyebrow text-gold">Loan Programs</p>
+            <ul className="mt-5 space-y-3 text-sm">
+              {services.map((s) => (
+                <li key={s.slug}>
+                  <SiteLink to={`/${s.slug}`} className="transition-colors hover:text-gold">
+                    {s.nav}
+                  </SiteLink>
+                </li>
+              ))}
+              <li>
+                <Link to="/locations" className="transition-colors hover:text-gold">
+                  Service Areas
+                </Link>
+              </li>
+            </ul>
+          </div>
+
 
           <div>
             <p className="eyebrow text-gold">Get in Touch</p>

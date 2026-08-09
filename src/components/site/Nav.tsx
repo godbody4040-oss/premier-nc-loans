@@ -58,7 +58,7 @@ export function Nav({ transparent = false }: { transparent?: boolean }) {
             </Link>
           ))}
           <CTA to="/contact" variant="gold" className="!px-5 !py-2.5">
-            Get Pre-Qualified
+            Free Mortgage Quote
           </CTA>
         </nav>
 
@@ -113,7 +113,7 @@ export function Nav({ transparent = false }: { transparent?: boolean }) {
             Contact
           </Link>
           <CTA to="/contact" variant="gold" className="mt-4">
-            Get Pre-Qualified
+            Free Mortgage Quote
           </CTA>
         </nav>
       </div>

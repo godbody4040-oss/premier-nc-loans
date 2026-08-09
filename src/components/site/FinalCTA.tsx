@@ -28,7 +28,7 @@ export function FinalCTA() {
           </p>
           <div className="mt-10 flex flex-col justify-center gap-3 sm:flex-row">
             <CTA to="/contact" variant="gold">
-              Get Pre-Qualified
+              Get My Free Mortgage Quote
             </CTA>
             <CTA to="/calculator" variant="outlineLight" arrow={false}>
               Estimate a Payment
