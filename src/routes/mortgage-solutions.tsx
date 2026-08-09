@@ -1,4 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { serviceSchema, breadcrumbSchema } from "@/lib/seo";
 import { PageHero, SiteLayout } from "@/components/site/SiteLayout";
 import { Solutions } from "@/components/site/Solutions";
 import { SignatureCTA } from "@/components/site/SignatureCTA";
@@ -19,6 +20,23 @@ export const Route = createFileRoute("/mortgage-solutions")({
       { property: "og:url", content: "/mortgage-solutions" },
     ],
     links: [{ rel: "canonical", href: "/mortgage-solutions" }],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify(
+          serviceSchema({ name: "Mortgage Solutions", description, path: "/mortgage-solutions" }),
+        ),
+      },
+      {
+        type: "application/ld+json",
+        children: JSON.stringify(
+          breadcrumbSchema([
+            { name: "Home", path: "/" },
+            { name: "Mortgage Solutions", path: "/mortgage-solutions" },
+          ]),
+        ),
+      },
+    ],
   }),
   component: Page,
 });

@@ -22,7 +22,7 @@ import { NorthCarolina } from "@/components/site/NorthCarolina";
 
 const title = "North Carolina Mortgage Broker | Premier Lending NC";
 const description =
-  "Premier Lending NC is a North Carolina mortgage broker helping buyers, homeowners and investors explore home purchase, refinance and investment property financing options.";
+  "North Carolina mortgage broker helping buyers, homeowners and investors compare purchase, refinance and investment property financing options.";
 
 export const Route = createFileRoute("/")({
   head: () => ({
