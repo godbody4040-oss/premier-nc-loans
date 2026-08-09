@@ -17,6 +17,17 @@ export function Reveal({
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
+
+    // Opt into the hidden-then-animate styles only once JS is running.
+    document.documentElement.classList.add("js-reveal");
+
+    // Anything already on screen at mount stays visible — no flash of hidden content.
+    const rect = el.getBoundingClientRect();
+    if (rect.top < window.innerHeight && rect.bottom > 0) {
+      setVisible(true);
+      return;
+    }
+
     const io = new IntersectionObserver(
       (entries) => {
         for (const e of entries) {
@@ -31,6 +42,7 @@ export function Reveal({
     io.observe(el);
     return () => io.disconnect();
   }, []);
+
 
   const Component = Tag as any;
   return (

@@ -12,17 +12,15 @@ const steps = [
 
 export function Hero() {
   const [offset, setOffset] = useState(0);
-  const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
-    setLoaded(true);
     const onScroll = () => setOffset(Math.min(window.scrollY, 600) * 0.15);
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
   return (
-    <section className="relative flex min-h-[100svh] items-center overflow-hidden bg-navy">
+    <section className="relative flex min-h-[92svh] items-center overflow-hidden bg-navy">
       <img
         src={heroImg}
         alt="Luxury North Carolina home at dusk"
@@ -34,12 +32,9 @@ export function Hero() {
       />
       <div className="absolute inset-0 bg-[linear-gradient(100deg,rgba(7,17,31,0.94)_0%,rgba(7,17,31,0.78)_45%,rgba(7,17,31,0.45)_100%)]" />
 
-      <div className="relative mx-auto grid w-full max-w-[1400px] gap-14 px-5 pb-28 pt-32 lg:grid-cols-[1.15fr_0.85fr] lg:items-center lg:px-10 lg:pb-24 lg:pt-36">
-        <div
-          className="reveal max-w-2xl"
-          data-visible={loaded}
-          style={{ transitionDelay: "120ms" }}
-        >
+      <div className="relative mx-auto grid w-full max-w-[1400px] gap-12 px-5 pb-20 pt-28 lg:grid-cols-[1.15fr_0.85fr] lg:items-center lg:gap-14 lg:px-10 lg:pb-24 lg:pt-36">
+        <div className="rise-in max-w-2xl" style={{ animationDelay: "80ms" }}>
+
           <p className="eyebrow text-gold">North Carolina Mortgage Broker</p>
           <h1 className="display mt-7 text-[2.5rem] text-white sm:text-[3.5rem] lg:text-[4.4rem]">
             Your Next Home
@@ -79,11 +74,8 @@ export function Hero() {
           <p className="mt-3 text-sm text-white/45">Start with a conversation. No pressure. No guesswork.</p>
         </div>
 
-        <div
-          className="reveal lg:justify-self-end"
-          data-visible={loaded}
-          style={{ transitionDelay: "320ms" }}
-        >
+        <div className="rise-in lg:justify-self-end" style={{ animationDelay: "260ms" }}>
+
           <div className="float-slow w-full max-w-sm border border-white/12 bg-white/[0.06] p-8 backdrop-blur-xl">
             <p className="eyebrow text-gold">Your Financing Journey</p>
             <span className="gold-rule mt-5" />
