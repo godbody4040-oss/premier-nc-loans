@@ -1,6 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { business, telHref } from "@/config/business";
 import { services } from "@/content/services";
+import { SiteLink } from "./SiteLink";
 
 
 const nav = [
@@ -51,9 +52,9 @@ export function Footer() {
             <ul className="mt-5 space-y-3 text-sm">
               {services.map((s) => (
                 <li key={s.slug}>
-                  <Link to={`/${s.slug}`} className="transition-colors hover:text-gold">
+                  <SiteLink to={`/${s.slug}`} className="transition-colors hover:text-gold">
                     {s.nav}
-                  </Link>
+                  </SiteLink>
                 </li>
               ))}
               <li>
