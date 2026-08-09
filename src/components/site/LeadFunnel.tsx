@@ -148,6 +148,10 @@ export function LeadFunnel() {
   const next = () => {
     if (!validateStep(step)) return;
     trackOnce("prequal_start");
+    trackOnce("prequal_form_start");
+    if (typeof window !== "undefined" && window.location.pathname === "/contact") {
+      trackOnce("contact_form_start");
+    }
     track("prequal_step_complete", { step: step + 1, step_name: STEPS[step] ?? "" });
     setStep((s) => Math.min(STEPS.length - 1, s + 1));
   };
@@ -167,6 +171,7 @@ export function LeadFunnel() {
       ...form,
       leadType: "pre-qualification",
       source: "prequal-funnel",
+      selectedPath: form.goal,
     });
     if (!result.ok) {
       setStatus("error");
@@ -174,6 +179,9 @@ export function LeadFunnel() {
       return;
     }
     track("prequal_complete", { goal: form.goal, timeline: form.timeline });
+    if (typeof window !== "undefined" && window.location.pathname === "/contact") {
+      track("contact_form_complete", { goal: form.goal });
+    }
     setStatus("done");
   };
 

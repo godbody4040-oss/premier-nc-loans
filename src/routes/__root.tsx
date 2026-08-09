@@ -15,25 +15,61 @@ import { organizationSchema } from "../lib/structured-data";
 import { Analytics } from "../components/site/Analytics";
 
 
+const notFoundLinks = [
+  { to: "/loan-programs", label: "Loan programs" },
+  { to: "/calculator", label: "Mortgage calculator" },
+  { to: "/mortgage-tools", label: "Mortgage tools" },
+  { to: "/resources", label: "Resource center" },
+  { to: "/contact", label: "Get my free mortgage quote" },
+];
+
 function NotFoundComponent() {
+  useEffect(() => {
+    document.title = "Page Not Found | Premier Lending NC";
+    let tag = document.querySelector<HTMLMetaElement>('meta[name="robots"]');
+    if (!tag) {
+      tag = document.createElement("meta");
+      tag.name = "robots";
+      document.head.appendChild(tag);
+    }
+    tag.content = "noindex, follow";
+    return () => {
+      tag?.remove();
+    };
+  }, []);
+
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background px-4">
-      <div className="max-w-md text-center">
-        <h1 className="text-7xl font-bold text-foreground">404</h1>
-        <h2 className="mt-4 text-xl font-semibold text-foreground">Page not found</h2>
-        <p className="mt-2 text-sm text-muted-foreground">
-          The page you're looking for doesn't exist or has been moved.
+    <main className="flex min-h-dvh items-center justify-center bg-background px-5 py-20">
+      <div className="max-w-lg text-center">
+        <p className="eyebrow text-gold">404</p>
+        <h1 className="display mt-5 text-[2rem] text-navy sm:text-[2.6rem]">
+          This page couldn't be found.
+        </h1>
+        <p className="mt-5 text-sm leading-relaxed text-muted-foreground">
+          The page you're looking for doesn't exist or has moved. Here are a few places that may help.
         </p>
-        <div className="mt-6">
+        <ul className="mt-8 flex flex-wrap justify-center gap-x-6 gap-y-2">
+          {notFoundLinks.map((l) => (
+            <li key={l.to}>
+              <Link
+                to={l.to}
+                className="inline-flex min-h-11 items-center text-sm text-navy underline-offset-4 transition-colors hover:text-gold hover:underline"
+              >
+                {l.label}
+              </Link>
+            </li>
+          ))}
+        </ul>
+        <div className="mt-8">
           <Link
             to="/"
-            className="inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
+            className="inline-flex min-h-11 items-center justify-center bg-navy px-6 text-[0.68rem] font-semibold uppercase tracking-[0.16em] text-white transition-colors hover:bg-navy/90"
           >
-            Go home
+            Return home
           </Link>
         </div>
       </div>
-    </div>
+    </main>
   );
 }
 

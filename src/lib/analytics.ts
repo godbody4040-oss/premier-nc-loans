@@ -17,11 +17,21 @@ export type TrackEvent =
   | "prequal_step_complete"
   | "prequal_complete"
   | "calculator_interact"
+  | "calculator_start"
+  | "calculator_complete"
   | "calculator_cta_click"
   | "contact_submit"
+  | "contact_form_start"
+  | "contact_form_complete"
+  | "prequal_form_start"
   | "phone_click"
   | "email_click"
   | "resource_download"
+  | "resource_download_start"
+  | "resource_download_complete"
+  | "loan_program_cta_click"
+  | "path_select"
+  | "roadmap_stage_open"
   | "resource_view"
   | "investor_cta_click"
   | "talk_with_jorge_click"
@@ -110,5 +120,16 @@ const fired = new Set<string>();
 export function trackOnce(event: TrackEvent, params: Params = {}) {
   if (fired.has(event)) return;
   fired.add(event);
+  track(event, params);
+}
+
+/**
+ * Like trackOnce, but de-duplicated on a caller-supplied key so the same event
+ * can fire once per resource/tool/program rather than once per page.
+ */
+export function trackOnceFor(key: string, event: TrackEvent, params: Params = {}) {
+  const id = `${event}:${key}`;
+  if (fired.has(id)) return;
+  fired.add(id);
   track(event, params);
 }

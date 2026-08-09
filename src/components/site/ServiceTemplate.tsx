@@ -1,6 +1,7 @@
 import type { Service } from "@/content/services";
 import { serviceBySlug } from "@/content/services";
 import { locations } from "@/content/locations";
+import { track } from "@/lib/analytics";
 import { PageHero, SiteLayout } from "./SiteLayout";
 import { SiteLink } from "./SiteLink";
 import { Reveal } from "./Reveal";
@@ -68,10 +69,21 @@ export function ServiceTemplate({ service }: { service: Service }) {
                     No obligation, no pressure.
                   </p>
                   <div className="mt-7 space-y-3">
-                    <CTA to="/contact" variant="gold" className="w-full">
+                    <CTA
+                      to="/contact"
+                      variant="gold"
+                      className="w-full"
+                      onClick={() => track("loan_program_cta_click", { program: service.slug, target: "prequal" })}
+                    >
                       Get My Free Mortgage Quote
                     </CTA>
-                    <CTA to="/calculator" variant="outlineLight" arrow={false} className="w-full">
+                    <CTA
+                      to="/calculator"
+                      variant="outlineLight"
+                      arrow={false}
+                      className="w-full"
+                      onClick={() => track("loan_program_cta_click", { program: service.slug, target: "calculator" })}
+                    >
                       Calculate My Payment
                     </CTA>
                   </div>

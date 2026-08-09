@@ -38,8 +38,14 @@ export type Lead = {
   contactPreference?: string;
   resource?: string;
   message?: string;
+  /** Which "Find Your Path" route the visitor selected, when known. */
+  selectedPath?: string;
+  /** Loan program the visitor was reading about, when known. */
+  loanProgram?: string;
   /** Filled in automatically by submitLead. */
   pagePath?: string;
+  /** Captured automatically by submitLead. */
+  referrer?: string;
   /** Honeypot — must remain empty. */
   company?: string;
 };
@@ -50,6 +56,7 @@ export async function submitLead(lead: Lead): Promise<{ ok: boolean; error?: str
     const payload = {
       ...lead,
       pagePath: lead.pagePath ?? (typeof window !== "undefined" ? window.location.pathname : ""),
+      referrer: typeof document !== "undefined" ? document.referrer.slice(0, 300) : "",
     };
     const res = await fetch("/api/public/lead", {
       method: "POST",

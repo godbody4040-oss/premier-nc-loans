@@ -31,7 +31,10 @@ const leadSchema = z.object({
   contactPreference: optional(40),
   resource: optional(120),
   message: optional(1000),
+  selectedPath: optional(80),
+  loanProgram: optional(80),
   pagePath: optional(200),
+  referrer: optional(300),
 
   company: z.string().max(0).optional().default(""), // honeypot: must stay empty
 });
@@ -53,7 +56,8 @@ export const Route = createFileRoute("/api/public/lead")({
           return Response.json({ ok: false, error: "Please review the form and try again." }, { status: 400 });
         }
 
-        const { company, pagePath, ...lead } = parsed.data;
+        const { company, pagePath, referrer, ...lead } = parsed.data;
+        const submittedAt = new Date().toISOString();
         if (company) {
           // Honeypot tripped — accept silently without storing.
           return Response.json({ ok: true });
@@ -84,7 +88,11 @@ export const Route = createFileRoute("/api/public/lead")({
             contact_preference: lead.contactPreference || null,
             resource: lead.resource || null,
             message: lead.message || null,
+            selected_path: lead.selectedPath || null,
+            loan_program: lead.loanProgram || null,
             page_path: pagePath || null,
+            referrer: referrer || null,
+            status: "new",
           });
           if (error) {
             console.error("Lead insert failed", error);
@@ -109,13 +117,46 @@ export const Route = createFileRoute("/api/public/lead")({
             const res = await fetch(webhook, {
               method: "POST",
               headers: { "Content-Type": "application/json" },
-              body: JSON.stringify({ site: "premier-lending-nc", submittedAt: new Date().toISOString(), ...lead }),
+              body: JSON.stringify({
+                site: "premier-lending-nc",
+                submittedAt,
+                status: "new",
+                pagePath,
+                referrer,
+                ...lead,
+              }),
             });
             if (!res.ok) {
               console.error(`Lead webhook failed [${res.status}]: ${await res.text()}`);
             }
           } catch (error) {
             console.error("Lead webhook error", error);
+          }
+        }
+
+        // 3. Notification stage. Wired for the client's future email/CRM
+        //    credentials: when LEAD_NOTIFICATION_WEBHOOK_URL is configured the
+        //    organised lead is handed off for notification. Nothing is sent
+        //    until that credential exists, so no address is assumed here.
+        const notify = process.env["LEAD_NOTIFICATION_WEBHOOK_URL"];
+        if (notify) {
+          try {
+            const res = await fetch(notify, {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({
+                type: "new_lead",
+                site: "premier-lending-nc",
+                submittedAt,
+                pagePath,
+                lead,
+              }),
+            });
+            if (!res.ok) {
+              console.error(`Lead notification failed [${res.status}]: ${await res.text()}`);
+            }
+          } catch (error) {
+            console.error("Lead notification error", error);
           }
         }
 

@@ -28,6 +28,7 @@ export type Database = {
           id: string
           last_name: string | null
           lead_type: string
+          loan_program: string | null
           location: string | null
           message: string | null
           notified_at: string | null
@@ -35,8 +36,11 @@ export type Database = {
           phone: string | null
           price_range: string | null
           property_type: string | null
+          referrer: string | null
           resource: string | null
+          selected_path: string | null
           source: string | null
+          status: string
           timeline: string | null
           zip: string | null
         }
@@ -53,6 +57,7 @@ export type Database = {
           id?: string
           last_name?: string | null
           lead_type: string
+          loan_program?: string | null
           location?: string | null
           message?: string | null
           notified_at?: string | null
@@ -60,8 +65,11 @@ export type Database = {
           phone?: string | null
           price_range?: string | null
           property_type?: string | null
+          referrer?: string | null
           resource?: string | null
+          selected_path?: string | null
           source?: string | null
+          status?: string
           timeline?: string | null
           zip?: string | null
         }
@@ -78,6 +86,7 @@ export type Database = {
           id?: string
           last_name?: string | null
           lead_type?: string
+          loan_program?: string | null
           location?: string | null
           message?: string | null
           notified_at?: string | null
@@ -85,8 +94,11 @@ export type Database = {
           phone?: string | null
           price_range?: string | null
           property_type?: string | null
+          referrer?: string | null
           resource?: string | null
+          selected_path?: string | null
           source?: string | null
+          status?: string
           timeline?: string | null
           zip?: string | null
         }
