@@ -193,3 +193,28 @@
     transition-duration: 0.001ms !important;
   }
 }
+
+/* Above-the-fold entrance: renders in SSR HTML, animates without waiting for hydration */
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@utility rise-in {
+  animation: rise-in 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+/* Comfortable mobile tap targets for dense link lists */
+@media (max-width: 767px) {
+  footer li > a,
+  footer li > .link {
+    display: inline-block;
+    padding-block: 0.35rem;
+  }
+}
