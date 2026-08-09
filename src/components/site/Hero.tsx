@@ -74,11 +74,8 @@ export function Hero() {
           <p className="mt-3 text-sm text-white/45">Start with a conversation. No pressure. No guesswork.</p>
         </div>
 
-        <div
-          className="reveal lg:justify-self-end"
-          data-visible={loaded}
-          style={{ transitionDelay: "320ms" }}
-        >
+        <div className="rise-in lg:justify-self-end" style={{ animationDelay: "260ms" }}>
+
           <div className="float-slow w-full max-w-sm border border-white/12 bg-white/[0.06] p-8 backdrop-blur-xl">
             <p className="eyebrow text-gold">Your Financing Journey</p>
             <span className="gold-rule mt-5" />
