@@ -373,6 +373,139 @@ export const services: Service[] = [
     ],
     related: ["first-time-home-buyers", "home-loans", "fha-loans"],
   },
+  {
+    slug: "usda-loans",
+    nav: "USDA Loans",
+    eyebrow: "USDA Loans",
+    h1: "USDA loans in North Carolina",
+    title: "USDA Loans in North Carolina | Premier Lending NC",
+    description:
+      "How USDA rural development loans work in North Carolina: property eligibility maps, household income limits, guarantee fees and who the program tends to fit.",
+    intro:
+      "USDA guaranteed loans exist to support homeownership in designated rural and semi-rural areas. In North Carolina that footprint is larger than most buyers expect — many towns just outside the Triangle and Triad fall inside eligible boundaries. The program is defined by two tests: where the property sits and what the household earns.",
+    forWho: [
+      "Buyers purchasing outside designated urban boundaries in North Carolina",
+      "Households whose total income falls within the area limit for their county",
+      "Buyers with limited savings who want to explore a low-down-payment structure",
+      "Buyers comparing USDA against FHA and conventional side by side",
+    ],
+    highlights: [
+      {
+        t: "Property location is the first test",
+        b: "Eligibility is tied to USDA's published area maps rather than to how rural a neighborhood feels. Addresses are checked individually before anything else is discussed.",
+      },
+      {
+        t: "Household income limits apply",
+        b: "Limits are set by county and household size and consider the whole household, not just the borrowers on the loan.",
+      },
+      {
+        t: "Guarantee fees replace traditional mortgage insurance",
+        b: "USDA loans carry an upfront guarantee fee and an annual fee. Both are reviewed with you so the monthly comparison against other programs is honest.",
+      },
+    ],
+    process: [
+      { t: "Address check", b: "The property or target area is checked against current USDA eligibility maps." },
+      { t: "Income review", b: "Household income is compared with the applicable county limit." },
+      { t: "Program comparison", b: "USDA is placed next to FHA and conventional so the trade-offs are visible." },
+      { t: "Documentation", b: "Income, assets and credit are reviewed and the file is prepared." },
+      { t: "Processing & closing", b: "Underwriting conditions, appraisal and agency review are coordinated through closing." },
+    ],
+    faqs: [
+      { q: "Does USDA really allow no down payment?", a: "The guaranteed program is structured for financing up to the appraised value for eligible borrowers and properties. Closing costs and fees still apply, and eligibility is determined case by case." },
+      { q: "Are Raleigh and Charlotte eligible?", a: "Major metro addresses are generally outside eligible areas, but many surrounding communities are inside them. Every address is checked against the current map." },
+      { q: "How are USDA income limits calculated?", a: "They are based on total household income relative to published county limits and household size, not solely on the income used to qualify." },
+    ],
+    related: ["fha-loans", "first-time-home-buyers", "home-loans"],
+  },
+  {
+    slug: "jumbo-loans",
+    nav: "Jumbo Loans",
+    eyebrow: "Jumbo Loans",
+    h1: "Jumbo loans in North Carolina",
+    title: "Jumbo Loans in North Carolina | Premier Lending NC",
+    description:
+      "Jumbo mortgage financing in North Carolina: how loan limits work, what reserves and documentation lenders expect, and how jumbo underwriting differs from conforming loans.",
+    intro:
+      "A jumbo loan is simply a mortgage above the conforming limit for the county where the property sits. Because these loans are not sold to the agencies, each lender writes its own guidelines — which is exactly why comparing several is worth the effort at this loan size.",
+    forWho: [
+      "Buyers financing above the conforming loan limit in their North Carolina county",
+      "Executives and professionals with equity compensation or variable income",
+      "Self-employed borrowers whose returns require careful presentation",
+      "Buyers refinancing a high-balance loan into a different structure",
+    ],
+    highlights: [
+      {
+        t: "Guidelines vary by lender",
+        b: "Reserve requirements, credit expectations and down payment tiers differ meaningfully between jumbo investors, so shopping the file matters more here than anywhere else.",
+      },
+      {
+        t: "Reserves are part of the conversation",
+        b: "Jumbo underwriting commonly looks for post-closing reserves. Planning for that early keeps the file calm later.",
+      },
+      {
+        t: "Documentation depth",
+        b: "Income, assets and the source of your down payment are reviewed closely. Organized documentation shortens the timeline considerably.",
+      },
+    ],
+    process: [
+      { t: "Scope the loan size", b: "We confirm the conforming limit for the county and whether the loan is truly jumbo." },
+      { t: "Structure review", b: "Fixed and adjustable structures, plus split-loan options, are compared." },
+      { t: "Lender matching", b: "The file is matched to investors whose guidelines fit your income and asset profile." },
+      { t: "Full documentation", b: "Income, assets, reserves and credit are assembled before submission." },
+      { t: "Processing & closing", b: "Appraisal — sometimes two — title and underwriting conditions are managed to closing." },
+    ],
+    faqs: [
+      { q: "What makes a loan jumbo?", a: "A loan amount above the conforming limit published for that county. Limits change periodically, so the current figure is confirmed for your property." },
+      { q: "Do jumbo loans require 20% down?", a: "Not necessarily. Down payment tiers vary by lender and by loan size, and lower-down-payment jumbo structures exist for well-documented files." },
+      { q: "Are jumbo rates always higher?", a: "Not automatically. Pricing depends on the investor, the structure and your profile, which is why comparing several options is worthwhile." },
+    ],
+    related: ["conventional-loans", "investment-property-loans", "home-loans"],
+  },
+  {
+    slug: "cash-out-refinance",
+    nav: "Cash-Out Refinance",
+    eyebrow: "Cash-Out Refinance",
+    h1: "Cash-out refinancing in North Carolina",
+    title: "Cash-Out Refinance in North Carolina | Premier Lending NC",
+    description:
+      "How a cash-out refinance works in North Carolina: equity and loan-to-value limits, what the funds are commonly used for, and how to weigh it against a second mortgage or HELOC.",
+    intro:
+      "A cash-out refinance replaces your existing mortgage with a larger one and returns the difference to you at closing. It can be a sound way to consolidate higher-cost debt or fund a project — and it can also be the wrong tool if it resets a low-rate loan. The analysis matters more than the product.",
+    forWho: [
+      "Homeowners with meaningful equity considering consolidation or renovation",
+      "Investors repositioning equity from one property into another",
+      "Homeowners comparing a cash-out refinance against a HELOC or second mortgage",
+      "Homeowners who want the math run before they commit to anything",
+    ],
+    highlights: [
+      {
+        t: "Loan-to-value governs the amount",
+        b: "How much you can access depends on the appraised value, the program and occupancy type. Investment properties are held to tighter limits than primary residences.",
+      },
+      {
+        t: "Compare against the alternatives",
+        b: "If your current rate is low, a second mortgage or HELOC may preserve more value. That comparison is run before a recommendation is made.",
+      },
+      {
+        t: "Total cost, not just payment",
+        b: "Extending a balance over a new term changes lifetime interest. Break-even and total-cost figures are shown alongside the monthly number.",
+      },
+    ],
+    process: [
+      { t: "Goal review", b: "We define what the funds are for and whether refinancing is the right instrument." },
+      { t: "Equity estimate", b: "A working value estimate establishes the likely available amount before an appraisal." },
+      { t: "Option comparison", b: "Cash-out refinance, HELOC and second mortgage are compared on cost and flexibility." },
+      { t: "Documentation", b: "Income, assets and credit are reviewed and the application is prepared." },
+      { t: "Appraisal & closing", b: "Appraisal, title and underwriting conditions are coordinated through to funding." },
+    ],
+    faqs: [
+      { q: "How much equity do I need?", a: "Programs set maximum loan-to-value ratios that differ by occupancy and loan type. Your available amount is calculated from the appraised value and the applicable limit." },
+      { q: "Is a cash-out refinance better than a HELOC?", a: "It depends on your current rate, how much you need and how long you plan to keep the property. Both are compared before any recommendation." },
+      { q: "Are cash-out proceeds taxable?", a: "Loan proceeds are generally not treated as income, but tax treatment of interest depends on how funds are used. Confirm details with a tax professional." },
+    ],
+    related: ["refinancing", "investment-property-loans", "home-loans"],
+  },
 ];
+
 
 export const serviceBySlug = (slug: string) => services.find((s) => s.slug === slug);

@@ -19,6 +19,7 @@ export type Database = {
           contact_preference: string | null
           created_at: string
           credit_band: string | null
+          down_payment: string | null
           email: string
           employment: string | null
           first_name: string
@@ -37,11 +38,13 @@ export type Database = {
           resource: string | null
           source: string | null
           timeline: string | null
+          zip: string | null
         }
         Insert: {
           contact_preference?: string | null
           created_at?: string
           credit_band?: string | null
+          down_payment?: string | null
           email: string
           employment?: string | null
           first_name: string
@@ -60,11 +63,13 @@ export type Database = {
           resource?: string | null
           source?: string | null
           timeline?: string | null
+          zip?: string | null
         }
         Update: {
           contact_preference?: string | null
           created_at?: string
           credit_band?: string | null
+          down_payment?: string | null
           email?: string
           employment?: string | null
           first_name?: string
@@ -83,6 +88,7 @@ export type Database = {
           resource?: string | null
           source?: string | null
           timeline?: string | null
+          zip?: string | null
         }
         Relationships: []
       }

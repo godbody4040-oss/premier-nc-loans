@@ -42,11 +42,11 @@ export function Hero() {
         >
           <p className="eyebrow text-gold">North Carolina Mortgage Broker</p>
           <h1 className="display mt-7 text-[2.5rem] text-white sm:text-[3.5rem] lg:text-[4.4rem]">
-            Your next move
+            Your Next Home
             <br />
-            starts with the
+            Starts With the
             <br />
-            right financing.
+            Right Mortgage.
           </h1>
           <p className="mt-8 max-w-xl text-base leading-relaxed text-white/70">
             Whether you're purchasing a home, refinancing, or exploring your next investment property,
@@ -59,7 +59,7 @@ export function Hero() {
               className="hover-scale shadow-[var(--shadow-luxe)]"
               onClick={() => track("hero_cta_prequal_click", { location: "hero" })}
             >
-              Get Pre-Qualified
+              Get My Free Mortgage Quote
             </CTA>
             <CTA
               to="/calculator"
@@ -71,6 +71,7 @@ export function Hero() {
               Calculate My Payment
             </CTA>
           </div>
+
           <p className="mt-8 text-[0.7rem] uppercase tracking-[0.22em] text-white/55">
             Home Purchase <span className="text-gold">•</span> Refinance <span className="text-gold">•</span>{" "}
             Investment
