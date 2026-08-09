@@ -25,6 +25,11 @@ export type TrackEvent =
   | "resource_view"
   | "investor_cta_click"
   | "talk_with_jorge_click"
+  | "tool_open"
+  | "tool_interact"
+  | "tool_cta_click"
+  | "compare_program_select"
+  | "compare_cta_click"
   | "page_view";
 
 type Params = Record<string, string | number | boolean | undefined>;
