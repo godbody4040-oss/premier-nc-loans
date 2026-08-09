@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { PageHero, SiteLayout } from "@/components/site/SiteLayout";
 import { Calculator } from "@/components/site/Calculator";
+import { MortgageTools } from "@/components/site/MortgageTools";
 import { FAQ } from "@/components/site/FAQ";
 import { FinalCTA } from "@/components/site/FinalCTA";
 
@@ -32,6 +33,7 @@ function Page() {
         body="Adjust the inputs to explore how price, down payment, rate and term can affect an estimated monthly payment."
       />
       <Calculator bare />
+      <MortgageTools />
       <FAQ />
       <FinalCTA />
     </SiteLayout>
