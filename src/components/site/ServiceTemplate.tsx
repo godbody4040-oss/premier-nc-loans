@@ -69,7 +69,7 @@ export function ServiceTemplate({ service }: { service: Service }) {
                   </p>
                   <div className="mt-7 space-y-3">
                     <CTA to="/contact" variant="gold" className="w-full">
-                      Get Pre-Qualified
+                      Get My Free Mortgage Quote
                     </CTA>
                     <CTA to="/calculator" variant="outlineLight" arrow={false} className="w-full">
                       Calculate My Payment

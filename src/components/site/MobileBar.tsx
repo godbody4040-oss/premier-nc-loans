@@ -16,7 +16,7 @@ export function MobileBar() {
         onClick={() => track("hero_cta_prequal_click", { location: "mobile_bar" })}
         className="flex min-h-14 items-center justify-center bg-gold text-[0.72rem] font-semibold uppercase tracking-[0.18em] text-navy transition-colors active:bg-gold-light"
       >
-        Get Pre-Qualified
+        Get My Free Quote
       </Link>
     </div>
   );
