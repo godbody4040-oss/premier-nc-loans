@@ -76,6 +76,7 @@ function Field({
             value={shown}
             onChange={(e) => {
               trackOnce("calculator_interact");
+              trackOnce("calculator_start");
               const raw = e.target.value.replace(/[^0-9.]/g, "");
               setDraft(raw);
               if (raw !== "" && !raw.endsWith(".")) onChange(clamp(Number(raw)));
@@ -98,6 +99,7 @@ function Field({
         step={step}
         onChange={(e) => {
           trackOnce("calculator_interact");
+          trackOnce("calculator_start");
           setDraft(null);
           onChange(Number(e.target.value));
         }}
@@ -259,7 +261,10 @@ export function Calculator({ bare = false }: { bare?: boolean } = {}) {
                   to="/contact"
                   variant="gold"
                   className="w-full"
-                  onClick={() => track("calculator_cta_click", { estimated_payment: Math.round(total) })}
+                  onClick={() => {
+                    track("calculator_complete", { estimated_payment: Math.round(total) });
+                    track("calculator_cta_click", { estimated_payment: Math.round(total) });
+                  }}
                 >
                   Discuss My Financing Options
                 </CTA>

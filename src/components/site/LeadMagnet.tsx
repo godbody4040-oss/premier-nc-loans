@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { track } from "@/lib/analytics";
+import { track, trackOnceFor } from "@/lib/analytics";
 import { submitLead } from "@/lib/leads";
 import { Reveal } from "./Reveal";
 import { CTA } from "./ui";
@@ -53,6 +53,7 @@ export function LeadMagnet({
       return;
     }
     track("resource_download", { resource });
+    track("resource_download_complete", { resource });
     setStatus("done");
   };
 
@@ -86,7 +87,12 @@ export function LeadMagnet({
                   </p>
                 </div>
               ) : (
-                <form onSubmit={submit} className="space-y-5" noValidate>
+                <form
+                  onSubmit={submit}
+                  className="space-y-5"
+                  noValidate
+                  onFocus={() => trackOnceFor(resource, "resource_download_start", { resource })}
+                >
                   <div>
                     <label
                       htmlFor="lm-first"
