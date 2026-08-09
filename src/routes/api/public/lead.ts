@@ -16,7 +16,10 @@ const leadSchema = z.object({
   goal: optional(80),
   propertyType: optional(80),
   location: optional(120),
+  zip: optional(10),
   priceRange: optional(80),
+  downPayment: optional(80),
+
   timeline: optional(80),
   employment: optional(80),
   creditBand: optional(80),
@@ -70,7 +73,10 @@ export const Route = createFileRoute("/api/public/lead")({
             goal: lead.goal || null,
             property_type: lead.propertyType || null,
             location: lead.location || null,
+            zip: lead.zip || null,
             price_range: lead.priceRange || null,
+            down_payment: lead.downPayment || null,
+
             timeline: lead.timeline || null,
             employment: lead.employment || null,
             credit_band: lead.creditBand || null,

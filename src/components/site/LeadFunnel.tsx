@@ -5,35 +5,31 @@ import { Reveal } from "./Reveal";
 import { CTA, Eyebrow } from "./ui";
 
 const goals = ["Buy a Home", "Refinance", "Buy an Investment Property", "Just Exploring"];
-const propertyTypes = ["Single Family", "Townhome or Condo", "Multi-Unit", "Not Sure Yet"];
+const creditBands = [
+  "Excellent (740+)",
+  "Good (700–739)",
+  "Fair (640–699)",
+  "Building (below 640)",
+  "Not Sure",
+];
 const priceRanges = ["Under $250k", "$250k – $450k", "$450k – $750k", "$750k – $1.2M", "Over $1.2M", "Not Sure"];
+const downPayments = ["Less than 3%", "3% – 5%", "5% – 10%", "10% – 20%", "20% or more", "Not Sure"];
 const timelines = ["As Soon As Possible", "1–3 Months", "3–6 Months", "6+ Months", "Not Sure"];
-const employment = ["W-2 Employee", "Self-Employed", "Business Owner", "Retired", "Other"];
-const creditBands = ["Excellent", "Good", "Fair", "Rebuilding", "Prefer Not to Say"];
 const contactPrefs = ["Phone", "Email", "Either"];
 
-const STEPS = [
-  "Your Goal",
-  "Timeline",
-  "Property",
-  "About You",
-  "Contact",
-  "Review",
-] as const;
+const STEPS = ["Your Goal", "Credit", "Price", "Down Payment", "Timeline", "Contact"] as const;
 
 type Form = {
   goal: string;
-  propertyType: string;
-  location: string;
-  priceRange: string;
-  timeline: string;
-  employment: string;
   creditBand: string;
-  firstTime: string;
+  priceRange: string;
+  downPayment: string;
+  timeline: string;
   first: string;
   last: string;
   email: string;
   phone: string;
+  zip: string;
   contactPreference: string;
   message: string;
   company: string;
@@ -41,17 +37,15 @@ type Form = {
 
 const empty: Form = {
   goal: "",
-  propertyType: "",
-  location: "",
-  priceRange: "",
-  timeline: "",
-  employment: "",
   creditBand: "",
-  firstTime: "",
+  priceRange: "",
+  downPayment: "",
+  timeline: "",
   first: "",
   last: "",
   email: "",
   phone: "",
+  zip: "",
   contactPreference: "",
   message: "",
   company: "",
@@ -134,17 +128,17 @@ export function LeadFunnel() {
   const validateStep = (s: number) => {
     const e: Errors = {};
     if (s === 0 && !form.goal) e.goal = "Select what you're looking to accomplish.";
-    if (s === 1 && !form.timeline) e.timeline = "Select a timeline.";
-    if (s === 2) {
-      if (!form.propertyType) e.propertyType = "Select a property type.";
-      if (form.location.length > 120) e.location = "That location is too long.";
-    }
-    if (s === 4) {
+    if (s === 1 && !form.creditBand) e.creditBand = "Choose the range that fits best.";
+    if (s === 2 && !form.priceRange) e.priceRange = "Select an estimated price range.";
+    if (s === 3 && !form.downPayment) e.downPayment = "Select a down payment range.";
+    if (s === 4 && !form.timeline) e.timeline = "Select a timeline.";
+    if (s === 5) {
       if (!form.first.trim() || form.first.length > 60) e.first = "Enter your first name.";
       if (!form.last.trim() || form.last.length > 60) e.last = "Enter your last name.";
       if (!/^[\d\s().+-]{10,20}$/.test(form.phone.trim())) e.phone = "Enter a valid phone number.";
       if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(form.email.trim()) || form.email.length > 255)
         e.email = "Enter a valid email address.";
+      if (form.zip && !/^\d{5}$/.test(form.zip.trim())) e.zip = "Enter a 5-digit ZIP code.";
       if (form.message.length > 1000) e.message = "Message is too long.";
     }
     setErrors(e);
@@ -161,7 +155,7 @@ export function LeadFunnel() {
 
   const submit = async () => {
     if (form.company) return; // honeypot
-    for (let s = 0; s <= 4; s++) {
+    for (let s = 0; s < STEPS.length; s++) {
       if (!validateStep(s)) {
         setStep(s);
         return;
@@ -185,12 +179,22 @@ export function LeadFunnel() {
 
   const progress = status === "done" ? 100 : ((step + 1) / STEPS.length) * 100;
 
+  const summary = (
+    [
+      ["Goal", form.goal],
+      ["Credit", form.creditBand],
+      ["Price Range", form.priceRange],
+      ["Down Payment", form.downPayment],
+      ["Timeline", form.timeline],
+    ] as const
+  ).filter(([, v]) => v);
+
   return (
     <section className="bg-white py-24 lg:py-32" id="start">
       <div className="mx-auto max-w-[1100px] px-5 lg:px-10">
         <Reveal>
           <div className="text-center">
-            <Eyebrow>Get Pre-Qualified</Eyebrow>
+            <Eyebrow>Get My Free Mortgage Quote</Eyebrow>
             <p className="mt-5 text-sm text-muted-foreground">
               Six short steps. No credit pull, no obligation.
             </p>
@@ -211,6 +215,18 @@ export function LeadFunnel() {
                 style={{ width: `${progress}%` }}
               />
             </div>
+            <ol className="mt-4 hidden gap-2 sm:grid sm:grid-cols-6">
+              {STEPS.map((s, i) => (
+                <li
+                  key={s}
+                  className={`truncate text-[0.58rem] uppercase tracking-[0.14em] transition-colors ${
+                    i <= step || status === "done" ? "text-navy" : "text-muted-foreground/60"
+                  }`}
+                >
+                  {s}
+                </li>
+              ))}
+            </ol>
           </div>
         </Reveal>
 
@@ -267,21 +283,31 @@ export function LeadFunnel() {
                   </div>
                 ) : null}
 
+                {step === 1 ? (
+                  <div>
+                    <StepHeading
+                      title="How would you describe your credit?"
+                      hint="An estimate is fine — nothing here triggers a credit check."
+                    />
+                    <ChoiceGrid
+                      name="Credit"
+                      options={creditBands}
+                      value={form.creditBand}
+                      onChange={(v) => set("creditBand", v)}
+                      columns={3}
+                    />
+                    {errors.creditBand ? (
+                      <p className="mt-3 text-xs text-destructive">{errors.creditBand}</p>
+                    ) : null}
+                  </div>
+                ) : null}
+
                 {step === 2 ? (
                   <div>
-                    <StepHeading title="Tell us about the property." hint="Estimates are completely fine." />
-                    <p className="mt-8 text-sm font-medium text-navy">Property type</p>
-                    <ChoiceGrid
-                      name="Property type"
-                      options={propertyTypes}
-                      value={form.propertyType}
-                      onChange={(v) => set("propertyType", v)}
+                    <StepHeading
+                      title="What price range are you considering?"
+                      hint="A rough range is all we need to start."
                     />
-                    {errors.propertyType ? (
-                      <p className="mt-3 text-xs text-destructive">{errors.propertyType}</p>
-                    ) : null}
-
-                    <p className="mt-10 text-sm font-medium text-navy">Estimated price range</p>
                     <ChoiceGrid
                       name="Price range"
                       options={priceRanges}
@@ -289,26 +315,32 @@ export function LeadFunnel() {
                       onChange={(v) => set("priceRange", v)}
                       columns={3}
                     />
-
-                    <div className="mt-10">
-                      <label className={labelCls} htmlFor="pf-location">
-                        City or County (optional)
-                      </label>
-                      <input
-                        id="pf-location"
-                        value={form.location}
-                        maxLength={120}
-                        onChange={(e) => set("location", e.target.value)}
-                        className={`${inputCls} mt-2`}
-                      />
-                      {errors.location ? (
-                        <p className="mt-2 text-xs text-destructive">{errors.location}</p>
-                      ) : null}
-                    </div>
+                    {errors.priceRange ? (
+                      <p className="mt-3 text-xs text-destructive">{errors.priceRange}</p>
+                    ) : null}
                   </div>
                 ) : null}
 
-                {step === 1 ? (
+                {step === 3 ? (
+                  <div>
+                    <StepHeading
+                      title="How much are you planning to put down?"
+                      hint="Down payment shapes which programs are worth reviewing first."
+                    />
+                    <ChoiceGrid
+                      name="Down payment"
+                      options={downPayments}
+                      value={form.downPayment}
+                      onChange={(v) => set("downPayment", v)}
+                      columns={3}
+                    />
+                    {errors.downPayment ? (
+                      <p className="mt-3 text-xs text-destructive">{errors.downPayment}</p>
+                    ) : null}
+                  </div>
+                ) : null}
+
+                {step === 4 ? (
                   <div>
                     <StepHeading
                       title="When are you looking to move?"
@@ -327,44 +359,24 @@ export function LeadFunnel() {
                   </div>
                 ) : null}
 
-                {step === 3 ? (
+                {step === 5 ? (
                   <div>
-                    <StepHeading
-                      title="A little about you."
-                      hint="General information only — no account numbers or documents."
-                    />
-                    <p className="mt-8 text-sm font-medium text-navy">Employment type</p>
-                    <ChoiceGrid
-                      name="Employment"
-                      options={employment}
-                      value={form.employment}
-                      onChange={(v) => set("employment", v)}
-                      columns={3}
-                    />
-                    <p className="mt-10 text-sm font-medium text-navy">
-                      How would you describe your credit?
-                    </p>
-                    <ChoiceGrid
-                      name="Credit"
-                      options={creditBands}
-                      value={form.creditBand}
-                      onChange={(v) => set("creditBand", v)}
-                      columns={3}
-                    />
-                    <p className="mt-10 text-sm font-medium text-navy">Is this your first home purchase?</p>
-                    <ChoiceGrid
-                      name="First-time buyer"
-                      options={["Yes", "No", "Not Applicable"]}
-                      value={form.firstTime}
-                      onChange={(v) => set("firstTime", v)}
-                      columns={3}
-                    />
-                  </div>
-                ) : null}
+                    <StepHeading title="How can we reach you?" hint="Last step — then we'll take it from here." />
 
-                {step === 4 ? (
-                  <div>
-                    <StepHeading title="How can we reach you?" />
+                    {summary.length ? (
+                      <dl className="mt-8 flex flex-wrap gap-2">
+                        {summary.map(([k, v]) => (
+                          <div
+                            key={k}
+                            className="border border-border bg-white px-4 py-2 text-[0.7rem] text-navy"
+                          >
+                            <dt className="inline uppercase tracking-[0.14em] text-muted-foreground">{k}: </dt>
+                            <dd className="inline font-medium">{v}</dd>
+                          </div>
+                        ))}
+                      </dl>
+                    ) : null}
+
                     <div className="mt-8 grid gap-6 sm:grid-cols-2">
                       {(
                         [
@@ -372,6 +384,7 @@ export function LeadFunnel() {
                           ["last", "Last Name", "text"],
                           ["phone", "Phone", "tel"],
                           ["email", "Email", "email"],
+                          ["zip", "ZIP Code (optional)", "text"],
                         ] as const
                       ).map(([k, l, type]) => (
                         <div key={k}>
@@ -382,7 +395,8 @@ export function LeadFunnel() {
                             id={`pf-${k}`}
                             type={type}
                             value={form[k]}
-                            maxLength={255}
+                            maxLength={k === "zip" ? 5 : 255}
+                            inputMode={k === "zip" ? "numeric" : undefined}
                             autoComplete={
                               k === "first"
                                 ? "given-name"
@@ -390,7 +404,9 @@ export function LeadFunnel() {
                                   ? "family-name"
                                   : k === "phone"
                                     ? "tel"
-                                    : "email"
+                                    : k === "zip"
+                                      ? "postal-code"
+                                      : "email"
                             }
                             onChange={(e) => set(k, e.target.value)}
                             aria-invalid={Boolean(errors[k])}
@@ -435,40 +451,6 @@ export function LeadFunnel() {
                       onChange={(e) => set("company", e.target.value)}
                       className="hidden"
                     />
-                  </div>
-                ) : null}
-
-                {step === 5 ? (
-                  <div>
-                    <StepHeading title="Review and submit." hint="Check anything you'd like to adjust." />
-                    <dl className="mt-8 divide-y divide-border border-y border-border">
-                      {(
-                        [
-                          ["Goal", form.goal],
-                          ["Property Type", form.propertyType],
-                          ["Price Range", form.priceRange],
-                          ["Location", form.location],
-                          ["Timeline", form.timeline],
-                          ["Employment", form.employment],
-                          ["Credit", form.creditBand],
-                          ["First Purchase", form.firstTime],
-                          ["Name", `${form.first} ${form.last}`.trim()],
-                          ["Phone", form.phone],
-                          ["Email", form.email],
-                          ["Preferred Contact", form.contactPreference],
-                          ["Notes", form.message],
-                        ] as const
-                      )
-                        .filter(([, v]) => v)
-                        .map(([k, v]) => (
-                          <div key={k} className="grid grid-cols-[minmax(0,1fr)_auto] gap-4 py-4">
-                            <dt className="min-w-0 text-[0.68rem] uppercase tracking-[0.16em] text-muted-foreground">
-                              {k}
-                            </dt>
-                            <dd className="min-w-0 break-words text-right text-sm text-navy">{v}</dd>
-                          </div>
-                        ))}
-                    </dl>
 
                     <p className="mt-8 text-xs leading-relaxed text-muted-foreground">
                       Your information is submitted privately and used only to contact you about your
@@ -501,7 +483,7 @@ export function LeadFunnel() {
                       onClick={submit}
                       className={status === "sending" ? "pointer-events-none opacity-60" : ""}
                     >
-                      {status === "sending" ? "Submitting…" : "Submit My Request"}
+                      {status === "sending" ? "Submitting…" : "Get My Free Mortgage Quote"}
                     </CTA>
                   )}
                 </div>

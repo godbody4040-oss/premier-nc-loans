@@ -28,7 +28,9 @@ export type Lead = {
   goal?: string;
   propertyType?: string;
   location?: string;
+  zip?: string;
   priceRange?: string;
+  downPayment?: string;
   timeline?: string;
   employment?: string;
   creditBand?: string;
@@ -41,6 +43,7 @@ export type Lead = {
   /** Honeypot — must remain empty. */
   company?: string;
 };
+
 
 export async function submitLead(lead: Lead): Promise<{ ok: boolean; error?: string }> {
   try {
