@@ -188,18 +188,18 @@ export function Calculator({ bare = false }: { bare?: boolean } = {}) {
                   Reset
                 </button>
               </div>
-              <Field label="Home Price" value={price} onChange={setPrice} min={50000} max={3000000} step={5000} prefix="$" />
+              <Field label="Home Price" value={price} onChange={setPrice} min={50000} max={3000000} step={5000} prefix="$" grouped />
               <div>
-                <Field label="Down Payment" value={down} onChange={setDown} min={0} max={price} step={2500} prefix="$" />
+                <Field label="Down Payment" value={down} onChange={setDown} min={0} max={price} step={2500} prefix="$" grouped />
                 <p className="mt-2 text-[0.7rem] uppercase tracking-[0.14em] text-gold">
                   {downPct.toFixed(1)}% down
                 </p>
               </div>
               <Field label="Interest Rate" value={rate} onChange={setRate} min={1} max={12} step={0.125} suffix="%" />
               <Field label="Loan Term (years)" value={term} onChange={setTerm} min={5} max={40} step={5} />
-              <Field label="Property Taxes / yr" value={taxes} onChange={setTaxes} min={0} max={40000} step={100} prefix="$" />
-              <Field label="Homeowners Insurance / yr" value={insurance} onChange={setInsurance} min={0} max={20000} step={100} prefix="$" />
-              <Field label="HOA / mo" value={hoa} onChange={setHoa} min={0} max={2000} step={10} prefix="$" />
+              <Field label="Property Taxes / yr" value={taxes} onChange={setTaxes} min={0} max={40000} step={100} prefix="$" grouped />
+              <Field label="Homeowners Insurance / yr" value={insurance} onChange={setInsurance} min={0} max={20000} step={100} prefix="$" grouped />
+              <Field label="HOA / mo" value={hoa} onChange={setHoa} min={0} max={2000} step={10} prefix="$" grouped />
             </div>
           </Reveal>
 
