@@ -3,6 +3,7 @@ import { Link } from "@tanstack/react-router";
 import heroImg from "@/assets/hero-home.jpg";
 import investorImg from "@/assets/investor.jpg";
 import finalImg from "@/assets/final-cta.jpg";
+import { track } from "@/lib/analytics";
 import { Reveal } from "./Reveal";
 import { Arrow, SectionHead } from "./ui";
 
@@ -15,6 +16,8 @@ type Path = {
   to: string;
   image: string;
   alt: string;
+  /** Existing pages that are genuinely relevant to this selection. */
+  links: { label: string; to: string }[];
 };
 
 const paths: Path[] = [
@@ -27,6 +30,11 @@ const paths: Path[] = [
     to: "/home-buyers",
     image: heroImg,
     alt: "North Carolina home exterior at dusk",
+    links: [
+      { label: "First-time buyer guide", to: "/first-time-home-buyers" },
+      { label: "Estimate a monthly payment", to: "/calculator" },
+      { label: "Home affordability calculator", to: "/mortgage-tools" },
+    ],
   },
   {
     key: "buying",
@@ -37,6 +45,11 @@ const paths: Path[] = [
     to: "/mortgage-solutions",
     image: finalImg,
     alt: "Elegant residential entrance",
+    links: [
+      { label: "Compare mortgage options", to: "/compare-loan-programs" },
+      { label: "Pre-approval overview", to: "/mortgage-pre-approval" },
+      { label: "Down payment calculator", to: "/mortgage-tools" },
+    ],
   },
   {
     key: "refinance",
@@ -47,6 +60,11 @@ const paths: Path[] = [
     to: "/mortgage-solutions",
     image: heroImg,
     alt: "North Carolina home exterior at dusk",
+    links: [
+      { label: "Refinancing overview", to: "/refinancing" },
+      { label: "Cash-out refinance", to: "/cash-out-refinance" },
+      { label: "Refinance break-even calculator", to: "/mortgage-tools" },
+    ],
   },
   {
     key: "investor",
@@ -57,6 +75,11 @@ const paths: Path[] = [
     to: "/investors",
     image: investorImg,
     alt: "Modern multi-unit residential property",
+    links: [
+      { label: "Investment property financing", to: "/investment-property-loans" },
+      { label: "For investors", to: "/investors" },
+      { label: "Payment calculator", to: "/calculator" },
+    ],
   },
   {
     key: "self-employed",
@@ -67,6 +90,11 @@ const paths: Path[] = [
     to: "/contact",
     image: investorImg,
     alt: "Modern multi-unit residential property",
+    links: [
+      { label: "Loan programs", to: "/loan-programs" },
+      { label: "Compare mortgage options", to: "/compare-loan-programs" },
+      { label: "Resource center", to: "/resources" },
+    ],
   },
   {
     key: "unsure",
@@ -77,6 +105,11 @@ const paths: Path[] = [
     to: "/contact",
     image: finalImg,
     alt: "Elegant residential entrance",
+    links: [
+      { label: "Resource center", to: "/resources" },
+      { label: "Mortgage tools", to: "/mortgage-tools" },
+      { label: "Home buyer roadmap", to: "/home-buyers" },
+    ],
   },
 ];
 
@@ -112,7 +145,10 @@ export function FindYourPath() {
                       type="button"
                       role="tab"
                       aria-selected={selected}
-                      onClick={() => setActive(i)}
+                      onClick={() => {
+                        setActive(i);
+                        track("path_select", { path: p.key, label: p.label });
+                      }}
                       className={`group grid w-full grid-cols-[minmax(0,1fr)_auto] items-center gap-4 py-5 text-left transition-colors duration-300 ${
                         selected ? "text-navy" : "text-muted-foreground hover:text-navy"
                       }`}
@@ -158,8 +194,23 @@ export function FindYourPath() {
               </div>
               <div className="p-8 lg:p-10">
                 <p className="text-base leading-relaxed text-muted-foreground">{current.body}</p>
+                <ul className="mt-8 grid gap-3 border-t border-border pt-6 sm:grid-cols-2">
+                  {current.links.map((l) => (
+                    <li key={l.to + l.label}>
+                      <Link
+                        to={l.to}
+                        onClick={() => track("path_select", { path: current.key, target: l.to })}
+                        className="arrow-cta inline-flex min-h-11 items-center text-sm text-muted-foreground transition-colors hover:text-gold"
+                      >
+                        {l.label}
+                        <Arrow />
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
                 <Link
                   to={current.to}
+                  onClick={() => track("path_select", { path: current.key, target: current.to, primary: true })}
                   className="arrow-cta mt-8 text-[0.68rem] font-semibold uppercase tracking-[0.16em] text-navy transition-colors hover:text-gold"
                 >
                   {current.next}
