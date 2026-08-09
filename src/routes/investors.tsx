@@ -1,4 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { serviceSchema, breadcrumbSchema } from "@/lib/seo";
 import { PageHero, SiteLayout } from "@/components/site/SiteLayout";
 import { Investors } from "@/components/site/Investors";
 import { Calculator } from "@/components/site/Calculator";
@@ -19,6 +20,23 @@ export const Route = createFileRoute("/investors")({
       { property: "og:url", content: "/investors" },
     ],
     links: [{ rel: "canonical", href: "/investors" }],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify(
+          serviceSchema({ name: "Investment Property Financing", description, path: "/investors" }),
+        ),
+      },
+      {
+        type: "application/ld+json",
+        children: JSON.stringify(
+          breadcrumbSchema([
+            { name: "Home", path: "/" },
+            { name: "Investment Property Financing", path: "/investors" },
+          ]),
+        ),
+      },
+    ],
   }),
   component: Page,
 });

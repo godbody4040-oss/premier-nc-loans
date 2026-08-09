@@ -1,4 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { serviceSchema, breadcrumbSchema } from "@/lib/seo";
 import { PageHero, SiteLayout } from "@/components/site/SiteLayout";
 import { Journey } from "@/components/site/Journey";
 import { Difference } from "@/components/site/Difference";
@@ -20,6 +21,23 @@ export const Route = createFileRoute("/home-buyers")({
       { property: "og:url", content: "/home-buyers" },
     ],
     links: [{ rel: "canonical", href: "/home-buyers" }],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify(
+          serviceSchema({ name: "Home Buyer Mortgage Guidance", description, path: "/home-buyers" }),
+        ),
+      },
+      {
+        type: "application/ld+json",
+        children: JSON.stringify(
+          breadcrumbSchema([
+            { name: "Home", path: "/" },
+            { name: "Home Buyer Mortgage Guidance", path: "/home-buyers" },
+          ]),
+        ),
+      },
+    ],
   }),
   component: Page,
 });
