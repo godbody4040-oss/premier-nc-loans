@@ -42,6 +42,7 @@ function Field({
   step,
   prefix,
   suffix,
+  grouped = false,
 }: {
   label: string;
   value: number;
@@ -51,25 +52,37 @@ function Field({
   step: number;
   prefix?: string;
   suffix?: string;
+  /** Show thousands separators (currency-style fields). */
+  grouped?: boolean;
 }) {
+  const safe = Number.isFinite(value) ? value : 0;
+  const clamp = (n: number) => Math.min(max, Math.max(min, Number.isFinite(n) ? n : min));
+  const [draft, setDraft] = useState<string | null>(null);
+  const shown =
+    draft ?? (grouped ? safe.toLocaleString("en-US", { maximumFractionDigits: 0 }) : String(safe));
+
   return (
     <div className="group">
       <div className="grid grid-cols-[minmax(0,1fr)_auto] items-center gap-3">
         <label className="min-w-0 truncate text-[0.7rem] uppercase tracking-[0.16em] text-muted-foreground transition-colors duration-300 group-focus-within:text-navy">
           {label}
         </label>
-        <div className="flex shrink-0 items-center border border-border bg-white px-3 py-1.5 transition-colors duration-300 focus-within:border-gold">
+        <div className="flex shrink-0 items-center border border-border bg-white px-3 py-2 transition-colors duration-300 focus-within:border-gold">
           {prefix ? <span className="text-sm text-muted-foreground">{prefix}</span> : null}
           <input
-            type="number"
+            type="text"
             inputMode="decimal"
-            value={Number.isFinite(value) ? value : 0}
-            min={min}
-            max={max}
-            step={step}
+            aria-label={label}
+            value={shown}
             onChange={(e) => {
               trackOnce("calculator_interact");
-              onChange(Number(e.target.value));
+              const raw = e.target.value.replace(/[^0-9.]/g, "");
+              setDraft(raw);
+              if (raw !== "" && !raw.endsWith(".")) onChange(clamp(Number(raw)));
+            }}
+            onBlur={() => {
+              setDraft(null);
+              onChange(clamp(safe));
             }}
             className="w-20 bg-transparent text-right text-sm font-medium text-navy outline-none sm:w-24"
           />
@@ -78,13 +91,14 @@ function Field({
       </div>
       <input
         type="range"
-        aria-label={label}
-        value={Number.isFinite(value) ? value : 0}
+        aria-label={`${label} slider`}
+        value={safe}
         min={min}
         max={max}
         step={step}
         onChange={(e) => {
           trackOnce("calculator_interact");
+          setDraft(null);
           onChange(Number(e.target.value));
         }}
         className="mt-3 h-1 w-full cursor-pointer appearance-none rounded-full bg-border accent-[oklch(0.75_0.077_84)]"
@@ -92,6 +106,7 @@ function Field({
     </div>
   );
 }
+
 
 const DEFAULTS = {
   price: 450000,
