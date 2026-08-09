@@ -183,7 +183,7 @@ export function Calculator({ bare = false }: { bare?: boolean } = {}) {
                 <button
                   type="button"
                   onClick={reset}
-                  className="text-[0.64rem] font-semibold uppercase tracking-[0.16em] text-muted-foreground transition-colors hover:text-gold"
+                  className="-mr-2 px-2 py-2 text-[0.64rem] font-semibold uppercase tracking-[0.16em] text-muted-foreground transition-colors hover:text-gold"
                 >
                   Reset
                 </button>
