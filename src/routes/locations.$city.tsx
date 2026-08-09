@@ -1,4 +1,4 @@
-import { createFileRoute, notFound } from "@tanstack/react-router";
+import { createFileRoute, notFound, redirect } from "@tanstack/react-router";
 import { LocationTemplate } from "@/components/site/LocationTemplate";
 import { NotFoundPanel } from "@/components/site/NotFoundPanel";
 import { locationBySlug } from "@/content/locations";
@@ -7,9 +7,17 @@ import { breadcrumbSchema, faqSchema, localAreaServiceSchema, pageHead } from "@
 export const Route = createFileRoute("/locations/$city")({
   loader: ({ params }) => {
     const location = locationBySlug(params.city);
-    if (!location) throw notFound();
+    if (!location) {
+      // Friendly aliases: /locations/raleigh -> /locations/raleigh-nc
+      const alias = locationBySlug(`${params.city.replace(/-nc$/, "")}-nc`);
+      if (alias) {
+        throw redirect({ to: "/locations/$city", params: { city: alias.slug } });
+      }
+      throw notFound();
+    }
     return { location };
   },
+
   head: ({ params, loaderData }) => {
     if (!loaderData) {
       return {
