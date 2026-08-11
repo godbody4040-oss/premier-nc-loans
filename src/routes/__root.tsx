@@ -13,6 +13,9 @@ import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { organizationSchema } from "../lib/structured-data";
 import { Analytics } from "../components/site/Analytics";
+import { LanguageProvider } from "../lib/i18n";
+import { Translator } from "../components/site/Translator";
+
 
 
 const notFoundLinks = [
@@ -175,10 +178,14 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <Analytics />
-      {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
-      <Outlet />
+      <LanguageProvider>
+        <Analytics />
+        <Translator />
+        {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
+        <Outlet />
+      </LanguageProvider>
     </QueryClientProvider>
   );
 
 }
+

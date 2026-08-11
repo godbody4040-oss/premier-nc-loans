@@ -1,6 +1,8 @@
-import { Link } from "@tanstack/react-router";
+import { Link, useRouterState } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { CTA } from "./ui";
+import { LanguageSwitcher } from "./LanguageSwitcher";
+
 
 const links = [
   { to: "/", label: "Home" },
@@ -18,6 +20,8 @@ const links = [
 export function Nav({ transparent = false }: { transparent?: boolean }) {
   const [scrolled, setScrolled] = useState(!transparent);
   const [open, setOpen] = useState(false);
+  const isHome = useRouterState({ select: (s) => s.location.pathname === "/" });
+
 
   useEffect(() => {
     if (!transparent) return;
@@ -58,10 +62,13 @@ export function Nav({ transparent = false }: { transparent?: boolean }) {
               {l.label}
             </Link>
           ))}
+          {isHome ? <LanguageSwitcher /> : null}
           <CTA to="/contact" variant="gold" className="!px-5 !py-2.5">
             Free Mortgage Quote
           </CTA>
         </nav>
+
+        <div className="flex items-center gap-2 xl:hidden">
 
         <button
           type="button"
@@ -70,6 +77,7 @@ export function Nav({ transparent = false }: { transparent?: boolean }) {
           onClick={() => setOpen((v) => !v)}
           className="grid h-11 w-11 shrink-0 place-items-center border border-white/25 text-white xl:hidden"
         >
+
           <span className="relative block h-3 w-5">
             <span
               className={`absolute left-0 block h-px w-5 bg-current transition-transform duration-300 ${
@@ -88,7 +96,17 @@ export function Nav({ transparent = false }: { transparent?: boolean }) {
             />
           </span>
         </button>
+        </div>
       </div>
+
+      {isHome ? (
+        <div className="mx-auto flex max-w-[1400px] justify-end px-5 pb-2 xl:hidden">
+          <LanguageSwitcher />
+        </div>
+      ) : null}
+
+
+
 
       <div
         className={`overflow-hidden bg-navy transition-[max-height] duration-500 xl:hidden ${
