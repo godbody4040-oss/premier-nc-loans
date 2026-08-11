@@ -69,7 +69,7 @@ export function Nav({ transparent = false }: { transparent?: boolean }) {
         </nav>
 
         <div className="flex items-center gap-2 xl:hidden">
-          {isHome ? <LanguageSwitcher /> : null}
+
         <button
           type="button"
           aria-label="Toggle menu"
