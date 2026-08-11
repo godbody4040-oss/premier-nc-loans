@@ -99,6 +99,14 @@ export function Nav({ transparent = false }: { transparent?: boolean }) {
         </div>
       </div>
 
+      {isHome ? (
+        <div className="mx-auto flex max-w-[1400px] justify-end px-5 pb-2 xl:hidden">
+          <LanguageSwitcher />
+        </div>
+      ) : null}
+
+      </div>
+
 
       <div
         className={`overflow-hidden bg-navy transition-[max-height] duration-500 xl:hidden ${
