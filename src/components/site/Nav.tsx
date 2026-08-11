@@ -105,7 +105,7 @@ export function Nav({ transparent = false }: { transparent?: boolean }) {
         </div>
       ) : null}
 
-      </div>
+
 
 
       <div
