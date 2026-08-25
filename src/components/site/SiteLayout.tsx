@@ -33,7 +33,7 @@ export function PageHero({
   crumbs?: Crumb[];
 }) {
   return (
-    <section className="bg-navy pb-20 pt-36 lg:pb-28 lg:pt-44">
+    <section className="bg-navy pb-14 pt-24 lg:pb-20 lg:pt-32">
       <div className="mx-auto max-w-[1400px] px-5 lg:px-10">
         {crumbs ? (
           <div className="mb-7">

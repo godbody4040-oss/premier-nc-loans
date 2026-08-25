@@ -20,7 +20,7 @@ export function Hero() {
   }, []);
 
   return (
-    <section className="relative flex min-h-[92svh] items-center overflow-hidden bg-navy">
+    <section className="relative flex min-h-[88svh] items-center overflow-hidden bg-navy">
       <img
         src={heroImg}
         alt="Luxury North Carolina home at dusk"
@@ -32,7 +32,7 @@ export function Hero() {
       />
       <div className="absolute inset-0 bg-[linear-gradient(100deg,rgba(7,17,31,0.94)_0%,rgba(7,17,31,0.78)_45%,rgba(7,17,31,0.45)_100%)]" />
 
-      <div className="relative mx-auto grid w-full max-w-[1400px] gap-12 px-5 pb-20 pt-28 lg:grid-cols-[1.15fr_0.85fr] lg:items-center lg:gap-14 lg:px-10 lg:pb-24 lg:pt-36">
+      <div className="relative mx-auto grid w-full max-w-[1400px] gap-10 px-5 pb-16 pt-24 lg:grid-cols-[1.15fr_0.85fr] lg:items-center lg:gap-14 lg:px-10 lg:pb-20 lg:pt-28">
         <div className="rise-in max-w-2xl" style={{ animationDelay: "80ms" }}>
 
           <p className="eyebrow text-gold">North Carolina Mortgage Broker</p>

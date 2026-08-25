@@ -39,44 +39,55 @@ export function Nav({ transparent = false }: { transparent?: boolean }) {
         solid ? "bg-navy/95 backdrop-blur-md shadow-[0_1px_0_0_rgba(200,169,107,0.18)]" : "bg-transparent"
       }`}
     >
-      <div className="mx-auto grid max-w-[1400px] grid-cols-[minmax(0,1fr)_auto] items-center gap-4 px-5 py-4 lg:px-10 lg:py-5">
-        <Link to="/" className="flex min-w-0 items-center gap-3" onClick={() => setOpen(false)}>
-          <span className="grid h-9 w-9 shrink-0 place-items-center border border-gold/60 font-display text-sm text-gold">
+      <div
+        className={`mx-auto grid max-w-[1400px] grid-cols-[minmax(0,1fr)_auto] items-center gap-4 px-5 transition-all duration-500 lg:px-10 ${
+          solid ? "py-2 lg:py-2.5" : "py-3 lg:py-4"
+        }`}
+      >
+        <Link to="/" className="flex min-w-0 shrink-0 items-center gap-2.5" onClick={() => setOpen(false)}>
+          <span className="grid h-8 w-8 shrink-0 place-items-center border border-gold/60 font-display text-sm text-gold">
             P
           </span>
           <span className="min-w-0 leading-none">
             <span className="block whitespace-nowrap font-display text-[0.95rem] tracking-[0.14em] text-white">PREMIER</span>
-            <span className="block whitespace-nowrap text-[0.6rem] tracking-[0.34em] text-gold">LENDING NC</span>
+            <span className="block whitespace-nowrap text-[0.6rem] tracking-[0.28em] text-gold">LENDING NC</span>
           </span>
         </Link>
 
-        <nav className="hidden items-center gap-6 xl:flex 2xl:gap-8">
-          {links.map((l) => (
-            <Link
-              key={l.to}
-              to={l.to}
-              activeOptions={{ exact: l.to === "/" }}
-              activeProps={{ className: "text-gold" }}
-              className="text-[0.72rem] font-medium uppercase tracking-[0.14em] text-white/75 transition-colors hover:text-gold"
-            >
-              {l.label}
-            </Link>
-          ))}
-          {isHome ? <LanguageSwitcher /> : null}
-          <CTA to="/contact" variant="gold" className="!px-5 !py-2.5">
-            Free Mortgage Quote
+        <nav className="hidden items-center gap-3 xl:flex 2xl:gap-5">
+          {links
+            .filter((l) => l.to !== "/")
+            .map((l) => (
+              <Link
+                key={l.to}
+                to={l.to}
+                activeProps={{ className: "text-gold" }}
+                className="whitespace-nowrap text-[0.6rem] font-medium uppercase tracking-[0.08em] text-white/75 transition-colors hover:text-gold 2xl:text-[0.7rem] 2xl:tracking-[0.13em]"
+              >
+                {l.label}
+              </Link>
+            ))}
+          {isHome ? <LanguageSwitcher compact className="shrink-0" /> : null}
+          <CTA
+            to="/contact"
+            variant="gold"
+            className="!min-h-9 shrink-0 whitespace-nowrap !px-3.5 !py-2 !text-[0.62rem] !tracking-[0.08em] 2xl:!px-5 2xl:!text-[0.7rem] 2xl:!tracking-[0.14em]"
+            arrow={false}
+          >
+            Free Quote
           </CTA>
         </nav>
 
         <div className="flex items-center gap-2 xl:hidden">
-
+          {isHome ? <LanguageSwitcher compact /> : null}
         <button
           type="button"
           aria-label="Toggle menu"
           aria-expanded={open}
           onClick={() => setOpen((v) => !v)}
-          className="grid h-11 w-11 shrink-0 place-items-center border border-white/25 text-white xl:hidden"
+          className="grid h-10 w-10 shrink-0 place-items-center border border-white/25 text-white xl:hidden"
         >
+
 
           <span className="relative block h-3 w-5">
             <span
@@ -99,18 +110,9 @@ export function Nav({ transparent = false }: { transparent?: boolean }) {
         </div>
       </div>
 
-      {isHome ? (
-        <div className="mx-auto flex max-w-[1400px] justify-end px-5 pb-2 xl:hidden">
-          <LanguageSwitcher />
-        </div>
-      ) : null}
-
-
-
-
       <div
-        className={`overflow-hidden bg-navy transition-[max-height] duration-500 xl:hidden ${
-          open ? "max-h-[32rem]" : "max-h-0"
+        className={`overflow-y-auto overscroll-contain bg-navy transition-[max-height] duration-500 xl:hidden ${
+          open ? "max-h-[calc(100svh-4rem)]" : "max-h-0"
         }`}
       >
         <nav className="flex flex-col gap-1 px-5 pb-6 pt-2">
