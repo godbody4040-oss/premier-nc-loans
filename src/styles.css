@@ -79,6 +79,18 @@
   }
   html {
     scroll-behavior: smooth;
+    /* Compact sticky header height — keeps anchored sections below the bar */
+    --header-h: 3.75rem;
+    scroll-padding-top: var(--header-h);
+  }
+  @media (min-width: 1024px) {
+    html {
+      --header-h: 4.25rem;
+    }
+  }
+  main section[id],
+  main [id] {
+    scroll-margin-top: calc(var(--header-h) + 0.75rem);
   }
   body {
     background-color: var(--color-background);

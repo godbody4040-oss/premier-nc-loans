@@ -1,11 +1,18 @@
 import { useLanguage } from "@/lib/i18n";
 
 /** Homepage-only English / Spanish selector. */
-export function LanguageSwitcher({ className = "" }: { className?: string }) {
+export function LanguageSwitcher({
+  className = "",
+  compact = false,
+}: {
+  className?: string;
+  compact?: boolean;
+}) {
   const { lang, setLang } = useLanguage();
 
-  const base =
-    "inline-flex min-h-9 items-center px-2 text-[0.68rem] uppercase tracking-[0.12em] transition-colors";
+  const base = `inline-flex items-center px-1.5 text-[0.66rem] uppercase tracking-[0.12em] transition-colors ${
+    compact ? "min-h-8" : "min-h-9 px-2"
+  }`;
 
   return (
     <div
@@ -22,7 +29,7 @@ export function LanguageSwitcher({ className = "" }: { className?: string }) {
         <span aria-hidden="true" className="mr-1">
           🇺🇸
         </span>
-        English
+        {compact ? "EN" : "English"}
       </button>
       <span className="text-white/25">|</span>
       <button
@@ -34,7 +41,7 @@ export function LanguageSwitcher({ className = "" }: { className?: string }) {
         <span aria-hidden="true" className="mr-1">
           🇪🇸
         </span>
-        Español
+        {compact ? "ES" : "Español"}
       </button>
     </div>
   );
