@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import type {} from "@tanstack/react-start";
 import { services } from "@/content/services";
+import { specialtySolutions } from "@/content/specialty";
 import { locations } from "@/content/locations";
 import { articles } from "@/content/articles";
 
@@ -34,6 +35,9 @@ const entries: SitemapEntry[] = [
     changefreq: "monthly" as const,
     priority: "0.9",
   })),
+  ...specialtySolutions
+    .filter((s) => s.ownPage)
+    .map((s) => ({ path: s.path, changefreq: "monthly" as const, priority: "0.9" })),
   ...locations.map((l) => ({
     path: `/locations/${l.slug}`,
     changefreq: "monthly" as const,
