@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
+import { Route as BankStatementHomeLoansRouteImport } from './routes/bank-statement-home-loans'
 import { Route as CalculatorRouteImport } from './routes/calculator'
 import { Route as CashOutRefinanceRouteImport } from './routes/cash-out-refinance'
 import { Route as CompareLoanProgramsRouteImport } from './routes/compare-loan-programs'
@@ -19,18 +20,22 @@ import { Route as ConventionalLoansRouteImport } from './routes/conventional-loa
 import { Route as DisclosuresRouteImport } from './routes/disclosures'
 import { Route as FhaLoansRouteImport } from './routes/fha-loans'
 import { Route as FirstTimeHomeBuyersRouteImport } from './routes/first-time-home-buyers'
+import { Route as FixAndFlipFinancingRouteImport } from './routes/fix-and-flip-financing'
 import { Route as HomeBuyersRouteImport } from './routes/home-buyers'
 import { Route as HomeLoansRouteImport } from './routes/home-loans'
 import { Route as InvestmentPropertyLoansRouteImport } from './routes/investment-property-loans'
 import { Route as InvestorsRouteImport } from './routes/investors'
+import { Route as ItinHomeLoansRouteImport } from './routes/itin-home-loans'
 import { Route as JumboLoansRouteImport } from './routes/jumbo-loans'
 import { Route as LoanProgramsRouteImport } from './routes/loan-programs'
 import { Route as MortgagePreApprovalRouteImport } from './routes/mortgage-pre-approval'
 import { Route as MortgageSolutionsRouteImport } from './routes/mortgage-solutions'
 import { Route as MortgageToolsRouteImport } from './routes/mortgage-tools'
 import { Route as NcHomeBuyerChecklistRouteImport } from './routes/nc-home-buyer-checklist'
+import { Route as NonPermanentResidentMortgagesRouteImport } from './routes/non-permanent-resident-mortgages'
 import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as RefinancingRouteImport } from './routes/refinancing'
+import { Route as RentalPropertyFinancingRouteImport } from './routes/rental-property-financing'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as UsdaLoansRouteImport } from './routes/usda-loans'
 import { Route as VaLoansRouteImport } from './routes/va-loans'
@@ -48,6 +53,11 @@ const IndexRoute = IndexRouteImport.update({
 const AboutRoute = AboutRouteImport.update({
   id: '/about',
   path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BankStatementHomeLoansRoute = BankStatementHomeLoansRouteImport.update({
+  id: '/bank-statement-home-loans',
+  path: '/bank-statement-home-loans',
   getParentRoute: () => rootRouteImport,
 } as any)
 const CalculatorRoute = CalculatorRouteImport.update({
@@ -90,6 +100,11 @@ const FirstTimeHomeBuyersRoute = FirstTimeHomeBuyersRouteImport.update({
   path: '/first-time-home-buyers',
   getParentRoute: () => rootRouteImport,
 } as any)
+const FixAndFlipFinancingRoute = FixAndFlipFinancingRouteImport.update({
+  id: '/fix-and-flip-financing',
+  path: '/fix-and-flip-financing',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const HomeBuyersRoute = HomeBuyersRouteImport.update({
   id: '/home-buyers',
   path: '/home-buyers',
@@ -108,6 +123,11 @@ const InvestmentPropertyLoansRoute = InvestmentPropertyLoansRouteImport.update({
 const InvestorsRoute = InvestorsRouteImport.update({
   id: '/investors',
   path: '/investors',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ItinHomeLoansRoute = ItinHomeLoansRouteImport.update({
+  id: '/itin-home-loans',
+  path: '/itin-home-loans',
   getParentRoute: () => rootRouteImport,
 } as any)
 const JumboLoansRoute = JumboLoansRouteImport.update({
@@ -140,6 +160,12 @@ const NcHomeBuyerChecklistRoute = NcHomeBuyerChecklistRouteImport.update({
   path: '/nc-home-buyer-checklist',
   getParentRoute: () => rootRouteImport,
 } as any)
+const NonPermanentResidentMortgagesRoute =
+  NonPermanentResidentMortgagesRouteImport.update({
+    id: '/non-permanent-resident-mortgages',
+    path: '/non-permanent-resident-mortgages',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const PrivacyRoute = PrivacyRouteImport.update({
   id: '/privacy',
   path: '/privacy',
@@ -148,6 +174,11 @@ const PrivacyRoute = PrivacyRouteImport.update({
 const RefinancingRoute = RefinancingRouteImport.update({
   id: '/refinancing',
   path: '/refinancing',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RentalPropertyFinancingRoute = RentalPropertyFinancingRouteImport.update({
+  id: '/rental-property-financing',
+  path: '/rental-property-financing',
   getParentRoute: () => rootRouteImport,
 } as any)
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
@@ -194,6 +225,7 @@ const ApiPublicLeadRoute = ApiPublicLeadRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/bank-statement-home-loans': typeof BankStatementHomeLoansRoute
   '/calculator': typeof CalculatorRoute
   '/cash-out-refinance': typeof CashOutRefinanceRoute
   '/compare-loan-programs': typeof CompareLoanProgramsRoute
@@ -202,18 +234,22 @@ export interface FileRoutesByFullPath {
   '/disclosures': typeof DisclosuresRoute
   '/fha-loans': typeof FhaLoansRoute
   '/first-time-home-buyers': typeof FirstTimeHomeBuyersRoute
+  '/fix-and-flip-financing': typeof FixAndFlipFinancingRoute
   '/home-buyers': typeof HomeBuyersRoute
   '/home-loans': typeof HomeLoansRoute
   '/investment-property-loans': typeof InvestmentPropertyLoansRoute
   '/investors': typeof InvestorsRoute
+  '/itin-home-loans': typeof ItinHomeLoansRoute
   '/jumbo-loans': typeof JumboLoansRoute
   '/loan-programs': typeof LoanProgramsRoute
   '/mortgage-pre-approval': typeof MortgagePreApprovalRoute
   '/mortgage-solutions': typeof MortgageSolutionsRoute
   '/mortgage-tools': typeof MortgageToolsRoute
   '/nc-home-buyer-checklist': typeof NcHomeBuyerChecklistRoute
+  '/non-permanent-resident-mortgages': typeof NonPermanentResidentMortgagesRoute
   '/privacy': typeof PrivacyRoute
   '/refinancing': typeof RefinancingRoute
+  '/rental-property-financing': typeof RentalPropertyFinancingRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/usda-loans': typeof UsdaLoansRoute
   '/va-loans': typeof VaLoansRoute
@@ -226,6 +262,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/bank-statement-home-loans': typeof BankStatementHomeLoansRoute
   '/calculator': typeof CalculatorRoute
   '/cash-out-refinance': typeof CashOutRefinanceRoute
   '/compare-loan-programs': typeof CompareLoanProgramsRoute
@@ -234,18 +271,22 @@ export interface FileRoutesByTo {
   '/disclosures': typeof DisclosuresRoute
   '/fha-loans': typeof FhaLoansRoute
   '/first-time-home-buyers': typeof FirstTimeHomeBuyersRoute
+  '/fix-and-flip-financing': typeof FixAndFlipFinancingRoute
   '/home-buyers': typeof HomeBuyersRoute
   '/home-loans': typeof HomeLoansRoute
   '/investment-property-loans': typeof InvestmentPropertyLoansRoute
   '/investors': typeof InvestorsRoute
+  '/itin-home-loans': typeof ItinHomeLoansRoute
   '/jumbo-loans': typeof JumboLoansRoute
   '/loan-programs': typeof LoanProgramsRoute
   '/mortgage-pre-approval': typeof MortgagePreApprovalRoute
   '/mortgage-solutions': typeof MortgageSolutionsRoute
   '/mortgage-tools': typeof MortgageToolsRoute
   '/nc-home-buyer-checklist': typeof NcHomeBuyerChecklistRoute
+  '/non-permanent-resident-mortgages': typeof NonPermanentResidentMortgagesRoute
   '/privacy': typeof PrivacyRoute
   '/refinancing': typeof RefinancingRoute
+  '/rental-property-financing': typeof RentalPropertyFinancingRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/usda-loans': typeof UsdaLoansRoute
   '/va-loans': typeof VaLoansRoute
@@ -259,6 +300,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/bank-statement-home-loans': typeof BankStatementHomeLoansRoute
   '/calculator': typeof CalculatorRoute
   '/cash-out-refinance': typeof CashOutRefinanceRoute
   '/compare-loan-programs': typeof CompareLoanProgramsRoute
@@ -267,18 +309,22 @@ export interface FileRoutesById {
   '/disclosures': typeof DisclosuresRoute
   '/fha-loans': typeof FhaLoansRoute
   '/first-time-home-buyers': typeof FirstTimeHomeBuyersRoute
+  '/fix-and-flip-financing': typeof FixAndFlipFinancingRoute
   '/home-buyers': typeof HomeBuyersRoute
   '/home-loans': typeof HomeLoansRoute
   '/investment-property-loans': typeof InvestmentPropertyLoansRoute
   '/investors': typeof InvestorsRoute
+  '/itin-home-loans': typeof ItinHomeLoansRoute
   '/jumbo-loans': typeof JumboLoansRoute
   '/loan-programs': typeof LoanProgramsRoute
   '/mortgage-pre-approval': typeof MortgagePreApprovalRoute
   '/mortgage-solutions': typeof MortgageSolutionsRoute
   '/mortgage-tools': typeof MortgageToolsRoute
   '/nc-home-buyer-checklist': typeof NcHomeBuyerChecklistRoute
+  '/non-permanent-resident-mortgages': typeof NonPermanentResidentMortgagesRoute
   '/privacy': typeof PrivacyRoute
   '/refinancing': typeof RefinancingRoute
+  '/rental-property-financing': typeof RentalPropertyFinancingRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/usda-loans': typeof UsdaLoansRoute
   '/va-loans': typeof VaLoansRoute
@@ -293,6 +339,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/about'
+    | '/bank-statement-home-loans'
     | '/calculator'
     | '/cash-out-refinance'
     | '/compare-loan-programs'
@@ -301,18 +348,22 @@ export interface FileRouteTypes {
     | '/disclosures'
     | '/fha-loans'
     | '/first-time-home-buyers'
+    | '/fix-and-flip-financing'
     | '/home-buyers'
     | '/home-loans'
     | '/investment-property-loans'
     | '/investors'
+    | '/itin-home-loans'
     | '/jumbo-loans'
     | '/loan-programs'
     | '/mortgage-pre-approval'
     | '/mortgage-solutions'
     | '/mortgage-tools'
     | '/nc-home-buyer-checklist'
+    | '/non-permanent-resident-mortgages'
     | '/privacy'
     | '/refinancing'
+    | '/rental-property-financing'
     | '/sitemap.xml'
     | '/usda-loans'
     | '/va-loans'
@@ -325,6 +376,7 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/about'
+    | '/bank-statement-home-loans'
     | '/calculator'
     | '/cash-out-refinance'
     | '/compare-loan-programs'
@@ -333,18 +385,22 @@ export interface FileRouteTypes {
     | '/disclosures'
     | '/fha-loans'
     | '/first-time-home-buyers'
+    | '/fix-and-flip-financing'
     | '/home-buyers'
     | '/home-loans'
     | '/investment-property-loans'
     | '/investors'
+    | '/itin-home-loans'
     | '/jumbo-loans'
     | '/loan-programs'
     | '/mortgage-pre-approval'
     | '/mortgage-solutions'
     | '/mortgage-tools'
     | '/nc-home-buyer-checklist'
+    | '/non-permanent-resident-mortgages'
     | '/privacy'
     | '/refinancing'
+    | '/rental-property-financing'
     | '/sitemap.xml'
     | '/usda-loans'
     | '/va-loans'
@@ -357,6 +413,7 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/about'
+    | '/bank-statement-home-loans'
     | '/calculator'
     | '/cash-out-refinance'
     | '/compare-loan-programs'
@@ -365,18 +422,22 @@ export interface FileRouteTypes {
     | '/disclosures'
     | '/fha-loans'
     | '/first-time-home-buyers'
+    | '/fix-and-flip-financing'
     | '/home-buyers'
     | '/home-loans'
     | '/investment-property-loans'
     | '/investors'
+    | '/itin-home-loans'
     | '/jumbo-loans'
     | '/loan-programs'
     | '/mortgage-pre-approval'
     | '/mortgage-solutions'
     | '/mortgage-tools'
     | '/nc-home-buyer-checklist'
+    | '/non-permanent-resident-mortgages'
     | '/privacy'
     | '/refinancing'
+    | '/rental-property-financing'
     | '/sitemap.xml'
     | '/usda-loans'
     | '/va-loans'
@@ -390,6 +451,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
+  BankStatementHomeLoansRoute: typeof BankStatementHomeLoansRoute
   CalculatorRoute: typeof CalculatorRoute
   CashOutRefinanceRoute: typeof CashOutRefinanceRoute
   CompareLoanProgramsRoute: typeof CompareLoanProgramsRoute
@@ -398,18 +460,22 @@ export interface RootRouteChildren {
   DisclosuresRoute: typeof DisclosuresRoute
   FhaLoansRoute: typeof FhaLoansRoute
   FirstTimeHomeBuyersRoute: typeof FirstTimeHomeBuyersRoute
+  FixAndFlipFinancingRoute: typeof FixAndFlipFinancingRoute
   HomeBuyersRoute: typeof HomeBuyersRoute
   HomeLoansRoute: typeof HomeLoansRoute
   InvestmentPropertyLoansRoute: typeof InvestmentPropertyLoansRoute
   InvestorsRoute: typeof InvestorsRoute
+  ItinHomeLoansRoute: typeof ItinHomeLoansRoute
   JumboLoansRoute: typeof JumboLoansRoute
   LoanProgramsRoute: typeof LoanProgramsRoute
   MortgagePreApprovalRoute: typeof MortgagePreApprovalRoute
   MortgageSolutionsRoute: typeof MortgageSolutionsRoute
   MortgageToolsRoute: typeof MortgageToolsRoute
   NcHomeBuyerChecklistRoute: typeof NcHomeBuyerChecklistRoute
+  NonPermanentResidentMortgagesRoute: typeof NonPermanentResidentMortgagesRoute
   PrivacyRoute: typeof PrivacyRoute
   RefinancingRoute: typeof RefinancingRoute
+  RentalPropertyFinancingRoute: typeof RentalPropertyFinancingRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   UsdaLoansRoute: typeof UsdaLoansRoute
   VaLoansRoute: typeof VaLoansRoute
@@ -434,6 +500,13 @@ declare module '@tanstack/react-router' {
       path: '/about'
       fullPath: '/about'
       preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/bank-statement-home-loans': {
+      id: '/bank-statement-home-loans'
+      path: '/bank-statement-home-loans'
+      fullPath: '/bank-statement-home-loans'
+      preLoaderRoute: typeof BankStatementHomeLoansRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/calculator': {
@@ -492,6 +565,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof FirstTimeHomeBuyersRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/fix-and-flip-financing': {
+      id: '/fix-and-flip-financing'
+      path: '/fix-and-flip-financing'
+      fullPath: '/fix-and-flip-financing'
+      preLoaderRoute: typeof FixAndFlipFinancingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/home-buyers': {
       id: '/home-buyers'
       path: '/home-buyers'
@@ -518,6 +598,13 @@ declare module '@tanstack/react-router' {
       path: '/investors'
       fullPath: '/investors'
       preLoaderRoute: typeof InvestorsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/itin-home-loans': {
+      id: '/itin-home-loans'
+      path: '/itin-home-loans'
+      fullPath: '/itin-home-loans'
+      preLoaderRoute: typeof ItinHomeLoansRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/jumbo-loans': {
@@ -562,6 +649,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof NcHomeBuyerChecklistRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/non-permanent-resident-mortgages': {
+      id: '/non-permanent-resident-mortgages'
+      path: '/non-permanent-resident-mortgages'
+      fullPath: '/non-permanent-resident-mortgages'
+      preLoaderRoute: typeof NonPermanentResidentMortgagesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/privacy': {
       id: '/privacy'
       path: '/privacy'
@@ -574,6 +668,13 @@ declare module '@tanstack/react-router' {
       path: '/refinancing'
       fullPath: '/refinancing'
       preLoaderRoute: typeof RefinancingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/rental-property-financing': {
+      id: '/rental-property-financing'
+      path: '/rental-property-financing'
+      fullPath: '/rental-property-financing'
+      preLoaderRoute: typeof RentalPropertyFinancingRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/sitemap.xml': {
@@ -638,6 +739,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
+  BankStatementHomeLoansRoute: BankStatementHomeLoansRoute,
   CalculatorRoute: CalculatorRoute,
   CashOutRefinanceRoute: CashOutRefinanceRoute,
   CompareLoanProgramsRoute: CompareLoanProgramsRoute,
@@ -646,18 +748,22 @@ const rootRouteChildren: RootRouteChildren = {
   DisclosuresRoute: DisclosuresRoute,
   FhaLoansRoute: FhaLoansRoute,
   FirstTimeHomeBuyersRoute: FirstTimeHomeBuyersRoute,
+  FixAndFlipFinancingRoute: FixAndFlipFinancingRoute,
   HomeBuyersRoute: HomeBuyersRoute,
   HomeLoansRoute: HomeLoansRoute,
   InvestmentPropertyLoansRoute: InvestmentPropertyLoansRoute,
   InvestorsRoute: InvestorsRoute,
+  ItinHomeLoansRoute: ItinHomeLoansRoute,
   JumboLoansRoute: JumboLoansRoute,
   LoanProgramsRoute: LoanProgramsRoute,
   MortgagePreApprovalRoute: MortgagePreApprovalRoute,
   MortgageSolutionsRoute: MortgageSolutionsRoute,
   MortgageToolsRoute: MortgageToolsRoute,
   NcHomeBuyerChecklistRoute: NcHomeBuyerChecklistRoute,
+  NonPermanentResidentMortgagesRoute: NonPermanentResidentMortgagesRoute,
   PrivacyRoute: PrivacyRoute,
   RefinancingRoute: RefinancingRoute,
+  RentalPropertyFinancingRoute: RentalPropertyFinancingRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   UsdaLoansRoute: UsdaLoansRoute,
   VaLoansRoute: VaLoansRoute,

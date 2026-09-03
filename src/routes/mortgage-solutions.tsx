@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { serviceSchema, breadcrumbSchema } from "@/lib/seo";
 import { PageHero, SiteLayout } from "@/components/site/SiteLayout";
 import { Solutions } from "@/components/site/Solutions";
+import { SpecialtySolutions } from "@/components/site/SpecialtySolutions";
 import { SignatureCTA } from "@/components/site/SignatureCTA";
 import { FAQ } from "@/components/site/FAQ";
 
@@ -56,6 +57,7 @@ function Page() {
         body="Explore financing solutions designed for different homeownership and real-estate goals. Program availability is confirmed individually."
       />
       <Solutions />
+      <SpecialtySolutions />
       <SignatureCTA />
       <FAQ />
     </SiteLayout>

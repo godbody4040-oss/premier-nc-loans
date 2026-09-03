@@ -5,6 +5,7 @@ import { Hero } from "@/components/site/Hero";
 import { TrustBar } from "@/components/site/TrustBar";
 import { Difference } from "@/components/site/Difference";
 import { Solutions } from "@/components/site/Solutions";
+import { SpecialtySolutions } from "@/components/site/SpecialtySolutions";
 import { SignatureCTA } from "@/components/site/SignatureCTA";
 import { Journey } from "@/components/site/Journey";
 import { Investors } from "@/components/site/Investors";
@@ -66,6 +67,7 @@ function Index() {
       <FindYourPath />
       <Difference />
       <Solutions />
+      <SpecialtySolutions />
       <SignatureCTA />
       <Journey />
       <NorthCarolina />
