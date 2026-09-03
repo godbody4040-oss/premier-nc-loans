@@ -1,4 +1,5 @@
 import { esArticles } from "./i18n-es-articles";
+import { esSpecialty } from "./i18n-es-specialty";
 
 /** Spanish translations for site chrome, homepage, forms, tools and page copy. */
 const core: Record<string, string> = {
@@ -840,4 +841,4 @@ const core: Record<string, string> = {
   "Talk With Us": "Hable Con Nosotros",
 };
 
-export const es: Record<string, string> = { ...core, ...esArticles };
+export const es: Record<string, string> = { ...core, ...esSpecialty, ...esArticles };
