@@ -30,6 +30,7 @@ export type TrackEvent =
   | "resource_download_start"
   | "resource_download_complete"
   | "loan_program_cta_click"
+  | "specialty_cta_click"
   | "path_select"
   | "roadmap_stage_open"
   | "resource_view"
