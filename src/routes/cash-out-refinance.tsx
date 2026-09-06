@@ -1,36 +1,33 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { ServiceTemplate } from "@/components/site/ServiceTemplate";
-import { serviceBySlug } from "@/content/services";
-import { breadcrumbSchema, faqSchema, pageHead, serviceSchema } from "@/lib/seo";
+import { SpecialtyTemplate } from "@/components/site/SpecialtyTemplate";
+import { specialtyBySlug } from "@/content/specialty";
+import { breadcrumbSchema, pageHead, serviceSchema } from "@/lib/seo";
+import image from "@/assets/final-cta.jpg";
 
-const service = serviceBySlug("cash-out-refinance")!;
+const solution = specialtyBySlug("refinancing-cash-out")!;
 const path = "/cash-out-refinance";
 
 export const Route = createFileRoute("/cash-out-refinance")({
   head: () => ({
-    ...pageHead({ title: service.title, description: service.description, path }),
+    ...pageHead({ title: solution.title, description: solution.description, path }),
     scripts: [
       {
         type: "application/ld+json",
         children: JSON.stringify(
-          serviceSchema({ name: service.h1, description: service.description, path }),
+          serviceSchema({ name: solution.headline, description: solution.description, path }),
         ),
-      },
-      {
-        type: "application/ld+json",
-        children: JSON.stringify(faqSchema(service.faqs)),
       },
       {
         type: "application/ld+json",
         children: JSON.stringify(
           breadcrumbSchema([
             { name: "Home", path: "/" },
-            { name: "Loan Programs", path: "/loan-programs" },
-            { name: service.nav, path },
+            { name: "Mortgage Solutions", path: "/mortgage-solutions" },
+            { name: solution.nav, path },
           ]),
         ),
       },
     ],
   }),
-  component: () => <ServiceTemplate service={service} />,
+  component: () => <SpecialtyTemplate solution={solution} image={image} />,
 });
