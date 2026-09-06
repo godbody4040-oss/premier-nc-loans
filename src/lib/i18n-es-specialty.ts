@@ -43,7 +43,7 @@ export const esSpecialty: Record<string, string> = {
   "Get Started": "Comenzar",
 
   // 1. ITIN
-  "Buy Your First Home with an ITIN": "Compre Su Primera Casa con un ITIN",
+  "Buy Your First Home with an ITIN": "Compra tu primera casa con ITIN",
   "At Premier Lending NC, we open the door to homeownership for individuals who have an ITIN.":
     "En Premier Lending NC, abrimos la puerta a la compra de vivienda para personas que tienen un ITIN.",
   "Whether you are looking to purchase your first primary residence, refinance a property you already own, or invest in real estate, we are here to guide you every step of the way.":
@@ -67,7 +67,7 @@ export const esSpecialty: Record<string, string> = {
 
   // 2. Bank statement
   "Buy Your First Home Using Only Bank Statements — No Tax Returns":
-    "Compre Su Primera Casa Solo con Estados de Cuenta — Sin Declaraciones de Impuestos",
+    "Compra tu primera casa usando solamente estados de cuenta bancarios (sin declaraciones de impuestos)",
   "At Premier Lending NC, we believe in second chances and alternative paths to homeownership.":
     "En Premier Lending NC, creemos en las segundas oportunidades y en caminos alternativos hacia la compra de vivienda.",
   "Whether you are a U.S. citizen, permanent resident, have a current or expired work permit, or use a Tax ID (ITIN), we are here to help you explore your options.":
@@ -89,7 +89,7 @@ export const esSpecialty: Record<string, string> = {
     "Propietario revisando estados de cuenta en la mesa de la cocina",
 
   // 3. Rental
-  "Investors for Rental Properties": "Inversionistas de Propiedades de Renta",
+  "Investors for Rental Properties": "Inversionistas para propiedades de renta",
   "At Premier Lending NC, we open the door for individuals who want to begin investing in real estate.":
     "En Premier Lending NC, abrimos la puerta a quienes desean comenzar a invertir en bienes raíces.",
   "We guide you step by step, from exploring financing options and acquiring the property to preparing it for a successful rental strategy.":
@@ -111,7 +111,7 @@ export const esSpecialty: Record<string, string> = {
     "Dúplex de renta bien mantenido con jardín delantero cuidado",
 
   // 4. Fix and flip
-  "Investors for Fix-and-Flip Properties": "Inversionistas de Propiedades Fix-and-Flip",
+  "Investors for Fix-and-Flip Properties": "Inversionistas para Fix-and-Flip",
   "At Premier Lending NC, we provide opportunities for investors who may not qualify for traditional fix-and-flip financing.":
     "En Premier Lending NC, ofrecemos oportunidades a inversionistas que podrían no calificar para el financiamiento fix-and-flip tradicional.",
   "For this type of program, we do not review personal credit, bank statements, Social Security information, or tax returns.":
@@ -138,7 +138,7 @@ export const esSpecialty: Record<string, string> = {
 
   // 5. Refinancing / cash-out
   "Refinancing to Lower Your Interest Rate or Cash Out":
-    "Refinanciamiento para Reducir Su Tasa de Interés o Retirar Efectivo",
+    "Refinanciamiento para bajar el interés o para retiro de efectivo",
   "At Premier Lending NC, we believe homeownership can create additional financial opportunities.":
     "En Premier Lending NC, creemos que ser propietario de una vivienda puede generar oportunidades financieras adicionales.",
   "If you already own a home, refinancing may provide an opportunity to reduce your current interest rate or lower your monthly payment, depending on market conditions and qualification.":
@@ -161,7 +161,7 @@ export const esSpecialty: Record<string, string> = {
 
   // 6. Non-permanent residents
   "Mortgage Solutions for Non-Permanent Residents or Borrowers with Expired Work Permits":
-    "Soluciones Hipotecarias para Residentes No Permanentes o Prestatarios con Permisos de Trabajo Vencidos",
+    "Soluciones hipotecarias para residentes no permanentes o con permiso de trabajo vencido",
   "At Premier Lending NC, we understand that every borrower has a different immigration and financial profile.":
     "En Premier Lending NC, entendemos que cada prestatario tiene un perfil migratorio y financiero diferente.",
   "That is why we work to identify mortgage solutions for eligible non-permanent residents, including borrowers whose work permits may have expired.":
