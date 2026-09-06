@@ -1,6 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { business, telHref } from "@/config/business";
 import { services } from "@/content/services";
+import { specialtySolutions } from "@/content/specialty";
 import { SiteLink } from "./SiteLink";
 
 
@@ -53,6 +54,16 @@ export function Footer() {
               {services.map((s) => (
                 <li key={s.slug}>
                   <SiteLink to={`/${s.slug}`} className="transition-colors hover:text-gold">
+                    {s.nav}
+                  </SiteLink>
+                </li>
+              ))}
+            </ul>
+            <p className="eyebrow mt-8 text-gold">Specialty Solutions</p>
+            <ul className="mt-5 space-y-3 text-sm">
+              {specialtySolutions.map((s) => (
+                <li key={s.slug}>
+                  <SiteLink to={s.path} className="transition-colors hover:text-gold">
                     {s.nav}
                   </SiteLink>
                 </li>

@@ -8,7 +8,7 @@ import { FAQ } from "@/components/site/FAQ";
 
 const title = "Mortgage Solutions in NC | Premier Lending NC";
 const description =
-  "Explore home purchase, first-time buyer, refinance, investment property and self-employed mortgage financing options with a North Carolina mortgage broker.";
+  "Explore purchase, refinance, investment, ITIN, bank statement and non-permanent resident mortgage solutions with a North Carolina mortgage broker.";
 
 export const Route = createFileRoute("/mortgage-solutions")({
   head: () => ({
