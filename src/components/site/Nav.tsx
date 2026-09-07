@@ -118,23 +118,24 @@ export function Nav({ transparent = false }: { transparent?: boolean }) {
         }`}
       >
         <nav className="flex flex-col gap-1 px-5 pb-6 pt-2">
-          {links.map((l) => (
+          <Link
+            to="/"
+            onClick={() => setOpen(false)}
+            className="border-b border-white/10 py-4 text-sm uppercase tracking-[0.14em] text-white/80"
+          >
+            Home
+          </Link>
+          {sections.map((s) => (
             <Link
-              key={l.to}
-              to={l.to}
+              key={s.hash}
+              to="/"
+              hash={s.hash}
               onClick={() => setOpen(false)}
-              className="border-b border-white/10 py-3.5 text-sm uppercase tracking-[0.14em] text-white/80"
+              className="border-b border-white/10 py-4 text-sm uppercase leading-snug tracking-[0.14em] text-white/80"
             >
-              {l.label}
+              {s.label}
             </Link>
           ))}
-          <Link
-            to="/contact"
-            onClick={() => setOpen(false)}
-            className="border-b border-white/10 py-3.5 text-sm uppercase tracking-[0.14em] text-white/80"
-          >
-            Contact
-          </Link>
           <CTA to="/contact" variant="gold" className="mt-4">
             Free Mortgage Quote
           </CTA>
