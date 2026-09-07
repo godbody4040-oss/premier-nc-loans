@@ -18,7 +18,7 @@ export const esSpecialty: Record<string, string> = {
   // Navigation
   Home: "Inicio",
   "ITIN Home Buying": "Compra de casa con ITIN",
-  "Bank Statement Home Loans": "Préstamos con estados de cuenta",
+  
   "Rental Property Investing": "Inversión en propiedades de renta",
   "Fix-and-Flip Investing": "Inversión Fix-and-Flip",
   "Non-Permanent Resident Mortgages": "Hipotecas para residentes no permanentes",
