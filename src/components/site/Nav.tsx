@@ -51,18 +51,24 @@ export function Nav({ transparent = false }: { transparent?: boolean }) {
         </Link>
 
         <nav className="hidden items-center gap-3 xl:flex 2xl:gap-5">
-          {links
-            .filter((l) => l.to !== "/")
-            .map((l) => (
-              <Link
-                key={l.to}
-                to={l.to}
-                activeProps={{ className: "text-gold" }}
-                className="whitespace-nowrap text-[0.6rem] font-medium uppercase tracking-[0.08em] text-white/75 transition-colors hover:text-gold 2xl:text-[0.7rem] 2xl:tracking-[0.13em]"
-              >
-                {l.label}
-              </Link>
-            ))}
+          <Link
+            to="/"
+            activeOptions={{ exact: true, includeHash: false }}
+            activeProps={{ className: "text-gold" }}
+            className="whitespace-nowrap text-[0.6rem] font-medium uppercase tracking-[0.08em] text-white/75 transition-colors hover:text-gold 2xl:text-[0.7rem] 2xl:tracking-[0.13em]"
+          >
+            Home
+          </Link>
+          {sections.map((s) => (
+            <Link
+              key={s.hash}
+              to="/"
+              hash={s.hash}
+              className="whitespace-nowrap text-[0.6rem] font-medium uppercase tracking-[0.08em] text-white/75 transition-colors hover:text-gold 2xl:text-[0.7rem] 2xl:tracking-[0.13em]"
+            >
+              {s.label}
+            </Link>
+          ))}
           {isHome ? <LanguageSwitcher compact className="shrink-0" /> : null}
           <CTA
             to="/contact"
