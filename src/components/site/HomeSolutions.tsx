@@ -43,7 +43,7 @@ export function HomeSolutions() {
             key={s.slug}
             id={s.slug}
             aria-labelledby={`sec-${s.slug}`}
-            className={`scroll-mt-[var(--header-h)] py-20 lg:py-28 ${
+            className={`py-20 lg:py-28 ${
               dark ? "bg-navy" : tone === "cream" ? "bg-cream" : "bg-background"
             }`}
           >
