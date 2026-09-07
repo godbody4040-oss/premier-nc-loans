@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { localBusinessSchema } from "@/lib/structured-data";
 import { SiteLayout } from "@/components/site/SiteLayout";
 import { HomeHero } from "@/components/site/HomeHero";
+import { HomeOverview } from "@/components/site/HomeOverview";
 import { HomeSolutions } from "@/components/site/HomeSolutions";
 import { FinalCTA } from "@/components/site/FinalCTA";
 import { faqs } from "@/components/site/FAQ";
@@ -50,6 +51,7 @@ function Index() {
   return (
     <SiteLayout transparentNav>
       <HomeHero />
+      <HomeOverview />
       <HomeSolutions />
       <FinalCTA />
     </SiteLayout>
