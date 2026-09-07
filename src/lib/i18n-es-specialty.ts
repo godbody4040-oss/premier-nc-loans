@@ -15,6 +15,17 @@ export const esSpecialty: Record<string, string> = {
   "Luxury North Carolina home at dusk with warm interior lighting":
     "Casa de lujo en Carolina del Norte al atardecer con cálida iluminación interior",
 
+  // Navigation
+  Home: "Inicio",
+  "ITIN Home Buying": "Compra de casa con ITIN",
+  "Bank Statement Home Loans": "Préstamos con estados de cuenta",
+  "Rental Property Investing": "Inversión en propiedades de renta",
+  "Fix-and-Flip Investing": "Inversión Fix-and-Flip",
+  Refinancing: "Refinanciamiento",
+  "Non-Permanent Resident Mortgages": "Hipotecas para residentes no permanentes",
+  "Free Mortgage Quote": "Cotización hipotecaria gratis",
+  "Get My Free Mortgage Quote": "Obtener mi cotización gratis",
+
   // Section chrome
   "Specialty Solutions": "Soluciones Especializadas",
   "Financing built around": "Financiamiento pensado para",
