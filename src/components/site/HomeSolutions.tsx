@@ -41,14 +41,11 @@ export function HomeSolutions() {
         return (
           <section
             key={s.slug}
+            id={s.slug}
             aria-labelledby={`sec-${s.slug}`}
-            className={
-              dark
-                ? "bg-navy py-20 lg:py-28"
-                : tone === "cream"
-                  ? "bg-cream py-20 lg:py-28"
-                  : "bg-background py-20 lg:py-28"
-            }
+            className={`py-20 lg:py-28 ${
+              dark ? "bg-navy" : tone === "cream" ? "bg-cream" : "bg-background"
+            }`}
           >
             <div className="mx-auto grid max-w-[1400px] items-center gap-10 px-5 lg:grid-cols-2 lg:gap-16 lg:px-10">
               <Reveal className={imageFirst ? "lg:order-1" : "lg:order-2"}>

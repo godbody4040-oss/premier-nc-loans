@@ -4,17 +4,13 @@ import { CTA } from "./ui";
 import { LanguageSwitcher } from "./LanguageSwitcher";
 
 
-const links = [
-  { to: "/", label: "Home" },
-  { to: "/mortgage-solutions", label: "Mortgage Solutions" },
-  { to: "/loan-programs", label: "Loan Programs" },
-  { to: "/home-buyers", label: "Home Buyers" },
-  { to: "/investors", label: "Investors" },
-  { to: "/locations", label: "Service Areas" },
-  { to: "/about", label: "About Jorge" },
-  { to: "/calculator", label: "Calculator" },
-  { to: "/mortgage-tools", label: "Tools" },
-  { to: "/resources", label: "Resources" },
+const sections = [
+  { hash: "itin-home-loans", label: "ITIN Home Buying" },
+  { hash: "bank-statement-home-loans", label: "Bank Statement Home Loans" },
+  { hash: "rental-property-financing", label: "Rental Property Investing" },
+  { hash: "fix-and-flip-financing", label: "Fix-and-Flip Investing" },
+  { hash: "refinancing-cash-out", label: "Refinancing" },
+  { hash: "non-permanent-resident-mortgages", label: "Non-Permanent Resident Mortgages" },
 ];
 
 export function Nav({ transparent = false }: { transparent?: boolean }) {
@@ -55,18 +51,24 @@ export function Nav({ transparent = false }: { transparent?: boolean }) {
         </Link>
 
         <nav className="hidden items-center gap-3 xl:flex 2xl:gap-5">
-          {links
-            .filter((l) => l.to !== "/")
-            .map((l) => (
-              <Link
-                key={l.to}
-                to={l.to}
-                activeProps={{ className: "text-gold" }}
-                className="whitespace-nowrap text-[0.6rem] font-medium uppercase tracking-[0.08em] text-white/75 transition-colors hover:text-gold 2xl:text-[0.7rem] 2xl:tracking-[0.13em]"
-              >
-                {l.label}
-              </Link>
-            ))}
+          <Link
+            to="/"
+            activeOptions={{ exact: true, includeHash: false }}
+            activeProps={{ className: "text-gold" }}
+            className="whitespace-nowrap text-[0.6rem] font-medium uppercase tracking-[0.08em] text-white/75 transition-colors hover:text-gold 2xl:text-[0.7rem] 2xl:tracking-[0.13em]"
+          >
+            Home
+          </Link>
+          {sections.map((s) => (
+            <Link
+              key={s.hash}
+              to="/"
+              hash={s.hash}
+              className="whitespace-nowrap text-[0.6rem] font-medium uppercase tracking-[0.08em] text-white/75 transition-colors hover:text-gold 2xl:text-[0.7rem] 2xl:tracking-[0.13em]"
+            >
+              {s.label}
+            </Link>
+          ))}
           {isHome ? <LanguageSwitcher compact className="shrink-0" /> : null}
           <CTA
             to="/contact"
@@ -116,23 +118,24 @@ export function Nav({ transparent = false }: { transparent?: boolean }) {
         }`}
       >
         <nav className="flex flex-col gap-1 px-5 pb-6 pt-2">
-          {links.map((l) => (
+          <Link
+            to="/"
+            onClick={() => setOpen(false)}
+            className="border-b border-white/10 py-4 text-sm uppercase tracking-[0.14em] text-white/80"
+          >
+            Home
+          </Link>
+          {sections.map((s) => (
             <Link
-              key={l.to}
-              to={l.to}
+              key={s.hash}
+              to="/"
+              hash={s.hash}
               onClick={() => setOpen(false)}
-              className="border-b border-white/10 py-3.5 text-sm uppercase tracking-[0.14em] text-white/80"
+              className="border-b border-white/10 py-4 text-sm uppercase leading-snug tracking-[0.14em] text-white/80"
             >
-              {l.label}
+              {s.label}
             </Link>
           ))}
-          <Link
-            to="/contact"
-            onClick={() => setOpen(false)}
-            className="border-b border-white/10 py-3.5 text-sm uppercase tracking-[0.14em] text-white/80"
-          >
-            Contact
-          </Link>
           <CTA to="/contact" variant="gold" className="mt-4">
             Free Mortgage Quote
           </CTA>
