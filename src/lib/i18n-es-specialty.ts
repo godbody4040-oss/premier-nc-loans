@@ -15,6 +15,18 @@ export const esSpecialty: Record<string, string> = {
   "Luxury North Carolina home at dusk with warm interior lighting":
     "Casa de lujo en Carolina del Norte al atardecer con cálida iluminación interior",
 
+  // Homepage overview
+  "Six Mortgage Paths. One Clear Conversation.":
+    "Seis caminos hipotecarios. Una conversación clara.",
+  "Financing for real situations — not one-size-fits-all lending.":
+    "Financiamiento para situaciones reales, no préstamos de talla única.",
+  "Every borrower has a different story. Some file taxes traditionally. Some use an ITIN. Some invest in rental properties or fix-and-flip projects. Some need to refinance or access equity. Some are building a life here on a non-permanent status. At Premier Lending NC, we review your situation and help you explore the mortgage or investment financing options that may fit your goals. No pressure. No guesswork. Just clear guidance in English or Spanish.":
+    "Cada prestatario tiene una historia diferente. Algunos declaran impuestos de forma tradicional. Algunos usan un ITIN. Algunos invierten en propiedades de renta o proyectos fix-and-flip. Algunos necesitan refinanciar o acceder a la plusvalía. Algunos están construyendo una vida aquí con un estatus no permanente. En Premier Lending NC, revisamos su situación y le ayudamos a explorar las opciones de financiamiento hipotecario o de inversión que pueden ajustarse a sus objetivos. Sin presión. Sin conjeturas. Solo orientación clara en inglés o español.",
+  "Rental Property Investors": "Inversionistas en Propiedades de Renta",
+  "Fix-and-Flip Investors": "Inversionistas Fix-and-Flip",
+  "Refinancing / Cash Out": "Refinanciamiento / Cash-Out",
+  "Explore the Six Sections": "Explore las Seis Secciones",
+
   // Navigation
   Home: "Inicio",
   "ITIN Home Buying": "Compra de casa con ITIN",
