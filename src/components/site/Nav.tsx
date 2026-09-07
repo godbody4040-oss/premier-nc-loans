@@ -4,17 +4,13 @@ import { CTA } from "./ui";
 import { LanguageSwitcher } from "./LanguageSwitcher";
 
 
-const links = [
-  { to: "/", label: "Home" },
-  { to: "/mortgage-solutions", label: "Mortgage Solutions" },
-  { to: "/loan-programs", label: "Loan Programs" },
-  { to: "/home-buyers", label: "Home Buyers" },
-  { to: "/investors", label: "Investors" },
-  { to: "/locations", label: "Service Areas" },
-  { to: "/about", label: "About Jorge" },
-  { to: "/calculator", label: "Calculator" },
-  { to: "/mortgage-tools", label: "Tools" },
-  { to: "/resources", label: "Resources" },
+const sections = [
+  { hash: "itin-home-loans", label: "ITIN Home Buying" },
+  { hash: "bank-statement-home-loans", label: "Bank Statement Home Loans" },
+  { hash: "rental-property-financing", label: "Rental Property Investing" },
+  { hash: "fix-and-flip-financing", label: "Fix-and-Flip Investing" },
+  { hash: "refinancing-cash-out", label: "Refinancing" },
+  { hash: "non-permanent-resident-mortgages", label: "Non-Permanent Resident Mortgages" },
 ];
 
 export function Nav({ transparent = false }: { transparent?: boolean }) {
