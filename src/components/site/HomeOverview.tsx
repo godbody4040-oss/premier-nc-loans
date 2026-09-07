@@ -23,7 +23,7 @@ export function HomeOverview() {
         </Reveal>
 
         <Reveal delay={120}>
-          <p className="mx-auto mt-8 max-w-3xl text-base leading-relaxed text-muted-foreground sm:text-lg">
+          <p className="mx-auto mt-8 max-w-3xl text-base leading-relaxed text-navy/80 sm:text-lg">
             Every borrower has a different story. Some file taxes traditionally. Some use an ITIN.
             Some invest in rental properties or fix-and-flip projects. Some need to refinance or
             access equity. Some are building a life here on a non-permanent status. At Premier
