@@ -3,6 +3,7 @@ import { localBusinessSchema } from "@/lib/structured-data";
 import { SiteLayout } from "@/components/site/SiteLayout";
 import { HomeHero } from "@/components/site/HomeHero";
 import { HomeSolutions } from "@/components/site/HomeSolutions";
+import { FinalCTA } from "@/components/site/FinalCTA";
 import { faqs } from "@/components/site/FAQ";
 
 
@@ -50,7 +51,7 @@ function Index() {
     <SiteLayout transparentNav>
       <HomeHero />
       <HomeSolutions />
-
+      <FinalCTA />
     </SiteLayout>
   );
 }
