@@ -1,5 +1,20 @@
 /** Spanish translations for the specialty mortgage & investment solutions. */
 export const esSpecialty: Record<string, string> = {
+  // Homepage hero & section chrome
+  "Mortgage Solutions Built Around Your Goals.":
+    "Soluciones hipotecarias diseñadas para sus metas.",
+  "Home financing and real estate investment solutions designed to help eligible borrowers and investors explore their next opportunity.":
+    "Soluciones de financiamiento de vivienda e inversión en bienes raíces diseñadas para ayudar a prestatarios e inversionistas elegibles a explorar su próxima oportunidad.",
+  "Six Ways We Help": "Seis Formas en que Ayudamos",
+  "ITIN & alternative documentation": "ITIN y documentación alternativa",
+  "Rental and fix-and-flip investment": "Inversión en renta y fix-and-flip",
+  "Refinancing and cash-out reviews": "Revisiones de refinanciamiento y retiro de efectivo",
+  "Guidance in English or Spanish": "Orientación en inglés o español",
+  "Our six mortgage and investment solutions":
+    "Nuestras seis soluciones hipotecarias y de inversión",
+  "Luxury North Carolina home at dusk with warm interior lighting":
+    "Casa de lujo en Carolina del Norte al atardecer con cálida iluminación interior",
+
   // Section chrome
   "Specialty Solutions": "Soluciones Especializadas",
   "Financing built around": "Financiamiento pensado para",

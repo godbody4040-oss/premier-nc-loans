@@ -1,24 +1,10 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { localBusinessSchema } from "@/lib/structured-data";
 import { SiteLayout } from "@/components/site/SiteLayout";
-import { Hero } from "@/components/site/Hero";
-import { TrustBar } from "@/components/site/TrustBar";
-import { Difference } from "@/components/site/Difference";
-import { Solutions } from "@/components/site/Solutions";
-import { SpecialtySolutions } from "@/components/site/SpecialtySolutions";
-import { SignatureCTA } from "@/components/site/SignatureCTA";
-import { Journey } from "@/components/site/Journey";
-import { Investors } from "@/components/site/Investors";
-import { Founder } from "@/components/site/Founder";
-import { Calculator } from "@/components/site/Calculator";
-import { LeadFunnel } from "@/components/site/LeadFunnel";
-import { LeadMagnet } from "@/components/site/LeadMagnet";
-import { FAQ, faqs } from "@/components/site/FAQ";
-import { Testimonials } from "@/components/site/Testimonials";
-import { Credentials } from "@/components/site/Credentials";
-import { FinalCTA } from "@/components/site/FinalCTA";
-import { FindYourPath } from "@/components/site/FindYourPath";
-import { NorthCarolina } from "@/components/site/NorthCarolina";
+import { HomeHero } from "@/components/site/HomeHero";
+import { HomeSolutions } from "@/components/site/HomeSolutions";
+import { faqs } from "@/components/site/FAQ";
+
 
 
 const title = "North Carolina Mortgage Broker | Premier Lending NC";
@@ -62,24 +48,9 @@ export const Route = createFileRoute("/")({
 function Index() {
   return (
     <SiteLayout transparentNav>
-      <Hero />
-      <TrustBar />
-      <FindYourPath />
-      <Difference />
-      <Solutions />
-      <SpecialtySolutions />
-      <SignatureCTA />
-      <Journey />
-      <NorthCarolina />
-      <Investors />
-      <Founder />
-      <Calculator />
-      <LeadFunnel />
-      <LeadMagnet />
-      <FAQ />
-      <Credentials />
-      <Testimonials />
-      <FinalCTA />
+      <HomeHero />
+      <HomeSolutions />
+
     </SiteLayout>
   );
 }
