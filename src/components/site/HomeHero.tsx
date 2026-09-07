@@ -36,11 +36,7 @@ export function HomeHero() {
         <div className="rise-in max-w-2xl" style={{ animationDelay: "80ms" }}>
           <p className="eyebrow text-gold">North Carolina Mortgage Broker</p>
           <h1 className="display mt-7 text-[2.5rem] text-white sm:text-[3.5rem] lg:text-[4.2rem]">
-            Mortgage Solutions
-            <br />
-            Built Around
-            <br />
-            Your Goals.
+            Mortgage Solutions Built Around Your Goals.
           </h1>
           <p className="mt-8 max-w-xl text-base leading-relaxed text-white/70">
             Home financing and real estate investment solutions designed to help eligible borrowers
