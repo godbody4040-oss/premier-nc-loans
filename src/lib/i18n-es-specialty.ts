@@ -21,7 +21,6 @@ export const esSpecialty: Record<string, string> = {
   "Bank Statement Home Loans": "Préstamos con estados de cuenta",
   "Rental Property Investing": "Inversión en propiedades de renta",
   "Fix-and-Flip Investing": "Inversión Fix-and-Flip",
-  Refinancing: "Refinanciamiento",
   "Non-Permanent Resident Mortgages": "Hipotecas para residentes no permanentes",
   "Free Mortgage Quote": "Cotización hipotecaria gratis",
   "Get My Free Mortgage Quote": "Obtener mi cotización gratis",
